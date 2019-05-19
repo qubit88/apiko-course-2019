@@ -1,5 +1,18 @@
 function createElement(el, props = {}, children = []) {
   let wrapperEl = document.createElement(el);
+
+  if (wrapperEl instanceof HTMLUnknownElement) {
+    throw "First argument is not an HTML element!";
+  }
+
+  if (typeof props !== "object") {
+    throw "Second arument is not an object!";
+  }
+
+  if (typeof children !== "string" && !Array.isArray(children)) {
+    throw "Third arument is not an array or string!";
+  }
+
   children = typeof children === "string" ? [children] : children;
 
   iterateOverProps(props);
