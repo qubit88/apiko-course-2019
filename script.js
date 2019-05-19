@@ -13,6 +13,12 @@ function createElement(el, props = {}, children = []) {
     throw "Third arument is not an array or string!";
   }
 
+  for (let prop in props) {
+    if (!(prop in wrapperEl)) {
+      throw "Not a HTMLElement property";
+    }
+  }
+
   children = typeof children === "string" ? [children] : children;
 
   iterateOverProps(props);
