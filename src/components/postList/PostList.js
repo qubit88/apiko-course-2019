@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import PostListItem from "./PostListItem";
-// import "./PostList.css";
+import PostListItem from "../postListItem/PostListItem";
+import "./PostList.css";
 
 function PostList(props) {
   const posts = props.posts.map(({ id, title, body }) => (
