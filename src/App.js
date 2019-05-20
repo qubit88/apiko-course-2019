@@ -1,13 +1,15 @@
 import React from "react";
 import PostList from "./components/PostList";
 import MoreButton from "./components/MoreButton";
+import Loading from "./components/Loading";
 
 class App extends React.Component {
   constructor() {
     super();
     this.state = {
       posts: [],
-      incrementLimit: 10
+      incrementLimit: 10,
+      isLoading: true
     };
     this.fetchData = this.fetchData.bind(this);
     this.onClick = this.onClick.bind(this);
@@ -22,7 +24,10 @@ class App extends React.Component {
       .then(data => data.json())
       .then(data =>
         this.setState(prevState => {
-          return { posts: data.slice(0, prevState.incrementLimit + 1) };
+          return {
+            posts: data.slice(0, prevState.incrementLimit + 1),
+            isLoading: false
+          };
         })
       );
   }
@@ -34,9 +39,13 @@ class App extends React.Component {
     this.fetchData();
   }
   render() {
+    const { posts, isLoading } = this.state;
+    if (isLoading) {
+      return <Loading />;
+    }
     return (
       <div className="App">
-        <PostList posts={this.state.posts} />
+        <PostList posts={posts} />
         <MoreButton onClick={this.onClick} />
       </div>
     );

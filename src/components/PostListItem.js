@@ -1,4 +1,5 @@
 import React from "react";
+import PropTypes from "prop-types";
 
 class PostListItem extends React.Component {
   shouldComponentUpdate(nextProps, nextState) {
@@ -24,5 +25,11 @@ class PostListItem extends React.Component {
     );
   }
 }
+
+PostListItem.propTypes = {
+  id: PropTypes.number.isRequired,
+  title: PropTypes.string.isRequired,
+  body: PropTypes.string.isRequired
+};
 
 export default PostListItem;
