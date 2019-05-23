@@ -1,13 +1,20 @@
 import React from "react";
 import "./App.css";
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 import TodoList from "./components/TodoList";
+import Input from "./components/Input";
+import Navigation from "./components/Navigation";
 
 class App extends React.Component {
   constructor() {
     super();
-    this.state = { todos: [{ id: 1, text: "Todo first", completed: true }] };
+    this.state = {
+      todos: [{ id: 1, text: "Todo first", completed: true }],
+      newTodo: ""
+    };
     this.onInputChange = this.onInputChange.bind(this);
+    this.onNewTodoInputChange = this.onNewTodoInputChange.bind(this);
+    this.onKeyDown = this.onKeyDown.bind(this);
   }
 
   onInputChange(id) {
@@ -19,12 +26,33 @@ class App extends React.Component {
       todos: changedTodos
     });
   }
+
+  onNewTodoInputChange({ target: { value } }) {
+    this.setState({ newTodo: value });
+  }
+
+  onKeyDown({ key }) {
+    if (key === "Enter") {
+      const id = new Date().getTime();
+      const text = this.state.newTodo;
+
+      this.setState({
+        todos: [...this.state.todos, { id, text, completed: false }],
+        newTodo: ""
+      });
+    }
+  }
   render() {
     const completedTodos = this.state.todos.filter(todo => todo.completed);
     const newTodos = this.state.todos.filter(todo => !todo.completed);
 
     return (
       <div className="App">
+        <Input
+          value={this.state.newTodo}
+          onChange={this.onNewTodoInputChange}
+          onKeyDown={this.onKeyDown}
+        />
         <Router>
           <Route
             exact
@@ -51,11 +79,7 @@ class App extends React.Component {
               />
             )}
           />
-          <div>
-            <Link to="/">All</Link>
-            <Link to="/new">New</Link>
-            <Link to="/completed">completed</Link>
-          </div>
+          <Navigation />
         </Router>
       </div>
     );
