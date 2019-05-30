@@ -1,4 +1,49 @@
 .header {
     display: flex;
     justify-content: space-between;
+    align-items: center;
+}
+
+.dark {
+    background: linear-gradient(180deg, #090810 0%, #171236 100%);
+
+    .login {
+        color: white;
+    }
+
+    .logo {
+        background-image: url(Logofull.svg);
+    }
+}
+
+.logo {
+    width: 7vw;
+    height: 2.9vw;
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position: 50%;
+}
+
+
+
+.login {
+    font-family: Helvetica;
+    font-size: 12px;
+    line-height: 40px;
+
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    text-decoration: none;
+}
+
+.light {
+    background: #F2F2F2;
+
+    .login {
+        color: #2B2B2B;
+    }
+
+    .logo {
+        background-image: url(Logofull-light.svg);
+    }
 }

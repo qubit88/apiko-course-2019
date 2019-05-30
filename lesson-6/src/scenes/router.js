@@ -11,7 +11,21 @@ export const routes = {
   register: '/auth/register',
   auth: '/auth',
   inbox: '/inbox',
+  terms: '/terms',
+  privacy: '/privacy',
+  bookmarks: '/bookmarks',
+  profile: '/profile',
+  users: 'users/:id',
+  listings: '/listings/:id',
+  search: '/search',
 };
+
+export const routesWithTheme = [
+  routes.login,
+  routes.register,
+  routes.privary,
+  routes.register,
+];
 
 export default function Router() {
   return (
