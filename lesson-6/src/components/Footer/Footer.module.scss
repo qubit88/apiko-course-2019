@@ -1,0 +1,14 @@
+.footer {
+    height: 7.76vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: auto;
+    &__item {
+        font-size: 14.4px;
+        line-height: 1.18em;
+        color: #C0C4CE;
+        text-decoration: none;
+        display: inline-block;
+    }
+}

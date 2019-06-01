@@ -8,6 +8,7 @@ import Api from '../../scenes/api';
 import s from './Header.module.scss';
 import './Logofull.svg';
 import './Logofull-light.svg';
+import { Sell } from '../index';
 
 function Header({ handleLogout, theme }) {
   return (
@@ -21,6 +22,7 @@ function Header({ handleLogout, theme }) {
           <div className={s.logo} />
         </Link>
       </div>
+      <Sell />
       <div className={s.right}>
         {Api.Auth.isLoggedIn ? (
           <button type="button" onClick={handleLogout}>
