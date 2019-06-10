@@ -1,24 +1,28 @@
 import React from "react";
 import "./App.css";
 import { BrowserRouter as Router, Route } from "react-router-dom";
+import { connect } from "react-redux";
+import {todosOperations, todosSelectors} from './modules/todos';
 import TodoList from "./components/TodoList";
 import Input from "./components/Input";
 import Navigation from "./components/Navigation";
+import { compose, withState, withHandlers } from "recompose";
+import uuid from "uuid/v4";
 
-class App extends React.Component {
-  constructor() {
-    super();
-    this.state = {
-      todos: [{ id: 1, text: "Todo first", completed: true }],
-      newTodo: ""
-    };
-    this.onInputChange = this.onInputChange.bind(this);
-    this.onNewTodoInputChange = this.onNewTodoInputChange.bind(this);
-    this.onKeyDown = this.onKeyDown.bind(this);
-  }
+function App ({ handleCheckboxChange, handleInputChange, handleAddTodo, value, todos }) {
+  // constructor() {
+  //   super({});
+    // this.state = {
+    //   todos: [{ id: 1, text: "Todo first", completed: true }]
+    //   // newTodo: ""
+    // };
+    // this.onInputChange = this.onInputChange.bind(this);
+    // this.onNewTodoInputChange = this.onNewTodoInputChange.bind(this);
+    // this.onKeyDown = this.onKeyDown.bind(this);
+  // }
 
-  onInputChange(id) {
-    let changedTodos = this.state.todos.map(todo =>
+  onCheckboxChange(id) {
+    let changedTodos = todos.map(todo =>
       todo.id === id ? { ...todo, completed: !todo.completed } : todo
     );
 
@@ -27,31 +31,30 @@ class App extends React.Component {
     });
   }
 
-  onNewTodoInputChange({ target: { value } }) {
-    this.setState({ newTodo: value });
-  }
+  // onNewTodoInputChange({ target: { value } }) {
+  //   this.setState({ newTodo: value });
+  // }
 
-  onKeyDown({ key }) {
-    if (key === "Enter") {
-      const id = new Date().getTime();
-      const text = this.state.newTodo;
+  // onKeyDown({ key }) {
+  //   if (key === "Enter") {
+  //     const id = new Date().getTime();
+  //     const text = this.state.newTodo;
 
-      this.setState({
-        todos: [...this.state.todos, { id, text, completed: false }],
-        newTodo: ""
-      });
-    }
-  }
-  render() {
-    const completedTodos = this.state.todos.filter(todo => todo.completed);
-    const newTodos = this.state.todos.filter(todo => !todo.completed);
+  //     this.setState({
+  //       todos: [...this.state.todos, { id, text, completed: false }],
+  //       newTodo: ""
+  //     });
+  //   }
+  // }
+    const completedTodos = todos.filter(todo => todo.completed);
+    const newTodos = todos.filter(todo => !todo.completed);
 
     return (
       <div className="App">
         <Input
-          value={this.state.newTodo}
-          onChange={this.onNewTodoInputChange}
-          onKeyDown={this.onKeyDown}
+          value={value}
+          onChange={evt => handleInputChange(evt.target.value)}
+          onKeyDown={handleAddTodo}
         />
         <Router>
           <Route
@@ -59,15 +62,15 @@ class App extends React.Component {
             path="/"
             render={() => (
               <TodoList
-                todos={this.state.todos}
-                onInputChange={this.onInputChange}
+                todos={todos}
+                onInputChange={handleCheckboxChange}
               />
             )}
           />
           <Route
             path="/new"
             render={() => (
-              <TodoList todos={newTodos} onInputChange={this.onInputChange} />
+              <TodoList todos={newTodos} onInputChange={handleCheckboxChange} />
             )}
           />
           <Route
@@ -75,7 +78,7 @@ class App extends React.Component {
             render={() => (
               <TodoList
                 todos={completedTodos}
-                onInputChange={this.onInputChange}
+                onInputChange={handleCheckboxChange}
               />
             )}
           />
@@ -83,7 +86,41 @@ class App extends React.Component {
         </Router>
       </div>
     );
-  }
 }
 
-export default App;
+const mapDispatchToProps = {
+  addtodo: todosOperations.actions.addTodo
+};
+
+const mapStateToProps = (state) => ({
+  todos: todosSelectors.getTodos(state)
+});
+
+const enhancer = compose(
+  connect(
+    mapStateToProps,
+    mapDispatchToProps
+  ),
+  withState("value", "handleInputChange", ""),
+  withHandlers({
+    handleAddTodo: props => () => {
+      const todo = {
+        id: uuid(),
+        text: props.value,
+        completed: false
+      };
+      props.addTodo(todo);
+
+      props.handleInputChange("");
+    },
+    handleChangeTodo: props => (id) => {
+      let changedTodos = props.todos.map(todo =>
+        todo.id === id ? { ...todo, completed: !todo.completed } : todo
+      );
+  
+      // props.addTodo(changedTodos);
+    }
+  })
+);
+
+export default enhancer(App);
