@@ -1,3 +1,3 @@
-import { createActions } from "@letapp/redux-actions";
+import { createAsyncActions } from "@letapp/redux-actions";
 
-export const addTodo = createActions("todos/ADD_TODO");
+export const addTodo = createAsyncActions("todos/ADD_TODO");

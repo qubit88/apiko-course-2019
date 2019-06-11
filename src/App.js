@@ -9,7 +9,7 @@ import Navigation from "./components/Navigation";
 import { compose, withState, withHandlers } from "recompose";
 import uuid from "uuid/v4";
 
-function App ({ handleCheckboxChange, handleInputChange, handleAddTodo, value, todos }) {
+function App ({ handleCheckboxChange, handleInputChange, handleAddTodo, value, todos, isLoading }) {
   // constructor() {
   //   super({});
     // this.state = {
@@ -56,6 +56,7 @@ function App ({ handleCheckboxChange, handleInputChange, handleAddTodo, value, t
           onChange={evt => handleInputChange(evt.target.value)}
           onKeyDown={handleAddTodo}
         />
+        {isLoading ? 'Loading...' : null}
         <Router>
           <Route
             exact
@@ -89,11 +90,12 @@ function App ({ handleCheckboxChange, handleInputChange, handleAddTodo, value, t
 }
 
 const mapDispatchToProps = {
-  addtodo: todosOperations.actions.addTodo
+  addtodo: todosOperations.addTodo
 };
 
 const mapStateToProps = (state) => ({
-  todos: todosSelectors.getTodos(state)
+  todos: todosSelectors.getTodos(state),
+  isLoading: todosSelectors.getLoadingStatus(state),
 });
 
 const enhancer = compose(
