@@ -15,4 +15,20 @@ export function addTodo(todo) {
   };
 }
 
+export function updateTodo(id, body) {
+  return async function updateTodoThunk(dispatch, getState) {
+    try {
+      dispatch(actions.updateTodo.start());
+
+      const res = await Api.update(id, body);
+
+      dispatch(actions.updateTodo.success(res));
+    }
+
+    catch(err) {
+      dispatch(actions.updateTodo.error());
+    }
+  }
+}
+
 export { actions };

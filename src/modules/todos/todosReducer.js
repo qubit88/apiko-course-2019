@@ -23,6 +23,23 @@ const todosReducer = handleActions(
       ...state,
       isLoading: false,
       isError: true
+    }),
+    [actions.updateTodo.start]: (state, action) => ({
+      ...state,
+      isLoading: true,
+      isError: false
+    }),
+    [actions.updateTodo.success]: (state, {payload}) => ({
+      ...state,
+      isLoading: false,
+      todos: state.todos.map(todo =>
+        todo.id === payload.id ? payload : todo
+      )
+    }),
+    [actions.updateTodo.error]: (state, action) => ({
+      ...state,
+      isLoading: false,
+      isError: true
     })
   },
   initialState

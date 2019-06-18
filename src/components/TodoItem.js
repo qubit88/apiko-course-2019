@@ -19,13 +19,12 @@ const TodoText = styled.div`
     `}
 `;
 
-function TodoItem({ id, text, completed, onInputChange }) {
+function TodoItem({ id, text, completed }) {
   return (
     <TodoDiv completed>
       <CompletedCheckbox
         checked={completed}
         id={id}
-        onInputChange={onInputChange}
       />
       <TodoText completed={completed}>{text}</TodoText>
     </TodoDiv>
