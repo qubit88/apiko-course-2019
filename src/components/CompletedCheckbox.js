@@ -1,5 +1,5 @@
 import React from "react";
-import {todosOperations} from './modules/todos';
+import {todosOperations} from '../modules/todos';
 import { compose, withHandlers } from "recompose";
 import { connect } from "react-redux";
 
@@ -26,7 +26,7 @@ const enhancer = compose(
   withHandlers({
     handleCheckboxChange: props => (id,checked) => {
       const body = {
-        checked
+        completed: checked
       };
       props.updateTodo(id, body);
     },

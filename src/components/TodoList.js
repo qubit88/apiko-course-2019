@@ -3,7 +3,7 @@ import { compose, withState, withHandlers } from "recompose";
 import {connect} from 'react-redux';
 import TodoItem from "./TodoItem";
 import styled from "styled-components";
-import * as todosSelectors from '../modules/todos/todosSelectors';
+import {todosSelectors} from '../modules/todos';
 
 
 const TodoListDiv = styled.div`
@@ -29,6 +29,7 @@ function TodoList({ todos }) {
 const mapStateToProps = (state, props) => {
   //logic to filter data
   const filter = props.match.path.split('/')[1];
+
   return ({todos: todosSelectors.getTodos(state, filter)});
 }
 

@@ -18,7 +18,7 @@ function App ({ handleInputChange, handleAddTodo, value, todos, isLoading }) {
         <Input
           value={value}
           onChange={evt => handleInputChange(evt.target.value)}
-          onKeyDown={handleAddTodo}
+          onKeyDown={evt => handleAddTodo(evt.key)}
         />
         {isLoading ? 'Loading...' : null}
         <Router>
@@ -42,7 +42,7 @@ function App ({ handleInputChange, handleAddTodo, value, todos, isLoading }) {
 }
 
 const mapDispatchToProps = {
-  addtodo: todosOperations.addTodo
+  addTodo: todosOperations.addTodo
 };
 
 const mapStateToProps = (state) => ({
@@ -57,15 +57,18 @@ const enhancer = compose(
   ),
   withState("value", "handleInputChange", ""),
   withHandlers({
-    handleAddTodo: props => () => {
+    handleAddTodo: props => (key) => {
+      if (key === 'Enter') {
       const todo = {
         id: uuid(),
         text: props.value,
         completed: false
       };
+      console.log(props, props.addTodo)
       props.addTodo(todo);
 
       props.handleInputChange("");
+    }
     },
   })
 );
