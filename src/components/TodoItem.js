@@ -1,5 +1,6 @@
 import React from "react";
 import CompletedCheckbox from "./CompletedCheckbox";
+import DeleteButton from "./DeleteButton";
 import styled, { css } from "styled-components";
 
 const TodoDiv = styled.div`
@@ -27,6 +28,7 @@ function TodoItem({ id, text, completed }) {
         id={id}
       />
       <TodoText completed={completed}>{text}</TodoText>
+      <DeleteButton id={id}></DeleteButton>
     </TodoDiv>
   );
 }

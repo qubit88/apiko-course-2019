@@ -40,6 +40,22 @@ const todosReducer = handleActions(
       ...state,
       isLoading: false,
       isError: true
+    }),
+    [actions.deleteTodo.start]: (state, action) => ({
+      ...state,
+      isLoading: true,
+      isError: false
+    }),
+    [actions.deleteTodo.success]: (state, {payload: {success, id}}) => ({
+      ...state,
+      isLoading: false,
+      todos: success ? state.todos.filter(todo => todo.id !== id) : state.todos,
+      isError: !success
+    }),
+    [actions.deleteTodo.error]: (state, action) => ({
+      ...state,
+      isLoading: false,
+      isError: true
     })
   },
   initialState

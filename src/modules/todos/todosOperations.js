@@ -31,4 +31,20 @@ export function updateTodo(id, body) {
   }
 }
 
+export function deleteTodo(id) {
+  return async function updateTodoThunk(dispatch, getState) {
+    try {
+      dispatch(actions.deleteTodo.start());
+
+      const {success} = await Api.remove(id);
+
+      dispatch(actions.deleteTodo.success({success,id}));
+    }
+
+    catch(err) {
+      dispatch(actions.deleteTodo.error());
+    }
+  }
+}
+
 export { actions };
