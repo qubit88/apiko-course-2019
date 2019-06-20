@@ -1,10 +1,8 @@
 import React from 'react';
 import T from 'prop-types';
-import { Link, withRouter } from 'react-router-dom';
-import { withHandlers, compose } from 'recompose';
+import { Link } from 'react-router-dom';
 import s from './Login.module.scss';
 import { routes } from '../router';
-import Api from '../../api';
 import { Input } from '../../components';
 
 function Login({
@@ -41,14 +39,4 @@ function Login({
 
 Login.propTypes = {};
 
-const enhancer = compose(
-  withRouter,
-  withHandlers({
-    handleLogin: (props) => () => {
-      Api.Auth.login();
-      props.history.push(routes.home);
-    },
-  }),
-);
-
-export default enhancer(Login);
+export default Login;

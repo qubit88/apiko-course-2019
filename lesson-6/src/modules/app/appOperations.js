@@ -1,5 +1,6 @@
 import * as actions from './appActions';
 import Api from '../../api';
+import { viewerOperations } from '../viewer';
 
 export function init() {
   return async function initThunk(dispatch) {
@@ -10,6 +11,8 @@ export function init() {
       // const res = await Api.();
 
       Api.init();
+
+      await dispatch(viewerOperations.fetchViewer());
 
       //   TODO: fetch user
       dispatch(actions.initialization.success());

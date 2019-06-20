@@ -1,5 +1,7 @@
 import { compose, withHandlers, withStateHandlers } from 'recompose';
 import { connect } from 'react-redux';
+import { withRouter } from 'react-router-dom';
+import { routes } from '../router';
 import LoginView from './LoginView';
 import { authOperations } from '../../modules/auth';
 
@@ -14,6 +16,7 @@ const mapDispatchToProps = {
 };
 
 const enhancer = compose(
+  withRouter,
   connect(
     mapStateToProps,
     mapDispatchToProps,
@@ -36,8 +39,9 @@ const enhancer = compose(
     },
   ),
   withHandlers({
-    handleLogin: (props) => () => {
-      props.login(props.fields);
+    handleLogin: (props) => async () => {
+      await props.login(props.fields);
+      props.histoty.push(routes.home);
     },
   }),
 );
