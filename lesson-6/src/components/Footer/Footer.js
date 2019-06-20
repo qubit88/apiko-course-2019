@@ -3,7 +3,7 @@ import T from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
 import { withHandlers, compose, withProps } from 'recompose';
 import { routes } from '../../scenes/router';
-import Api from '../../scenes/api';
+import Api from '../../api';
 import s from './Footer.module.scss';
 
 function Footer() {

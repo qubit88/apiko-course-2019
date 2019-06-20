@@ -1,7 +1,7 @@
 import React from 'react';
 import T from 'prop-types';
 import { Route, Redirect } from 'react-router-dom';
-import Api from '../api/index';
+import Api from '../../api/index';
 import { routes } from '../router';
 
 function PrivateRoute({ component: Component, ...rest }) {
