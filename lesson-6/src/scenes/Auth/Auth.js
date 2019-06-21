@@ -4,7 +4,7 @@ import { Switch, Route, Redirect } from 'react-router-dom';
 import s from './Auth.module.scss';
 import { Header } from '../../components';
 import { routes } from '../router';
-import Login from '../Login/LoginView';
+import Login from '../Login/LoginContainer';
 import Register from '../Register/Register';
 import Api from '../../api';
 
@@ -13,7 +13,7 @@ function Auth() {
     <div>
       <Header />
       <Switch>
-        {Api.Auth.isLoggedIn && <Redirect to={routes.home} />}
+        {/* {Api.Auth.isLoggedIn && <Redirect to={routes.home} />} */}
         <Route path={routes.login} component={Login} />
         <Route path={routes.register} component={Register} />
       </Switch>

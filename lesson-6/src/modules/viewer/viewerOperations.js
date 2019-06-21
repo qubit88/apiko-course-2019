@@ -8,9 +8,9 @@ export function fetchViewer() {
 
       const res = await Api.Viewer.get();
 
-      //   TODO: fetch user
       dispatch(actions.fetchViewer.success(res.data));
     } catch (err) {
+      console.log(err);
       dispatch(actions.fetchViewer.error({ message: err.message }));
     }
   };

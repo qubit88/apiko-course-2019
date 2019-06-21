@@ -1,4 +1,4 @@
-import * as actions from './appActions';
+import * as actions from './authActions';
 import Api from '../../api';
 
 export function login(body) {
@@ -11,9 +11,11 @@ export function login(body) {
       const { user, token } = res.data;
 
       Api.Auth.setToken(token);
+      console.log('user', user);
 
       dispatch(actions.login.success(user));
     } catch (err) {
+      console.log(err);
       dispatch(actions.login.error({ message: err.message }));
     }
   };
@@ -30,9 +32,9 @@ export function register(body) {
 
       Api.Auth.setToken(token);
 
-      // const res = await Api.();
       dispatch(actions.register.success(user));
     } catch (err) {
+      console.log(err);
       dispatch(actions.register.error({ message: err.message }));
     }
   };
