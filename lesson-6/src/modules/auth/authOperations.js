@@ -39,3 +39,18 @@ export function register(body) {
     }
   };
 }
+
+export function logout() {
+  return async function logoutThunk(dispatch) {
+    try {
+      dispatch(actions.logout.start());
+
+      await Api.Auth.logout();
+
+      dispatch(actions.logout.success());
+    } catch (err) {
+      console.log(err);
+      dispatch(actions.logout.error({ message: err.message }));
+    }
+  };
+}

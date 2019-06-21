@@ -4,13 +4,13 @@ import { Link, withRouter } from 'react-router-dom';
 import { withHandlers, compose, withProps } from 'recompose';
 import { routes, routesWithTheme } from '../../scenes/router';
 import Api from '../../api';
-// import routesWithTheme from '../../scenes/routesWithTheme';
+import { AvatarContainer } from '../../components';
 import s from './Header.module.scss';
 import './Logofull.svg';
 import './Logofull-light.svg';
 import { Sell } from '../index';
 
-function Header({ handleLogout, theme }) {
+function Header({ theme }) {
   return (
     <header
       className={`${s.header} ${
@@ -25,9 +25,7 @@ function Header({ handleLogout, theme }) {
       <Sell />
       <div className={s.right}>
         {Api.Auth.isLoggedIn ? (
-          <button type="button" onClick={handleLogout}>
-            Logout
-          </button>
+          <AvatarContainer />
         ) : (
           <Link to={routes.login} className={s.login}>
             Login
@@ -49,12 +47,6 @@ const enhancer = compose(
       ? 'light'
       : 'dark',
   })),
-  withHandlers({
-    handleLogout: (props) => () => {
-      Api.Auth.logout();
-      props.history.push(routes.home);
-    },
-  }),
 );
 
 export default enhancer(Header);

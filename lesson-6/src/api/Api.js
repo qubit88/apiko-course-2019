@@ -36,6 +36,7 @@ export const Auth = {
 
   logout() {
     this._token = null;
+    this._unsetTokenToAxios();
     try {
       window.localStorage.removeItem('token');
     } catch (err) {
@@ -53,6 +54,10 @@ export const Auth = {
 
   _setTokenToAxios(token) {
     axios.defaults.headers.common.Authorization = `Bearer ${token}`;
+  },
+
+  _unsetTokenToAxios() {
+    delete axios.defaults.headers.common.Authorization;
   },
 };
 

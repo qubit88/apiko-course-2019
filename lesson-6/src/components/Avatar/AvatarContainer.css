@@ -1,0 +1,10 @@
+.AvatarContainer {
+    display: block;
+    position: relative;
+    width: 40px;
+    height: 40px
+}
+
+.AvatarContainer--info-visible .UserInfo  {
+    display: block; 
+}

@@ -4,6 +4,7 @@ import * as actions from './authActions';
 const INITIAL_STATE = {
   login: { isLoading: false, isError: false, error: null },
   register: { isLoading: false, isError: false, error: null },
+  logout: { isLoading: false, isError: false, error: null },
 };
 
 export default handleActions(
@@ -54,6 +55,32 @@ export default handleActions(
       ...state,
       register: {
         ...state.register,
+        isLoading: false,
+        isError: true,
+        error: action.payload,
+      },
+    }),
+    [actions.logout.start]: (state) => ({
+      ...state,
+      logout: {
+        ...state.logout,
+        isLoading: true,
+        error: null,
+        isError: false,
+      },
+    }),
+    [actions.logout.success]: (state) => ({
+      ...state,
+      register: {
+        ...state.logout,
+        isLoading: false,
+      },
+      user: null,
+    }),
+    [actions.logout.error]: (state, action) => ({
+      ...state,
+      logout: {
+        ...state.logout,
         isLoading: false,
         isError: true,
         error: action.payload,
