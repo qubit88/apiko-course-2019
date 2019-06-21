@@ -23,8 +23,9 @@ export const Auth = {
     try {
       const token = window.localStorage.getItem('token');
       this._token = JSON.parse(token);
+      console.log(this._token);
 
-      this._setTokenToAxios(token);
+      this._setTokenToAxios(this._token);
     } catch (err) {
       console.error(err);
     }
