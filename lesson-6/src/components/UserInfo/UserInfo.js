@@ -5,11 +5,11 @@ import { Logout } from '../../components';
 import './UserInfo.scss';
 import { Avatar } from '../../components';
 
-function UserInfo({ handleMouseLeave, fullName, email }) {
+function UserInfo({ handleMouseLeave, fullName, email, className }) {
   return (
     <div
       onMouseLeave={(evt) => handleMouseLeave(evt.target)}
-      className="UserInfo"
+      className={`UserInfo ${className}`}
     >
       <div>
         <div className="UserInfo__avatar">

@@ -10,7 +10,7 @@ import './Logofull.svg';
 import './Logofull-light.svg';
 import { Sell } from '../index';
 
-function Header({ theme }) {
+function Header({ theme, isLoggedIn }) {
   return (
     <header
       className={`${s.header} ${

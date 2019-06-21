@@ -1,16 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { compose, withHandlers } from 'recompose';
+import { compose, withHandlers, withStateHandlers } from 'recompose';
 import { Avatar, UserInfo } from '../../components';
 import './AvatarContainer.css';
 
-function AvatarContainer({ user, handleClick }) {
+function AvatarContainer({ user, handleClick, className }) {
   return (
-    <div onClick={(evt) => handleClick()} className="AvatarContainer">
+    <div onClick={() => handleClick()} className="AvatarContainer">
       {user && user.fullName ? (
         <>
           <Avatar fullName={user.fullName} />
-          <UserInfo />
+          <UserInfo className={className} />
         </>
       ) : (
         ''
@@ -27,9 +27,19 @@ function mapStateToProps(state) {
 
 const enhancer = compose(
   connect(mapStateToProps),
+  withStateHandlers(
+    {
+      className: '',
+    },
+    {
+      handleInfoVisibilityChange: (state) => () => ({
+        className: state.className ? '' : 'UserInfo--visible',
+      }),
+    },
+  ),
   withHandlers({
-    handleClick: (props) => (el) => {
-      el.classList.toggle('AvatarContainer--info-visible');
+    handleClick: (props) => () => {
+      props.handleInfoVisibilityChange();
     },
   }),
 );
