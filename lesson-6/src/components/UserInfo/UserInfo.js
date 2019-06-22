@@ -1,19 +1,17 @@
 import React from 'react';
-import { compose, withHandlers } from 'recompose';
 import { connect } from 'react-redux';
 import { Logout } from '../../components';
 import './UserInfo.scss';
 import { Avatar } from '../../components';
 
-function UserInfo({ handleMouseLeave, fullName, email, className }) {
+function UserInfo({ fullName, email, className }) {
   return (
-    <div
-      onMouseLeave={(evt) => handleMouseLeave(evt.target)}
-      className={`UserInfo ${className}`}
-    >
-      <div>
-        <div className="UserInfo__avatar">
-          <Avatar fullName={fullName} />
+    <div className={`UserInfo ${className}`}>
+      <div className="UserInfo__top">
+        <div className="UserInfo__avatar-wrapper">
+          <div className="UserInfo__avatar">
+            <Avatar fullName={fullName} />
+          </div>
         </div>
         <div>
           <div className="UserInfo__name">{fullName}</div>
@@ -21,7 +19,9 @@ function UserInfo({ handleMouseLeave, fullName, email, className }) {
         </div>
       </div>
 
-      <Logout />
+      <div className="UserInfo__bottom">
+        <Logout />
+      </div>
     </div>
   );
 }
@@ -32,13 +32,6 @@ function mapStateToProps(state) {
   };
 }
 
-const enhancer = compose(
-  connect(mapStateToProps),
-  withHandlers({
-    handleMouseLeave: (props) => (el) => {
-      el.classList.remove('UserInfo--visible');
-    },
-  }),
-);
+const enhancer = connect(mapStateToProps);
 
 export default enhancer(UserInfo);

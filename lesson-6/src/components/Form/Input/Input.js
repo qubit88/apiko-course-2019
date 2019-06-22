@@ -4,10 +4,11 @@ import s from './Input.module.scss';
 
 function Input({ fields, label, onChange, name, ...props }) {
   return (
-    <div className={s.container}>
-      <label htmlFor={name}>
+    <div className={s.Input__container}>
+      <label className={s.Input__label} htmlFor={name}>
         {label}
         <input
+          className={s.Input__field}
           id={name}
           value={fields[name]}
           onChange={(evt) => onChange(name, evt.target.value)}

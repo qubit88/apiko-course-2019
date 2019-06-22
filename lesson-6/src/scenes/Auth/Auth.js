@@ -5,19 +5,19 @@ import s from './Auth.module.scss';
 import { Header } from '../../components';
 import { routes } from '../router';
 import Login from '../Login/LoginContainer';
-import Register from '../Register/Register';
+import Register from '../Register/RegisterContainer';
 import Api from '../../api';
 
 function Auth() {
   return (
-    <div>
+    <>
       <Header />
       <Switch>
         {/* {Api.Auth.isLoggedIn && <Redirect to={routes.home} />} */}
         <Route path={routes.login} component={Login} />
         <Route path={routes.register} component={Register} />
       </Switch>
-    </div>
+    </>
   );
 }
 

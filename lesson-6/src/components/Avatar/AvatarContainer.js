@@ -2,14 +2,20 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { compose, withHandlers, withStateHandlers } from 'recompose';
 import { Avatar, UserInfo } from '../../components';
-import './AvatarContainer.css';
+import './AvatarContainer.scss';
 
-function AvatarContainer({ user, handleClick, className }) {
+function AvatarContainer({ user, handleMouseEnter, className }) {
   return (
-    <div onClick={() => handleClick()} className="AvatarContainer">
+    <div
+      onMouseEnter={() => handleMouseEnter()}
+      className="AvatarContainer"
+    >
       {user && user.fullName ? (
         <>
-          <Avatar fullName={user.fullName} />
+          <div className="AvatarContainer__avatar-image">
+            <Avatar fullName={user.fullName} />
+          </div>
+
           <UserInfo className={className} />
         </>
       ) : (
@@ -38,7 +44,7 @@ const enhancer = compose(
     },
   ),
   withHandlers({
-    handleClick: (props) => () => {
+    handleMouseEnter: (props) => () => {
       props.handleInfoVisibilityChange();
     },
   }),

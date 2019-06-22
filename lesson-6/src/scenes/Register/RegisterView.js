@@ -1,20 +1,27 @@
 import React from 'react';
 import T from 'prop-types';
 import { Link } from 'react-router-dom';
-import s from './Login.module.scss';
+import s from './Register.module.scss';
 import { routes } from '../router';
 import { Input } from '../../components';
 
-function Login({
+function Register({
   fields,
-  handleLogin,
+  handleRegister,
   handleFieldChange,
   isLoading,
 }) {
   return (
-    <div className="Login">
-      <div className={s.Login__form}>
-        <h3 className={s.Login__header}>Register</h3>
+    <div className={s.Register}>
+      <h3 className={s.Register__header}>Login</h3>
+      <div className={s.Register__form}>
+        <Input
+          fields={fields}
+          name="fullName"
+          placeholder="Full Name"
+          label="FULLNAME"
+          onChange={handleFieldChange}
+        />
         <Input
           fields={fields}
           name="email"
@@ -32,18 +39,18 @@ function Login({
         />
 
         <button
-          className={s.Login__button}
           type="button"
-          onClick={handleLogin}
+          className={s.Register__button}
+          onClick={handleRegister}
         >
-          {isLoading ? 'Loading' : 'Login'}
+          {isLoading ? 'Loading' : 'Register'}
         </button>
-        <Link to={routes.register}>Register</Link>
+        <Link to={routes.login}>Log in</Link>
       </div>
     </div>
   );
 }
 
-Login.propTypes = {};
+Register.propTypes = {};
 
-export default Login;
+export default Register;

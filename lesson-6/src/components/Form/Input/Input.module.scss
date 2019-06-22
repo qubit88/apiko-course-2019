@@ -1,7 +1,32 @@
-.container {
-    label {
+.Input {
+    &__container + &__container {
+        margin-top: 15px;
+    }
+
+    &__label {
         display: flex;
         flex-direction: column;
-        max-width: 280px;
+        width: 100%;
+        font-size: 12px;
+        line-height: 14px;
+        letter-spacing: 0.3px;
+        text-transform: uppercase;
+        color: #303030;
+    }
+} 
+
+.Input__field {
+    background: #F9FAFB;
+    border: 1px solid #DEDEE0;
+    box-sizing: border-box;
+    border-radius: 5px;
+    height: 58px;
+    margin-top: 4px;
+    padding: 19px 45px 21px 13px;
+    &::placeholder {
+        font-size: 16px;
+        line-height: 58px;
+        letter-spacing: 0.4px;
+        color: rgba(102, 102, 102, 0.466455);
     }
 }

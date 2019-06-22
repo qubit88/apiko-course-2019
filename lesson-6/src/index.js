@@ -4,7 +4,6 @@ import { Provider, connect } from 'react-redux';
 import Router from './scenes/router';
 import './styles.css';
 import { appOperations } from './modules/app';
-import Api from './api';
 import store from './store/createStore';
 
 class App extends React.Component {

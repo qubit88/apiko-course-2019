@@ -3,8 +3,15 @@
     position: relative;
     width: 40px;
     height: 40px
+
+    &__avatar-image {
+        cursor: pointer;
+        width: 40px;
+        height: 40px;
+    }
 }
 
 .AvatarContainer--info-visible .UserInfo  {
     display: block; 
 }
+

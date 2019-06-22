@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const urls = {
   login: '/api/auth/login',
-  register: 'api/auth/register',
+  register: '/api/auth/register',
   getViewer: '/api/account/user',
 };
 
@@ -30,7 +30,9 @@ export const Auth = {
   login(body) {
     return axios.post(urls.login, body);
   },
-
+  register(body) {
+    return axios.post(urls.register, body);
+  },
   logout() {
     this._token = null;
     this._unsetTokenToAxios();

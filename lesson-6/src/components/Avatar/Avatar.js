@@ -6,7 +6,7 @@ function Avatar({ fullName }) {
     return fullName
       .split(' ')
       .map((word) => word[0])
-      .join(' ');
+      .join('');
   }
 
   const initials = setInitials();
