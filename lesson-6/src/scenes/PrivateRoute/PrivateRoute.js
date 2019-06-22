@@ -1,15 +1,15 @@
 import React from 'react';
 import T from 'prop-types';
 import { Route, Redirect } from 'react-router-dom';
-import Api from '../../api/index';
+import { connect } from 'react-redux';
 import { routes } from '../router';
 
-function PrivateRoute({ component: Component, ...rest }) {
+function PrivateRoute({ component: Component, isLoggedIn, ...rest }) {
   return (
     <Route
       {...rest}
       render={(props) =>
-        Api.Auth.isLoggedIn ? (
+        isLoggedIn ? (
           <Component {...props} />
         ) : (
           <Redirect to={routes.login} />
@@ -19,4 +19,10 @@ function PrivateRoute({ component: Component, ...rest }) {
   );
 }
 
-export default PrivateRoute;
+function mapStateToProps(state) {
+  return { isLoggedIn: state.auth.isLoggedIn };
+}
+
+const enhancer = connect(mapStateToProps);
+
+export default enhancer(PrivateRoute);

@@ -7,8 +7,6 @@ export function init() {
     try {
       dispatch(actions.initialization.start());
 
-      // await new Promise((res) => setTimeout(res, 1000));
-
       Api.init();
 
       await dispatch(viewerOperations.fetchViewer());

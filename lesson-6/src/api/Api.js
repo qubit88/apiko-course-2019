@@ -8,9 +8,6 @@ const urls = {
 
 export const Auth = {
   _token: null,
-  get isLoggedIn() {
-    return !!this._token;
-  },
 
   setToken(token) {
     this._token = token;

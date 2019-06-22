@@ -1,9 +1,9 @@
 import React from 'react';
 import T from 'prop-types';
 import { Link, withRouter } from 'react-router-dom';
-import { withHandlers, compose, withProps } from 'recompose';
+import { connect } from 'react-redux';
+import { compose, withProps } from 'recompose';
 import { routes, routesWithTheme } from '../../scenes/router';
-import Api from '../../api';
 import { AvatarContainer } from '../../components';
 import s from './Header.module.scss';
 import './Logofull.svg';
@@ -22,9 +22,13 @@ function Header({ theme, isLoggedIn }) {
           <div className={s.logo} />
         </Link>
       </div>
-      <Sell />
+      <div className={s.center}>
+        <div className={s.header__sell} />
+        <Sell />
+      </div>
+
       <div className={s.right}>
-        {Api.Auth.isLoggedIn ? (
+        {isLoggedIn ? (
           <AvatarContainer />
         ) : (
           <Link to={routes.login} className={s.login}>
@@ -38,7 +42,12 @@ function Header({ theme, isLoggedIn }) {
 
 Header.propTypes = {};
 
+function mapStateToProps(state) {
+  return { isLoggedIn: state.auth.isLoggedIn };
+}
+
 const enhancer = compose(
+  connect(mapStateToProps),
   withRouter,
   withProps((ownerProps) => ({
     theme: routesWithTheme.some(

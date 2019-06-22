@@ -1,14 +1,24 @@
-import { handleActions } from '@letapp/redux-actions';
+import { handleActions, combineActions } from '@letapp/redux-actions';
+import * as viewerActions from '../viewer/viewerActions';
 import * as actions from './authActions';
 
 const INITIAL_STATE = {
   login: { isLoading: false, isError: false, error: null },
   register: { isLoading: false, isError: false, error: null },
   logout: { isLoading: false, isError: false, error: null },
+  isLoggedIn: false,
 };
 
 export default handleActions(
   {
+    [combineActions(
+      viewerActions.fetchViewer.success,
+      actions.login.success,
+      actions.register.success,
+    )]: (state) => ({
+      ...state,
+      isLoggedIn: true,
+    }),
     [actions.login.start]: (state) => ({
       ...state,
       login: {
@@ -71,11 +81,11 @@ export default handleActions(
     }),
     [actions.logout.success]: (state) => ({
       ...state,
-      register: {
+      logout: {
         ...state.logout,
         isLoading: false,
       },
-      user: null,
+      isLoggedIn: false,
     }),
     [actions.logout.error]: (state, action) => ({
       ...state,

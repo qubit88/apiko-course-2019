@@ -13,6 +13,10 @@ const INITIAL_STATE = {
 
 export default handleActions(
   {
+    [authActions.logout.success]: (state) => ({
+      ...state,
+      user: null,
+    }),
     [actions.fetchViewer.start]: (state) => ({
       ...state,
       fetchViewer: {
