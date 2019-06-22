@@ -5,7 +5,6 @@ import T from 'prop-types';
 import s from './Home.module.scss';
 import { Header } from '../../components';
 import { Footer } from '../../components';
-import { routes } from '../router';
 import LatestList from '../LatestList/LatestListContainer';
 
 function Home() {

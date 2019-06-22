@@ -13,7 +13,10 @@ const mapDispatchToProps = {
 };
 
 const enhancer = compose(
-  connect(mapStateToProps),
+  connect(
+    mapStateToProps,
+    mapDispatchToProps,
+  ),
   lifecycle({
     componentDidMount() {
       this.props.fetchLatest();
