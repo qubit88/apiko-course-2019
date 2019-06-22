@@ -12,9 +12,9 @@ function Login({
   isLoading,
 }) {
   return (
-    <div className="Login">
+    <div className={s.Login}>
       <div className={s.Login__form}>
-        <h3 className={s.Login__header}>Register</h3>
+        <h3 className={s.Login__header}>Login</h3>
         <Input
           fields={fields}
           name="email"

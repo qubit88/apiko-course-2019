@@ -4,10 +4,16 @@ import { compose, withHandlers, withStateHandlers } from 'recompose';
 import { Avatar, UserInfo } from '../../components';
 import './AvatarContainer.scss';
 
-function AvatarContainer({ user, handleMouseEnter, className }) {
+function AvatarContainer({
+  user,
+  handleMouseEnter,
+  handleMouseClick,
+  className,
+}) {
   return (
     <div
       onMouseEnter={() => handleMouseEnter()}
+      onClick={() => handleMouseClick()}
       className="AvatarContainer"
     >
       {user && user.fullName ? (
@@ -38,14 +44,20 @@ const enhancer = compose(
       className: '',
     },
     {
-      handleInfoVisibilityChange: (state) => () => ({
-        className: state.className ? '' : 'UserInfo--visible',
+      handleShowInfo: (state) => () => ({
+        className: 'UserInfo--visible',
+      }),
+      handleHideInfo: (state) => () => ({
+        className: '',
       }),
     },
   ),
   withHandlers({
     handleMouseEnter: (props) => () => {
-      props.handleInfoVisibilityChange();
+      props.handleShowInfo();
+    },
+    handleMouseClick: (props) => () => {
+      props.handleHideInfo();
     },
   }),
 );
