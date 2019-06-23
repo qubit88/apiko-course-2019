@@ -1,7 +1,7 @@
 import React from 'react';
 import T from 'prop-types';
-import s from './FormInput.module.scss';
 import { FormContext } from '../FormContainer/FormContainer';
+import s from './FormInput.module.scss';
 
 function FormInput({ name, validate, ...props }) {
   return (
@@ -34,24 +34,4 @@ function FormInput({ name, validate, ...props }) {
   );
 }
 
-function Input({ name, label, ...props }) {
-  return (
-    <FormInput name={name} {...props}>
-      {({ handleChange, value, error }) => (
-        <label className={s.FormInput__label} htmlFor={name}>
-          {label}
-          <input
-            className={s.FormInput__field}
-            id={name}
-            value={value}
-            onChange={(evt) => handleChange(evt.target.value)}
-          />
-        </label>
-      )}
-    </FormInput>
-  );
-}
-
-Input.propTypes = {};
-
-export default Input;
+export default FormInput;

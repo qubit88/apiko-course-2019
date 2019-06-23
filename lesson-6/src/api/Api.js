@@ -5,6 +5,7 @@ const urls = {
   register: '/api/auth/register',
   getViewer: '/api/account/user',
   productsLatest: '/api/products/latest',
+  addProduct: '/api/products',
 };
 
 export const Auth = {
@@ -70,6 +71,9 @@ export const Viewer = {
 export const Products = {
   getLatest() {
     return axios.get(urls.productsLatest);
+  },
+  addProduct(body) {
+    return axios.post(urls.addProduct, body);
   },
 };
 

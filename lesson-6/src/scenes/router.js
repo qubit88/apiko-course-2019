@@ -7,7 +7,7 @@ import Auth from './Auth/Auth';
 import Inbox from './Inbox/Inbox';
 import Privacy from './Privacy/Privacy';
 import Terms from './Terms/Terms';
-import AddProduct from './AddProduct/AddProductContainer';
+import AddProduct from './AddProduct/AddProductView';
 
 export const routes = {
   home: '/',
@@ -40,7 +40,7 @@ export default function Router() {
         <PrivateRoute exact path={routes.inbox} component={Inbox} />
         <Route exact path={routes.privacy} component={Privacy} />
         <Route exact path={routes.terms} component={Terms} />
-        <Route
+        <PrivateRoute
           exact
           path={routes.addProduct}
           component={AddProduct}

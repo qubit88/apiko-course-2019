@@ -39,12 +39,28 @@ class FormContainer extends Component {
     return this.state.errors[name];
   }
 
+  hasErrors() {
+    const { errors } = this.state;
+    for (const error in errors) {
+      if (errors[error]) {
+        return true;
+      }
+    }
+
+    return false;
+  }
+
+  // onSubmit() {
+  //   this.props.onSubmit(this.state.values);
+  // }
+
   render() {
     const value = {
       formState: this.state.values,
       onChange: (name, value) => this.onChange(name, value),
       setError: (name, value) => this.setError(name, value),
       getError: (name) => this.getError(name),
+      hasErrors: () => this.hasErrors(),
     };
 
     return (
