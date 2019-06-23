@@ -7,21 +7,44 @@ class FormContainer extends Component {
   constructor(props) {
     super(props);
 
-    this.state = props.initialValue;
-  }
-
-  onChange(name, value) {
-    this.setState({ [name]: value });
+    this.state = {
+      values: props.initialValue,
+      errors: {},
+    };
   }
 
   componentDidUpdate() {
     console.log(this.state);
   }
 
+  onChange(name, value) {
+    this.setState({
+      values: {
+        ...this.state.values,
+        [name]: value,
+      },
+    });
+  }
+
+  setError(name, error) {
+    this.setState({
+      errors: {
+        ...this.state.errors,
+        [name]: error,
+      },
+    });
+  }
+
+  getError(name) {
+    return this.state.errors[name];
+  }
+
   render() {
     const value = {
-      formState: this.state,
+      formState: this.state.values,
       onChange: (name, value) => this.onChange(name, value),
+      setError: (name, value) => this.setError(name, value),
+      getError: (name) => this.getError(name),
     };
 
     return (

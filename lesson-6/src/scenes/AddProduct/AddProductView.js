@@ -12,6 +12,14 @@ function AddProductView({ list, isLoading }) {
     location: '',
   };
 
+  function required(value) {
+    if (value.trim().length === 0) {
+      return 'Is required';
+    }
+
+    return null;
+  }
+
   return (
     <div>
       <FormContainer initialValue={initialValue}>
@@ -19,6 +27,7 @@ function AddProductView({ list, isLoading }) {
         <FormInput
           name="location"
           label="LOCATION"
+          validate={required}
           placeholder="city"
         />
       </FormContainer>
