@@ -1,44 +1,9 @@
-import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import React, { Component } from 'react';
-import PrivateRoute from './PrivateRoute/PrivateRoute';
-import Home from './Home/Home';
-import NotFound from './NotFound/NotFound';
-import Auth from './Auth/Auth';
-import Inbox from './Inbox/Inbox';
-import Privacy from './Privacy/Privacy';
-import Terms from './Terms/Terms';
-import AddProduct from './AddProduct/AddProductView';
-
-export const routes = {
-  home: '/',
-  login: '/auth/login',
-  register: '/auth/register',
-  auth: '/auth',
-  inbox: '/inbox',
-  terms: '/terms',
-  privacy: '/privacy',
-  bookmarks: '/bookmarks',
-  profile: '/profile',
-  users: 'users/:id',
-  listings: '/listings/:id',
-  search: '/search',
-  addProduct: '/products/add',
-};
-
-export const routesWithTheme = [
-  routes.login,
-  routes.register,
-  routes.privacy,
-  routes.terms,
-];
-
-export default function Router() {
-  return (
-    <BrowserRouter>
-      <Route component={ModalSwitch} />
-    </BrowserRouter>
-  );
-}
+import { Switch, Route } from 'react-router-dom';
+import PrivateRoute from '../PrivateRoute/PrivateRoute';
+import LatestList from '../LatestList/LatestListContainer';
+import AddProduct from '../AddProduct/AddProductView';
+import { routes } from '../router';
 
 class ModalSwitch extends Component {
   previousLocation = this.props.location;
@@ -64,14 +29,6 @@ class ModalSwitch extends Component {
       this.previousLocation !== location
     ); // not initial render
 
-    console.log(
-      'isModal',
-      isModal,
-      'this.previousLocation : location',
-      this.previousLocation,
-      location,
-    );
-
     return (
       <div>
         <Switch location={isModal ? this.previousLocation : location}>
@@ -79,7 +36,7 @@ class ModalSwitch extends Component {
           <PrivateRoute exact path={routes.inbox} component={Inbox} />
           <Route exact path={routes.privacy} component={Privacy} />
           <Route exact path={routes.terms} component={Terms} />
-          <Route
+          <PrivateRoute
             exact
             path={routes.addProduct}
             component={AddProduct}
@@ -88,12 +45,15 @@ class ModalSwitch extends Component {
           <Route component={NotFound} />
         </Switch>
         {isModal ? (
-          <Route
+          <PrivateRoute
             path={routes.addProduct}
-            render={(props) => <AddProduct isModal {...props} />}
+            component={AddProduct}
+            isModal
           />
         ) : null}
       </div>
     );
   }
 }
+
+export default ModalSwitch;

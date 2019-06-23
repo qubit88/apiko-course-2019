@@ -4,7 +4,9 @@ import { routes } from '../../scenes/router';
 import s from './Sell.module.scss';
 
 const Sell = () => (
-  <Link to={routes.addProduct}>
+  <Link
+    to={{ pathname: `${routes.addProduct}`, state: { modal: true } }}
+  >
     <button type="button" className={s.sell}>
       Sell
     </button>
