@@ -1,5 +1,6 @@
 import { handleActions, combineActions } from '@letapp/redux-actions';
-import * as viewerActions from '../viewer/viewerActions';
+import { viewerActions } from '../viewer/';
+import { appActions } from '../app/';
 import * as actions from './authActions';
 
 const INITIAL_STATE = {
@@ -15,6 +16,7 @@ export default handleActions(
       viewerActions.fetchViewer.success,
       actions.login.success,
       actions.register.success,
+      appActions.initialization.success,
     )]: (state) => ({
       ...state,
       isLoggedIn: true,

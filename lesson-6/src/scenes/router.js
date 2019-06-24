@@ -64,22 +64,14 @@ class ModalSwitch extends Component {
       this.previousLocation !== location
     ); // not initial render
 
-    console.log(
-      'isModal',
-      isModal,
-      'this.previousLocation : location',
-      this.previousLocation,
-      location,
-    );
-
     return (
-      <div>
+      <>
         <Switch location={isModal ? this.previousLocation : location}>
           <Route exact path={routes.home} component={Home} />
-          <PrivateRoute exact path={routes.inbox} component={Inbox} />
+          <Route exact path={routes.inbox} component={Inbox} />
           <Route exact path={routes.privacy} component={Privacy} />
           <Route exact path={routes.terms} component={Terms} />
-          <Route
+          <PrivateRoute
             exact
             path={routes.addProduct}
             component={AddProduct}
@@ -93,7 +85,7 @@ class ModalSwitch extends Component {
             render={(props) => <AddProduct isModal {...props} />}
           />
         ) : null}
-      </div>
+      </>
     );
   }
 }

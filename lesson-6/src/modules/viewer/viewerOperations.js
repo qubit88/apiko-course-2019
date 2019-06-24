@@ -7,6 +7,10 @@ export function fetchViewer() {
       dispatch(actions.fetchViewer.start());
 
       const res = await Api.Viewer.get();
+      console.log(
+        'dispatch(actions.fetchViewer.success(res.data))',
+        res.data,
+      );
 
       dispatch(actions.fetchViewer.success(res.data));
     } catch (err) {

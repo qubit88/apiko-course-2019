@@ -29,6 +29,12 @@ function AddProductView({ history, isModal }) {
     return null;
   }
 
+  function back(target) {
+    if (target.classList.contains('AddProductView__modal-wrapper')) {
+      history.goBack();
+    }
+  }
+
   async function onSubmit(body) {
     console.log(body);
     let res = await Api.Products.addProduct(body);
@@ -38,30 +44,37 @@ function AddProductView({ history, isModal }) {
 
   const form = (
     <div className="AddProductView__form">
-      <FormContainer initialValue={initialValue}>
-        <TextInput name="title" label="TITLE" placeholder="Oranges" />
-        <TextInput
-          name="location"
-          label="LOCATION"
-          validate={required}
-          placeholder="city"
-        />
-        <TextArea
-          name="description"
-          label="DESCRIPTION"
-          validate={required}
-          placeholder="product description"
-        />
-        <TextInput
-          name="price"
-          label="price"
-          validate={required}
-          placeholder="0"
-        />
-        <FormSubmitButton onSubmit={onSubmit}>
-          Submit
-        </FormSubmitButton>
-      </FormContainer>
+      <div className="AddProductView__form-content">
+        <h2 className="AddProduct__header">Add product</h2>
+        <FormContainer initialValue={initialValue}>
+          <TextInput
+            name="title"
+            label="TITLE"
+            placeholder="Oranges"
+          />
+          <TextInput
+            name="location"
+            label="LOCATION"
+            validate={required}
+            placeholder="city"
+          />
+          <TextArea
+            name="description"
+            label="DESCRIPTION"
+            validate={required}
+            placeholder="product description"
+          />
+          <TextInput
+            name="price"
+            label="price"
+            validate={required}
+            placeholder="0"
+          />
+          <FormSubmitButton onSubmit={onSubmit}>
+            Submit
+          </FormSubmitButton>
+        </FormContainer>
+      </div>
     </div>
   );
 
@@ -73,9 +86,13 @@ function AddProductView({ history, isModal }) {
   );
 
   const modal = (
-    <div className="AddProductView__modal-wrapper">{form}</div>
+    <div
+      onClick={(evt) => back(evt.target)}
+      className="AddProductView__modal-wrapper"
+    >
+      {form}
+    </div>
   );
-  console.log('isModal in productview', isModal);
 
   return (isModal && modal) || page;
 }

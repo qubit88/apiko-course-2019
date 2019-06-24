@@ -11,6 +11,7 @@ class App extends React.Component {
     super(props);
 
     props.dispatch(appOperations.init());
+    console.log('in constructor');
   }
 
   render() {

@@ -1,6 +1,6 @@
 import React from 'react';
 import T from 'prop-types';
-import { Link, withRouter } from 'react-router-dom';
+import { Link, withRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { compose, withProps } from 'recompose';
 import { routes, routesWithTheme } from '../../scenes/router';
@@ -10,7 +10,7 @@ import './Logofull.svg';
 import './Logofull-light.svg';
 import { Sell } from '../index';
 
-function Header({ theme, isLoggedIn }) {
+function Header({ theme, isLoggedIn, location }) {
   return (
     <header
       className={`${s.header} ${
@@ -23,8 +23,9 @@ function Header({ theme, isLoggedIn }) {
         </Link>
       </div>
       <div className={s.center}>
-        <div className={s.header__sell} />
-        <Sell />
+        <div className={s.header__sell}>
+          {location.pathname !== routes.addProduct ? <Sell /> : null}
+        </div>
       </div>
 
       <div className={s.right}>
