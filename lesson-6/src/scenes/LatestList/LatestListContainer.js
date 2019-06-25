@@ -4,7 +4,9 @@ import LatestListView from './LatestListView';
 import { productsOperations } from '../../modules/products';
 
 const mapStateToProps = (state) => ({
-  list: state.products.latest.items,
+  list: state.products.latest.items.map(
+    (i) => state.entities.products[i],
+  ),
   isLoading: state.products.latest.isLoading,
 });
 
@@ -19,7 +21,9 @@ const enhancer = compose(
   ),
   lifecycle({
     componentDidMount() {
-      this.props.fetchLatest();
+      if (this.props.list.length === 0) {
+        this.props.fetchLatest();
+      }
     },
   }),
 );

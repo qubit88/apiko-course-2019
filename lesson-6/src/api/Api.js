@@ -7,6 +7,7 @@ const urls = {
   productsLatest: '/api/products/latest',
   addProduct: '/api/products',
   uploadImages: '/api/upload/images',
+  products: '/api/products',
 };
 
 export const Auth = {
@@ -82,6 +83,9 @@ export const Image = {
 export const Products = {
   getLatest() {
     return axios.get(urls.productsLatest);
+  },
+  get(id) {
+    return axios.get(`${urls.products}/${id}`);
   },
   addProduct(body) {
     return axios.post(urls.addProduct, body);

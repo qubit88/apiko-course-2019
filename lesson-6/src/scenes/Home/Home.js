@@ -6,6 +6,7 @@ import s from './Home.module.scss';
 import { Header } from '../../components';
 import { Footer } from '../../components';
 import LatestList from '../LatestList/LatestListContainer';
+import Product from '../Product/ProductContainer';
 
 function Home() {
   return (
@@ -13,6 +14,7 @@ function Home() {
       <Header />
       <Switch>
         <Route path={routes.home} component={LatestList} exact />
+        <Route path={routes.product} component={Product} />
       </Switch>
       <Footer />
     </div>

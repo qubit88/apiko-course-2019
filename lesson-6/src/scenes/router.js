@@ -23,6 +23,7 @@ export const routes = {
   listings: '/listings/:id',
   search: '/search',
   addProduct: '/products/add',
+  product: '/products/:id',
 };
 
 export const routesWithTheme = [
@@ -67,7 +68,7 @@ class ModalSwitch extends Component {
     return (
       <>
         <Switch location={isModal ? this.previousLocation : location}>
-          <Route exact path={routes.home} component={Home} />
+          <Route path={routes.home} component={Home} />
           <Route exact path={routes.inbox} component={Inbox} />
           <Route exact path={routes.privacy} component={Privacy} />
           <Route exact path={routes.terms} component={Terms} />

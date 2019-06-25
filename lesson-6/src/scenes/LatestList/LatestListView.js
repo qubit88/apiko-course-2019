@@ -1,7 +1,10 @@
 import React from 'react';
 import T from 'prop-types';
+import { Link, generatePath } from 'react-router-dom';
 import './LatestListView.scss';
 import LatestListItem from './LatestListItem';
+import { isTemplateElement } from '@babel/types';
+import { routes } from '../router';
 
 function LatestListView({ list, isLoading }) {
   if (isLoading) {
@@ -13,12 +16,18 @@ function LatestListView({ list, isLoading }) {
   return (
     <div className="LatestListView__container">
       {list.map(({ id, title, price, photos }) => (
-        <LatestListItem
-          title={title}
-          price={price}
-          photo={photos[0]}
-          key={id}
-        />
+        <Link
+          to={generatePath(routes.product, {
+            id,
+          })}
+        >
+          <LatestListItem
+            title={title}
+            price={price}
+            photo={photos[0]}
+            key={id}
+          />
+        </Link>
       ))}
     </div>
   );
