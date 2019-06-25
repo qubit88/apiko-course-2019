@@ -9,12 +9,10 @@ function LatestListItem({ title, price, photo }) {
 
   return (
     <div className="LatestListItem">
-      <div className="LatestListItem__content">
-        <div style={imageStyle} className="LatestListItem__img" />
-        <div className="LatestListItem__info">
-          <h3 className="LatestListItem__title">{title}</h3>
-          <div className="LatestListItem__price">&#36;{price}</div>
-        </div>
+      <div style={imageStyle} className="LatestListItem__img" />
+      <div className="LatestListItem__info">
+        <h3 className="LatestListItem__title">{title}</h3>
+        <div className="LatestListItem__price">&#36;{price}</div>
       </div>
     </div>
   );

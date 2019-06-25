@@ -1,12 +1,13 @@
 import { connect } from 'react-redux';
 import { compose, lifecycle } from 'recompose';
 import LatestListView from './LatestListView';
-import { productsOperations } from '../../modules/products';
+import {
+  productsOperations,
+  productsSelectors,
+} from '../../modules/products';
 
 const mapStateToProps = (state) => ({
-  list: state.products.latest.items.map(
-    (i) => state.entities.products[i],
-  ),
+  list: productsSelectors.getLatest(state),
   isLoading: state.products.latest.isLoading,
 });
 

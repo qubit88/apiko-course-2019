@@ -3,7 +3,6 @@ import T from 'prop-types';
 import { Link, generatePath } from 'react-router-dom';
 import './LatestListView.scss';
 import LatestListItem from './LatestListItem';
-import { isTemplateElement } from '@babel/types';
 import { routes } from '../router';
 
 function LatestListView({ list, isLoading }) {
@@ -17,6 +16,7 @@ function LatestListView({ list, isLoading }) {
     <div className="LatestListView__container">
       {list.map(({ id, title, price, photos }) => (
         <Link
+          className="LatestListView__item-link"
           to={generatePath(routes.product, {
             id,
           })}

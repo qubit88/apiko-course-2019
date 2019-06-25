@@ -2,11 +2,14 @@ import { connect } from 'react-redux';
 import { compose, lifecycle } from 'recompose';
 import { withRouter } from 'react-router-dom';
 import ProductView from './ProductView';
-import { productsOperations } from '../../modules/products';
+import {
+  productsOperations,
+  productsSelectors,
+} from '../../modules/products';
 
 const mapStateToProps = (state, props) => ({
-  product: state.entities.products[props.match.params.id],
-  owner: state.entities.products[props.match.params.id],
+  product: productsSelectors.getProduct(state, props.match.params.id),
+  owner: productsSelectors(state, props.match.params.id),
   isLoading: state.products.isLoading,
 });
 
@@ -22,8 +25,8 @@ const enhancer = compose(
   ),
   lifecycle({
     componentDidMount() {
-      if (!this.props.product.owner) {
-        this.props.fetchProduct(this.props.product.id);
+      if (!this.props.owner || this.props.product) {
+        this.props.fetchProduct(this.props.match.params.id);
       }
     },
   }),
