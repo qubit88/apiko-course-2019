@@ -1,8 +1,8 @@
 
 
 .header {
-    display: flex;
-    justify-content: center;
+    display: grid;
+    grid-template-columns: 20% 60% 20%;
     align-items: center;
     min-height: 77px;
     width: 100%;
@@ -11,9 +11,18 @@
 .center {
     width: 60%;
     display: flex;
-    margin-right: 2.6%;
-    margin-left: 3.2%;
+    justify-self: end;
 
+
+}
+
+.left {
+    justify-self: end;
+    padding-right: 15.75%;
+}
+
+.right {
+    padding-left: 11%; 
 }
 
 .header__sell {

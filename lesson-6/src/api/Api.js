@@ -6,6 +6,7 @@ const urls = {
   getViewer: '/api/account/user',
   productsLatest: '/api/products/latest',
   addProduct: '/api/products',
+  uploadImages: '/api/upload/images',
 };
 
 export const Auth = {
@@ -65,6 +66,16 @@ export const Auth = {
 export const Viewer = {
   get() {
     return axios.get(urls.getViewer);
+  },
+};
+
+export const Image = {
+  uploadImages(formData) {
+    return axios.post(urls.uploadImages, formData, {
+      headers: {
+        'Content-Type': 'multipart/form-data',
+      },
+    });
   },
 };
 

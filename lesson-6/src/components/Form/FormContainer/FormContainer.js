@@ -50,10 +50,6 @@ class FormContainer extends Component {
     return false;
   }
 
-  // onSubmit() {
-  //   this.props.onSubmit(this.state.values);
-  // }
-
   render() {
     const value = {
       formState: this.state.values,

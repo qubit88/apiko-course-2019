@@ -5,6 +5,7 @@ import './AddProductView.scss';
 import {
   FormContainer,
   TextInput,
+  FileInput,
   TextArea,
   FormSubmitButton,
 } from '../../components/Form';
@@ -36,10 +37,21 @@ function AddProductView({ history, isModal }) {
   }
 
   async function onSubmit(body) {
-    console.log(body);
-    let res = await Api.Products.addProduct(body);
-    console.log(res);
-    history.push(routes.home);
+    try {
+      let formData = new FormData();
+      let imagefile = document.querySelector('#photos');
+      formData.append('image', imagefile.files[0]);
+      let image = await Api.Image.uploadImages(formData);
+      console.log(image, image.data);
+
+      body.photos = [image.data];
+      let res = await Api.Products.addProduct(body);
+      console.log(res);
+
+      history.push(routes.home);
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   const form = (
@@ -64,6 +76,7 @@ function AddProductView({ history, isModal }) {
             validate={required}
             placeholder="product description"
           />
+          <FileInput name="photos" label="photos" id="photos" />
           <TextInput
             name="price"
             label="price"

@@ -71,7 +71,7 @@ class ModalSwitch extends Component {
           <Route exact path={routes.inbox} component={Inbox} />
           <Route exact path={routes.privacy} component={Privacy} />
           <Route exact path={routes.terms} component={Terms} />
-          <PrivateRoute
+          <Route
             exact
             path={routes.addProduct}
             component={AddProduct}

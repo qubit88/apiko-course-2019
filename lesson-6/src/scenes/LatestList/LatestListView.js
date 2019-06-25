@@ -1,16 +1,24 @@
 import React from 'react';
 import T from 'prop-types';
 import './LatestListView.scss';
+import LatestListItem from './LatestListItem';
 
 function LatestListView({ list, isLoading }) {
   if (isLoading) {
     return <div>Loading...</div>;
   }
 
+  console.log(list);
+
   return (
-    <div>
-      {list.map((item) => (
-        <div key={item.id}>{item.title}</div>
+    <div className="LatestListView__container">
+      {list.map(({ id, title, price, photos }) => (
+        <LatestListItem
+          title={title}
+          price={price}
+          photo={photos[0]}
+          key={id}
+        />
       ))}
     </div>
   );
