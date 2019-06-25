@@ -24,6 +24,7 @@ export const routes = {
   search: '/search',
   addProduct: '/products/add',
   product: '/products/:id',
+  user: '/users/:id',
 };
 
 export const routesWithTheme = [

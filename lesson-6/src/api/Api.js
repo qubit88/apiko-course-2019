@@ -8,6 +8,7 @@ const urls = {
   addProduct: '/api/products',
   uploadImages: '/api/upload/images',
   products: '/api/products',
+  users: '/api/users',
 };
 
 export const Auth = {
@@ -89,6 +90,15 @@ export const Products = {
   },
   addProduct(body) {
     return axios.post(urls.addProduct, body);
+  },
+};
+
+export const Users = {
+  get(id) {
+    return axios.get(`${urls.users}/${id}`);
+  },
+  getProducts(id) {
+    return axios.get(`${urls.users}/${id}/products`);
   },
 };
 

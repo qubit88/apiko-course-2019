@@ -16,6 +16,7 @@ function LatestListView({ list, isLoading }) {
     <div className="LatestListView__container">
       {list.map(({ id, title, price, photos }) => (
         <Link
+          key={id}
           className="LatestListView__item-link"
           to={generatePath(routes.product, {
             id,
@@ -25,7 +26,6 @@ function LatestListView({ list, isLoading }) {
             title={title}
             price={price}
             photo={photos[0]}
-            key={id}
           />
         </Link>
       ))}

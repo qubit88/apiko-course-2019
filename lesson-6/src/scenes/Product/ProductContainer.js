@@ -28,7 +28,7 @@ const enhancer = compose(
   ),
   lifecycle({
     componentDidMount() {
-      if (!this.props.owner || this.props.product) {
+      if (!this.props.owner || !this.props.product) {
         this.props.fetchProduct(this.props.match.params.id);
       }
     },
