@@ -9,7 +9,10 @@ import {
 
 const mapStateToProps = (state, props) => ({
   product: productsSelectors.getProduct(state, props.match.params.id),
-  owner: productsSelectors(state, props.match.params.id),
+  owner: productsSelectors.getProductOwner(
+    state,
+    props.match.params.id,
+  ),
   isLoading: state.products.isLoading,
 });
 
