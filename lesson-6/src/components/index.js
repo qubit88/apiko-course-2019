@@ -6,3 +6,4 @@ export { default as Logout } from './Logout/Logout';
 export { default as UserInfo } from './UserInfo/UserInfo';
 export { default as Avatar } from './Avatar/Avatar';
 export { default as AvatarContainer } from './Avatar/AvatarContainer';
+export { default as ProductGrid } from './ProductGrid/ProductGrid';

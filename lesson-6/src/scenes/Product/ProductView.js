@@ -19,7 +19,8 @@ function ProductView({ product, owner, isLoading }) {
   };
 
   const avatarStyle = {
-    backgroundImage: owner.avatar ? `url(${owner.avatar})` : 'none',
+    backgroundImage:
+      owner && owner.avatar ? `url(${owner.avatar})` : 'none',
   };
 
   const ownerInfo = (id) => (

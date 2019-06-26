@@ -1,0 +1,21 @@
+.ProductGrid{
+    display: flex;
+    width: 100%;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    &__item-link {
+        background: #FFFFFF;
+        border: 1px solid #E4E4E4;
+        box-sizing: border-box;
+        box-shadow: 0px 4px 14px rgba(121, 121, 121, 0.0527344);
+        border-radius: 4px;
+        width: 24.44%;
+        padding-top: 24.44%;
+        height: 0;
+        position: relative;
+        margin-bottom: 13px;
+        display: block;
+    }
+}
+    
