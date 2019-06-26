@@ -1,0 +1,185 @@
+.Product {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-right: auto;
+    margin-left: auto;
+    margin-top: 15px;
+    height: 100%;
+    width: 90%;
+    justify-content: center;
+    align-items: flex-start;
+    
+    &__content {
+        width: 100%;
+        background: #FFFFFF;
+        border: 1.08px solid #E4E4E4;
+        box-sizing: border-box;
+        box-shadow: 0px 5px 15px rgba(121, 121, 121, 0.0527344);
+        border-radius: 4.32px;
+        padding: 3.5px;
+        margin-bottom: 18px;
+    }
+    &__info {
+        padding: 8px 16px 0 16px;
+        position: relative;
+    }
+    &__info-top {
+        border-bottom: 1.08px solid rgba(151, 151, 151, 0.166439);
+    }
+    &__info-bottom {
+        padding-top: 8px;
+    }
+    &__img {
+        width: 100%;
+        padding-top: 69.8%;
+        height: 0;
+        background-repeat: no-repeat;
+        background-color: grey;
+        background-position: center;
+        background-size: cover;
+    }
+    &__price-wrapper {
+        position: absolute;
+        right: 0;
+        top: 0;
+        transform: translateY(-50%);
+        background: #FFFFFF;
+        border-radius: 10.8px 0px 10.8px 10.8px;
+        padding: 5px 17px 20px 17px;
+    }
+    &__price {
+        font-size: 19.44px;
+        line-height: 22px;
+        color: #101010;
+    }
+    &__title {
+        font-size: 18.36px;
+        line-height: 21px;
+        color: #373738;
+        margin: 0;
+    }
+    &__time {
+        font-size: 14.04px;
+        line-height: 16px;
+        color: #9D9D9D;
+    }&__location {
+        font-size: 14.04px;
+        line-height: 33px;
+        color: rgba(123, 123, 123, 0.776523);
+    }
+    &__description {
+        font-size: 14.04px;
+        line-height: 24px;
+        color: #2B2B2B;
+    }
+    
+    &__owner-profile-link {
+        background: #FFFFFF;
+        border: 1px solid #DEDEE0;
+        box-sizing: border-box;
+        border-radius: 4px;
+        width: 100%;
+        margin-bottom: 18px;
+    }
+    &__owner-decor {
+        padding-top: 19.3%;
+        height: 0;
+        background:var(--green);
+        border-radius: 4px 4px 0px 0px;
+    }
+    &__owner-avatar {
+        background-repeat: no-repeat;
+        background-color: grey;
+        background-position: center;
+        background-size: cover;
+        border-radius: 50%;
+        width: 72px;
+        height: 72px;
+        margin-left: auto;
+        margin-right: auto;
+        transform: translateY(-50%);
+    }
+    &__owner-name {
+        font-size: 15px;
+        line-height: 17px;
+        color: #2B2B2B;
+        margin: 0;
+        text-decoration: none;
+        text-align: center;
+    }
+    &__owner-location {
+        font-size: 15px;
+        line-height: 17px;
+        color: rgba(43, 43, 43, 0.499918);
+        text-align: center;
+    }
+
+    &__owner-profile-link {
+        display: block;
+        text-decoration: none;
+    }
+
+    &__owner-chat-with-seller {
+        background: #349A89;
+        border-radius: 4px;
+        color:white;
+        text-transform: uppercase;
+        font-size: 14px;
+        line-height: 31px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        text-align: center;
+        margin-bottom: 11px;
+        cursor: pointer;
+    }
+
+    &__owner-favourite {
+        border-radius: 4px;
+        color: #535353;
+        text-transform: uppercase;
+        font-size: 14px;
+        line-height: 31px;
+        padding-top: 8px;
+        padding-bottom: 8px;
+        text-align: center;
+        display: flex;
+        border: 1px solid var(--green);
+        justify-content: center;
+        margin-bottom: 11px;
+        cursor: pointer;
+        align-items: center;
+    }
+
+    &__owner-favourite-heart {
+        margin-right: 18px;
+        display: flex;
+    }
+
+    @media(min-width: 769px) {
+        display: flex;
+        width: 80%;
+        justify-content: space-between;
+
+        &__content {
+            width: 68.18%;
+        }
+
+        &__owner {
+            width: 28%;
+        }
+    }
+
+    @media(min-width: 1366px) {
+        display: flex;
+        width: 60%;
+        justify-content: space-between;
+
+        &__content {
+            width: 68.18%;
+        }
+
+        &__owner {
+            width: 28%;
+        }
+    }
+}

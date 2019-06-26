@@ -9,13 +9,18 @@ export function fetchUserProducts(id) {
 
       const res = await Api.Users.getProducts(id);
 
+      const { list } = res.data;
+
       const { result, entities } = normalize(
-        res.data.list,
+        list,
         schemas.ProductList,
       );
       console.log({ entities });
       dispatch(
-        actions.fetchUserProducts.success({ result, entities }),
+        actions.fetchUserProducts.success({
+          result,
+          entities,
+        }),
       );
     } catch (err) {
       dispatch(
