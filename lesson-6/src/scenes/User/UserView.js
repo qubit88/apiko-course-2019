@@ -1,16 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { ProductGrid } from '../../components';
+import './UserView.scss';
 
 function UserView({ user, products, isLoading }) {
   if (!user) {
     return <div>Loading..</div>;
   }
   return (
-    <div>
+    <div className="UserView">
       <h3>{user.fullName}</h3>
-      {products
-        ? products.map((product) => <div>{product.title}</div>)
-        : 'Products loads...'}
+      {products ? (
+        <div className="UserView__products">
+          {' '}
+          <ProductGrid list={products} />
+        </div>
+      ) : (
+        'Products loads...'
+      )}
     </div>
   );
 }
