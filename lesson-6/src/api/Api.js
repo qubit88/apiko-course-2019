@@ -9,6 +9,7 @@ const urls = {
   uploadImages: '/api/upload/images',
   products: '/api/products',
   users: '/api/users',
+  chats: '/api/chats',
 };
 
 export const Auth = {
@@ -99,6 +100,24 @@ export const Users = {
   },
   getProducts(id) {
     return axios.get(`${urls.users}/${id}/products`);
+  },
+};
+
+export const Chats = {
+  createChat(productId) {
+    return axios.post(`${urls.products}/${productId}/createChat`);
+  },
+  fetch() {
+    return axios.get(urls.chats);
+  },
+};
+
+export const Messages = {
+  sendMessage(chatId, text) {
+    return axios.post(`${urls.chats}/${chatId}/messages`, { text });
+  },
+  fetchMessages(chatId) {
+    return axios.get(`${urls.chats}/${chatId}/messages`);
   },
 };
 

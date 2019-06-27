@@ -4,7 +4,7 @@ import PrivateRoute from './PrivateRoute/PrivateRoute';
 import Home from './Home/Home';
 import NotFound from './NotFound/NotFound';
 import Auth from './Auth/Auth';
-import Inbox from './Inbox/Inbox';
+import Inbox from './Inbox/InboxContainer';
 import Privacy from './Privacy/Privacy';
 import Terms from './Terms/Terms';
 import AddProduct from './AddProduct/AddProductView';
@@ -25,6 +25,7 @@ export const routes = {
   addProduct: '/products/add',
   product: '/products/:id',
   user: '/users/:id',
+  chat: '/inbox/:id',
 };
 
 export const routesWithTheme = [
@@ -71,6 +72,7 @@ class ModalSwitch extends Component {
         <Switch location={isModal ? this.previousLocation : location}>
           <Route path={routes.home} component={Home} />
           <Route exact path={routes.inbox} component={Inbox} />
+          <Route path={routes.chat} component={Inbox} />
           <Route exact path={routes.privacy} component={Privacy} />
           <Route exact path={routes.terms} component={Terms} />
           <Route

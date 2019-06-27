@@ -1,5 +1,10 @@
 import { connect } from 'react-redux';
-import { compose, lifecycle } from 'recompose';
+import {
+  compose,
+  lifecycle,
+  withState,
+  withHandlers,
+} from 'recompose';
 import { withRouter } from 'react-router-dom';
 import ProductView from './ProductView';
 import {
@@ -22,10 +27,16 @@ const mapDispatchToProps = {
 
 const enhancer = compose(
   withRouter,
+  withState('isModalOpen', 'setIsModalOpen', false),
   connect(
     mapStateToProps,
     mapDispatchToProps,
   ),
+  withHandlers({
+    toggleModal: (props) => () => {
+      props.setIsModalOpen(!props.isModalOpen);
+    },
+  }),
   lifecycle({
     componentDidMount() {
       if (!this.props.owner || !this.props.product) {

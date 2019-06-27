@@ -1,0 +1,18 @@
+.Inbox {
+    &__container {
+        display: flex;
+        flex: 1;
+        flex-direction: row;
+    }
+
+    &__aside {
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+        border-right: 1px solid #ccc;
+    }
+    &__main {
+        display: flex;
+        flex: 5;
+    }
+}

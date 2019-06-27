@@ -1,11 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link, generatePath } from 'react-router-dom';
+import Modal from 'react-modal';
 import { routes } from '../router';
+import ContactSellerModal from '../ContactSellerModal/ContactSellerModalContainer';
 import './Product.scss';
 import heart from './heart.svg';
 
-function ProductView({ product, owner, isLoading }) {
+Modal.setAppElement('#root');
+
+function ProductView({
+  product,
+  owner,
+  isLoading,
+  toggleModal,
+  isModalOpen,
+}) {
   const shouldShowLoading = isLoading || !owner;
 
   if (!product) {
@@ -41,9 +51,18 @@ function ProductView({ product, owner, isLoading }) {
           <p className="Product__owner-location">{owner.location}</p>
         </div>
       </Link>
-      <div className="Product__owner-chat-with-seller">
+      <div
+        className="Product__owner-chat-with-seller"
+        onClick={createChat}
+      >
         Chat with seller
       </div>
+      <Modal onRequestClose={toggleModal} isOpen={isModalOpen}>
+        <ContactSellerModal
+          productId={product.id}
+          close={toggleModal}
+        />
+      </Modal>
       <div className="Product__owner-favourite">
         <div className="Product__owner-favourite-heart">
           <img src={heart} alt="like" />
