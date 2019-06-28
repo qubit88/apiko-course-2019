@@ -1,0 +1,14 @@
+.Message {
+    &__container {
+        padding: 8px;
+        margin: 4px 16px;
+        align-self: flex-end;
+        background-color: #f3f6fa;
+        color: black;
+        border-radius: 20%;
+    }
+    &__participantMessage {
+        color: white;
+        background-color: #00aeef;
+    }
+}

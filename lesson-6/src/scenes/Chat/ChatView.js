@@ -2,12 +2,17 @@ import React from 'react';
 import T from 'prop-types';
 import { Link, generatePath, Route } from 'react-router-dom';
 import { routes } from '../router';
+import { Message } from '../../components/';
 import './Chat.scss';
 
 function Chat({ items, sendMessage, text, setText }) {
   return (
     <div className="Chat__container">
-      <div className="Chat__messages">{items.map((i) => i)}</div>
+      <div className="Chat__messages">
+        {items.map((i) => (
+          <Message item={i} />
+        ))}
+      </div>
 
       <div>
         <input
@@ -17,7 +22,6 @@ function Chat({ items, sendMessage, text, setText }) {
         <button onClick={sendMessage} type="button">
           Send
         </button>
-        }
       </div>
     </div>
   );
@@ -25,4 +29,4 @@ function Chat({ items, sendMessage, text, setText }) {
 
 Chat.propTypes = {};
 
-export default Inbox;
+export default Chat;

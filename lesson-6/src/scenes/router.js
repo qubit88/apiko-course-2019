@@ -8,6 +8,8 @@ import Inbox from './Inbox/InboxContainer';
 import Privacy from './Privacy/Privacy';
 import Terms from './Terms/Terms';
 import AddProduct from './AddProduct/AddProductView';
+import Product from './Product/ProductContainer';
+import User from './User/UserContainer';
 
 export const routes = {
   home: '/',
@@ -70,8 +72,10 @@ class ModalSwitch extends Component {
     return (
       <>
         <Switch location={isModal ? this.previousLocation : location}>
-          <Route path={routes.home} component={Home} />
-          <Route exact path={routes.inbox} component={Inbox} />
+          <Route path={routes.home} component={Home} exact />
+          <Route path={routes.product} component={Product} exact />
+          <Route path={routes.user} component={User} exact />
+          <Route path={routes.inbox} component={Inbox} />
           <Route path={routes.chat} component={Inbox} />
           <Route exact path={routes.privacy} component={Privacy} />
           <Route exact path={routes.terms} component={Terms} />

@@ -32,11 +32,14 @@ const enhancer = compose(
   withHandlers({
     sendMessage: (props) => () => {
       props.sendMessage(props.match.params.id, props.text);
+      props.setText('');
     },
   }),
   lifecycle({
     componentDidMount() {
+      // try {
       this.props.fetchMessages(this.props.match.params.id);
+      // } catch (err) {}
     },
   }),
 );

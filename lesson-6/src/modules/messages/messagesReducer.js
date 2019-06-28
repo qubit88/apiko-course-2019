@@ -35,7 +35,7 @@ export default handleActions(
       ...state,
       items: {
         ...state.items,
-        [chatId]: (state.items[chatId] || []).concat(result),
+        [chatId]: result.reverse(),
       },
       sendMessage: {
         ...state.sendMessage,
@@ -69,7 +69,7 @@ export default handleActions(
       ...state,
       items: {
         ...state.items,
-        [chatId]: (state.items[chatId] || []).concat(result),
+        [chatId]: result.reverse(),
       },
       fetchMessages: {
         ...state.fetch,

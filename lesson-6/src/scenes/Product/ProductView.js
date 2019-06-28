@@ -53,7 +53,7 @@ function ProductView({
       </Link>
       <div
         className="Product__owner-chat-with-seller"
-        onClick={createChat}
+        onClick={toggleModal}
       >
         Chat with seller
       </div>

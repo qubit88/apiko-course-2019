@@ -14,8 +14,8 @@ function Auth() {
       <Header />
       <Switch>
         {/* {Api.Auth.isLoggedIn && <Redirect to={routes.home} />} */}
-        <Route path={routes.login} component={Login} />
-        <Route path={routes.register} component={Register} />
+        <Route path={routes.login} component={Login} exact />
+        <Route path={routes.register} component={Register} exact />
       </Switch>
     </>
   );

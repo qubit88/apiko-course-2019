@@ -9,9 +9,9 @@ export function createChat(productId) {
 
       const res = await Api.Chats.createChat(productId);
 
-      const { result, enitities } = normalize(res.sata, schemas.Chat);
+      const { result, entities } = normalize(res.sata, schemas.Chat);
       //   TODO: fetch user
-      dispatch(actions.createChat.success({ result, enitities }));
+      dispatch(actions.createChat.success({ result, entities }));
     } catch (err) {
       dispatch(actions.createChat.error({ message: err.message }));
     }
@@ -25,12 +25,12 @@ export function fetchChats() {
 
       const res = await Api.Chats.fetch();
 
-      const { result, enitities } = normalize(
+      const { result, entities } = normalize(
         res.sata,
         schemas.ChatCollection,
       );
       //   TODO: fetch user
-      dispatch(actions.fetchChats.success({ result, enitities }));
+      dispatch(actions.fetchChats.success({ result, entities }));
     } catch (err) {
       dispatch(actions.fetchChats.error({ message: err.message }));
     }

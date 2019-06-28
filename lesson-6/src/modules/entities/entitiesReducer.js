@@ -10,6 +10,18 @@ const INITIAL_STATE = {
     //     user
     // }
   },
+
+  chats: {
+    // [id]: {
+    //     user
+    // }
+  },
+
+  messages: {
+    // [id]: {
+    //     user
+    // }
+  },
 };
 
 export default function entitiesReducer(
