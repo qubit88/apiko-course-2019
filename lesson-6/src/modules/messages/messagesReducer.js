@@ -35,7 +35,7 @@ export default handleActions(
       ...state,
       items: {
         ...state.items,
-        [chatId]: result.reverse(),
+        [chatId]: state.items[chatId].concat(result),
       },
       sendMessage: {
         ...state.sendMessage,
