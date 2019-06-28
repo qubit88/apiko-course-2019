@@ -4,13 +4,14 @@ import { Link, generatePath, Route } from 'react-router-dom';
 import { routes } from '../router';
 import { Message } from '../../components/';
 import './Chat.scss';
+import { importDeclaration } from '@babel/types';
 
 function Chat({ items, sendMessage, text, setText }) {
   return (
     <div className="Chat__container">
       <div className="Chat__messages">
         {items.map((i) => (
-          <Message item={i} />
+          <Message key={i.id} item={i} />
         ))}
       </div>
 

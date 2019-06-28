@@ -9,7 +9,7 @@ export function createChat(productId) {
 
       const res = await Api.Chats.createChat(productId);
 
-      const { result, entities } = normalize(res.sata, schemas.Chat);
+      const { result, entities } = normalize(res.data, schemas.Chat);
       //   TODO: fetch user
       dispatch(actions.createChat.success({ result, entities }));
     } catch (err) {
@@ -26,7 +26,7 @@ export function fetchChats() {
       const res = await Api.Chats.fetch();
 
       const { result, entities } = normalize(
-        res.sata,
+        res.data,
         schemas.ChatCollection,
       );
       //   TODO: fetch user

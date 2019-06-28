@@ -10,7 +10,10 @@ function Inbox({ items }) {
     <div className="Inbox__container">
       <aside className="Inbox__aside">
         {items.map((i) => (
-          <Link to={generatePath(routes.chat, { id: i.id })}>
+          <Link
+            key={i.id}
+            to={generatePath(routes.chat, { id: i.id })}
+          >
             {i.product.title}
           </Link>
         ))}
