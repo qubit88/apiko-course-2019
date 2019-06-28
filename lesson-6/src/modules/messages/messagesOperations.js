@@ -1,11 +1,21 @@
 import * as actions from './messagesActions';
 import { normalize } from 'normalizr';
 import Api, { schemas } from '../../api';
+import { viewerSelectors } from '../viewer';
+import { createMessage } from './messagesCreators';
 
 export function sendMessage(chatId, text) {
-  return async function sendMessageThunk(dispatch) {
+  return async function sendMessageThunk(dispatch, getState) {
+    const user = viewerSelectors.getUser(getState());
+    const message = createMessage({ chatId, text, ownerId: user.id });
+
     try {
-      dispatch(actions.sendMessage.start());
+      dispatch(
+        actions.sendMessage.start({
+          chatId,
+          ...normalize(message, schemas.Message),
+        }),
+      );
 
       const res = await Api.Messages.sendMessage(chatId, text);
 
@@ -15,7 +25,12 @@ export function sendMessage(chatId, text) {
       );
       //   TODO: fetch user
       dispatch(
-        actions.sendMessage.success({ chatId, result, entities }),
+        actions.sendMessage.success({
+          oldMessageId: message.id,
+          chatId,
+          result,
+          entities,
+        }),
       );
     } catch (err) {
       dispatch(actions.sendMessage.error({ message: err.message }));

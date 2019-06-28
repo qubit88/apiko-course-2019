@@ -13,13 +13,13 @@ const INITIAL_STATE = {
 
   chats: {
     // [id]: {
-    //     user
+    //     chat
     // }
   },
 
   messages: {
     // [id]: {
-    //     user
+    //     chat
     // }
   },
 };

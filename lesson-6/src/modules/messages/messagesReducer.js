@@ -19,8 +19,15 @@ const INITIAL_STATE = {
 
 export default handleActions(
   {
-    [actions.sendMessage.start]: (state) => ({
+    [actions.sendMessage.start]: (
+      state,
+      { payload: { chatId, result } },
+    ) => ({
       ...state,
+      items: {
+        ...state.items,
+        [chatId]: (state.items[chatId] || []).concat(result),
+      },
       sendMessage: {
         ...state.sendMessage,
         isLoading: true,
@@ -30,20 +37,26 @@ export default handleActions(
     }),
     [actions.sendMessage.success]: (
       state,
-      { payload: { chatId, result } },
-    ) => ({
-      ...state,
-      items: {
-        ...state.items,
-        [chatId]: state.items[chatId].concat(result),
-      },
-      sendMessage: {
-        ...state.sendMessage,
-        isLoading: false,
-        error: null,
-        isError: false,
-      },
-    }),
+      { payload: { chatId, result, oldMessageId } },
+    ) => {
+      const items = state.items[chatId]
+        .filter((i) => i !== oldMessageId)
+        .concat(result);
+
+      return {
+        ...state,
+        items: {
+          ...state.items,
+          [chatId]: items,
+        },
+        sendMessage: {
+          ...state.sendMessage,
+          isLoading: false,
+          error: null,
+          isError: false,
+        },
+      };
+    },
     [actions.sendMessage.error]: (state, action) => ({
       ...state,
       sendMessage: {
