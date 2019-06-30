@@ -15,12 +15,17 @@ function Chat({ items, sendMessage, text, setText }) {
         ))}
       </div>
 
-      <div>
+      <div className="Chat__input-wrapper">
         <input
+          className="Chat__input"
           value={text}
           onChange={(evt) => setText(evt.target.value)}
         />
-        <button onClick={sendMessage} type="button">
+        <button
+          className="Chat__send"
+          onClick={sendMessage}
+          type="button"
+        >
           Send
         </button>
       </div>

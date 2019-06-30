@@ -11,7 +11,7 @@ import { chatsOperations, chatsSelectors } from '../../modules/chats';
 
 const mapStateToProps = (state) => ({
   isLoading: state.chats.fetchChats.isLoading,
-  items: chatsSelectors.getChats(state),
+  items: chatsSelectors.getChatsWithLastMessage(state),
 });
 
 const mapDispatchToProps = {

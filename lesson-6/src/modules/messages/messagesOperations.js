@@ -58,3 +58,22 @@ export function fetchMessages(chatId) {
     }
   };
 }
+
+export function handleMessageRealtime(evt) {
+  return async function handleMessageRealtimeThunk(dispatch) {
+    if (evt.type === 'ADD') {
+      dispatch(addMessage(evt.message));
+    }
+  };
+}
+
+export function addMessage(message) {
+  return async function addMessageThunk(dispatch) {
+    dispatch(
+      actions.sendMessage.start({
+        chatId: message.chatId,
+        ...normalize(message, schemas.Message),
+      }),
+    );
+  };
+}

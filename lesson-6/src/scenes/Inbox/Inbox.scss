@@ -3,6 +3,7 @@
         display: flex;
         flex: 1;
         flex-direction: row;
+        height: 100%;
     }
 
     &__aside {
@@ -14,5 +15,27 @@
     &__main {
         display: flex;
         flex: 5;
+    }
+
+    &__chat-link {
+        height: 8.4%;
+        min-height: 30px;
+        border-bottom: 1px solid #E7E9ED;
+        padding-left: 9.2%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-decoration: none;
+    }
+    &__chat-name {
+        font-size: 15px;
+        line-height: 22px;
+        color: #131314;
+
+    }
+    &__last-message {
+        font-size: 15px;
+        line-height: 22px;
+        color: #97A3B4;
     }
 }

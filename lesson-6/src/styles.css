@@ -15,5 +15,7 @@ html,body {
   margin-right: auto;
   --green: #349A89;
   background-color: f2f2f2;
+  display: flex;
+  flex-direction: column;
 }
 

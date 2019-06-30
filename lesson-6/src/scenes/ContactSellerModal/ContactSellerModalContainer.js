@@ -7,6 +7,7 @@ import {
 } from 'recompose';
 import ContactSellerModalView from './ContactSellerModalView';
 import { productsSelectors } from '../../modules/products';
+import { chatsSelectors } from '../../modules/chats';
 
 const mapStateToProps = (state, { productId }) => ({
   isLoading: state.products.latest.isLoading,
@@ -14,7 +15,9 @@ const mapStateToProps = (state, { productId }) => ({
   owner: productsSelectors.getProductOwner(state, productId),
 });
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {
+  createChat: chatsSelectors.createChat,
+};
 
 const enhancer = compose(
   connect(
@@ -25,8 +28,7 @@ const enhancer = compose(
   withHandlers({
     submit: (props) => () => {
       if (!props.product.chatId) {
-        //  todo create chat and send message
-        //
+        props.createChat(props.product.id);
       } else {
         //  todo send message and navigate to chat
       }

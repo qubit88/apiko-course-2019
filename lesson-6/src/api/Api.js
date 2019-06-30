@@ -1,4 +1,5 @@
 import axios from 'axios';
+import SocketApi from './SocketApi';
 
 const urls = {
   login: '/api/auth/login',
@@ -29,6 +30,8 @@ export const Auth = {
       console.log(this._token);
 
       this._setTokenToAxios(this._token);
+
+      SocketApi.init(token);
     } catch (err) {
       console.error(err);
     }

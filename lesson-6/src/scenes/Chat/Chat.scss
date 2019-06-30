@@ -1,18 +1,27 @@
-.Inbox {
+.Chat {
     &__container {
-        display: flex;
-        flex: 1;
-        flex-direction: row;
-    }
-
-    &__aside {
+        width: 100%;
         display: flex;
         flex-direction: column;
-        flex: 1;
-        border-right: 1px solid #ccc;
+        justify-content: flex-end;
+        max-height: 100%;
     }
-    &__main {
+
+    &__messages {
+        overflow: auto;
+    }
+
+    &__input-wrapper {
         display: flex;
-        flex: 5;
+        height: 56px;
+    }
+
+    &__input {
+        height: 100%;
+        flex: 1;
+    }
+    &__send {
+        height: 100%;
+        background-color: none;
     }
 }
