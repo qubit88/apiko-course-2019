@@ -22,7 +22,7 @@ export function init() {
 
       dispatch(actions.initialization.success());
 
-      dispatch(subscribeToSockets());
+      // dispatch(subscribeToSockets());
     } catch (err) {
       dispatch(
         actions.initialization.error({ message: err.message }),
