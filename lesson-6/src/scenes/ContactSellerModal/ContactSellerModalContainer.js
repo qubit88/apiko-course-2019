@@ -5,9 +5,12 @@ import {
   withHandlers,
   withProps,
 } from 'recompose';
+import { withRouter, generatePath } from 'react-router-dom';
+import { routes } from '../router';
 import ContactSellerModalView from './ContactSellerModalView';
 import { productsSelectors } from '../../modules/products';
-import { chatsSelectors } from '../../modules/chats';
+import { chatsOperations } from '../../modules/chats';
+import { messagesOperations } from '../../modules/messages';
 
 const mapStateToProps = (state, { productId }) => ({
   isLoading: state.products.latest.isLoading,
@@ -16,21 +19,37 @@ const mapStateToProps = (state, { productId }) => ({
 });
 
 const mapDispatchToProps = {
-  createChat: chatsSelectors.createChat,
+  createChat: chatsOperations.createChat,
+  sendMessage: messagesOperations.sendMessage,
 };
 
 const enhancer = compose(
+  withRouter,
   connect(
     mapStateToProps,
     mapDispatchToProps,
   ),
   withState('text', 'setText', ''),
   withHandlers({
-    submit: (props) => () => {
+    submit: (props) => async () => {
+      console.log('product', props.product);
       if (!props.product.chatId) {
-        props.createChat(props.product.id);
-      } else {
-        //  todo send message and navigate to chat
+        try {
+          await props.createChat(props.product.id);
+        } catch (err) {
+          console.log(err);
+        }
+      }
+      console.log('product', props.product);
+      try {
+        await props.sendMessage(props.product.chatId, props.text);
+        props.history.push(
+          generatePath(routes.chat, {
+            id: props.product.chatId,
+          }),
+        );
+      } catch (err) {
+        console.log(err);
       }
     },
   }),

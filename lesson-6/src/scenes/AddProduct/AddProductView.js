@@ -42,11 +42,9 @@ function AddProductView({ history, isModal }) {
       let imagefile = document.querySelector('#photos');
       formData.append('image', imagefile.files[0]);
       let image = await Api.Image.uploadImages(formData);
-      console.log(image, image.data);
 
       body.photos = [image.data];
       let res = await Api.Products.addProduct(body);
-      console.log(res);
 
       history.push(routes.home);
     } catch (err) {

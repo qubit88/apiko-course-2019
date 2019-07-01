@@ -67,7 +67,7 @@ function ProductView({
         <div className="Product__owner-favourite-heart">
           <img src={heart} alt="like" />
         </div>
-        Add to favorive
+        Add to favorite
       </div>
     </>
   );
