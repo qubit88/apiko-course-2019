@@ -10,6 +10,7 @@ import Terms from './Terms/Terms';
 import AddProduct from './AddProduct/AddProductView';
 import Product from './Product/ProductContainer';
 import User from './User/UserContainer';
+import Search from './Search/SearchContainer';
 
 export const routes = {
   home: '/',
@@ -35,6 +36,13 @@ export const routesWithTheme = [
   routes.register,
   routes.privacy,
   routes.terms,
+];
+
+export const routesWithSearchBar = [
+  routes.home,
+  routes.product,
+  routes.user,
+  routes.search,
 ];
 
 export default function Router() {
@@ -73,6 +81,7 @@ class ModalSwitch extends Component {
       <>
         <Switch location={isModal ? this.previousLocation : location}>
           <Route path={routes.home} component={Home} exact />
+          <Route path={routes.search} component={Search} />
           <Route path={routes.product} component={Product} exact />
           <Route path={routes.user} component={User} exact />
           <Route path={routes.inbox} component={Inbox} />

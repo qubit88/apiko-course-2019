@@ -3,12 +3,16 @@ import T from 'prop-types';
 import { Link, withRouter, Route } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { compose, withProps } from 'recompose';
-import { routes, routesWithTheme } from '../../scenes/router';
+import {
+  routes,
+  routesWithTheme,
+  routesWithSearchBar,
+} from '../../scenes/router';
 import { AvatarContainer } from '../../components';
 import s from './Header.module.scss';
 import './Logofull.svg';
 import './Logofull-light.svg';
-import { Sell } from '../index';
+import { Sell, SearchBar } from '../index';
 
 function Header({ theme, isLoggedIn, location }) {
   return (
@@ -26,6 +30,11 @@ function Header({ theme, isLoggedIn, location }) {
         <div className={s.header__sell}>
           {location.pathname !== routes.addProduct ? <Sell /> : null}
         </div>
+        {routesWithSearchBar.some(
+          (route) => route === location.pathname,
+        ) ? (
+          <SearchBar />
+        ) : null}
       </div>
 
       <div className={s.right}>

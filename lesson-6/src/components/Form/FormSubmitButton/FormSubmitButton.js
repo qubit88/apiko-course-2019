@@ -3,7 +3,7 @@ import T from 'prop-types';
 import { FormContext } from '../FormContainer/FormContainer';
 import './FormSubmitButton.scss';
 
-function FormSubmitButton({ onSubmit, ...props }) {
+function FormSubmitButton({ onSubmit, FieldClassName, ...props }) {
   return (
     <FormContext.Consumer>
       {({ formState, hasErrors }) => {
@@ -19,7 +19,11 @@ function FormSubmitButton({ onSubmit, ...props }) {
           <button
             type="button"
             onClick={() => onClick()}
-            className="FormSubmitButton"
+            className={
+              FieldClassName
+                ? `${FieldClassName}`
+                : 'FormSubmitButton'
+            }
           >
             {props.children}
           </button>

@@ -9,6 +9,7 @@ const urls = {
   addProduct: '/api/products',
   uploadImages: '/api/upload/images',
   products: '/api/products',
+  search: '/api/products/search',
   users: '/api/users',
   chats: '/api/chats',
 };
@@ -88,6 +89,9 @@ export const Image = {
 export const Products = {
   getLatest() {
     return axios.get(urls.productsLatest);
+  },
+  getQuery(query) {
+    return axios.get(`${urls.search}?${query}`);
   },
   get(id) {
     return axios.get(`${urls.products}/${id}`);

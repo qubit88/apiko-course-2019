@@ -1,12 +1,7 @@
 .ProductGridItem {
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom:0;
     padding: 3px 3.5px;
     display: flex;
     flex-direction: column;
-    position: absolute;
 
 
     &__img {

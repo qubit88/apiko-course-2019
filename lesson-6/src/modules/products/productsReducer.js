@@ -8,12 +8,19 @@ const INITIAL_STATE = {
     isError: false,
     error: null,
   },
+  searchedProducts: {
+    items: [],
+    isLoading: false,
+    isError: false,
+    error: null,
+  },
   product: {
     isLoading: false,
     isError: false,
     error: null,
   },
 };
+
 export default handleActions(
   {
     [actions.fetchLatest.start]: (state) => ({
@@ -36,6 +43,31 @@ export default handleActions(
       ...state,
       latest: {
         ...state.latest,
+        isLoading: false,
+        isError: true,
+        error: action.payload,
+      },
+    }),
+    [actions.fetchQuery.start]: (state) => ({
+      ...state,
+      searchedProducts: {
+        ...state.searchedProducts,
+        isLoading: true,
+        error: null,
+      },
+    }),
+    [actions.fetchQuery.success]: (state, action) => ({
+      ...state,
+      searchedProducts: {
+        ...state.searchedProducts,
+        isLoading: false,
+        items: action.payload.result,
+      },
+    }),
+    [actions.fetchQuery.error]: (state, action) => ({
+      ...state,
+      searchedProducts: {
+        ...state.searchedProducts,
         isLoading: false,
         isError: true,
         error: action.payload,

@@ -21,6 +21,25 @@ export function fetchLatest() {
   };
 }
 
+export function fetchQuery(query) {
+  return async function initThunk(dispatch) {
+    try {
+      dispatch(actions.fetchQuery.start());
+
+      const res = await Api.Products.getQuery(query);
+
+      const { result, entities } = normalize(
+        res.data,
+        schemas.ProductList,
+      );
+
+      dispatch(actions.fetchQuery.success({ result, entities }));
+    } catch (err) {
+      dispatch(actions.fetchQuery.error({ message: err.message }));
+    }
+  };
+}
+
 export function fetchProduct(id) {
   return async function initThunk(dispatch) {
     try {
