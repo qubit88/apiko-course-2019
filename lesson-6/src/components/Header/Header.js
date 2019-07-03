@@ -21,31 +21,37 @@ function Header({ theme, isLoggedIn, location }) {
         theme === 'light' ? s.light : s.dark
       }`}
     >
-      <div className={s.left}>
-        <Link to={routes.home}>
-          <div className={s.logo} />
-        </Link>
-      </div>
-      <div className={s.center}>
-        <div className={s.header__sell}>
-          {location.pathname !== routes.addProduct ? <Sell /> : null}
+      <div className={s.firstRow}>
+        <div className={s.left}>
+          <Link to={routes.home}>
+            <div className={s.logo} />
+          </Link>
         </div>
+        <div className={s.center}>
+          <div className={s.header__sell}>
+            {location.pathname !== routes.addProduct ? (
+              <Sell />
+            ) : null}
+          </div>
+        </div>
+
+        <div className={s.right}>
+          {isLoggedIn ? (
+            <AvatarContainer />
+          ) : (
+            <Link to={routes.login} className={s.login}>
+              Login
+            </Link>
+          )}
+          <LikedMenuLink />
+        </div>
+      </div>
+      <div className={s.secondRow}>
         {routesWithSearchBar.some(
           (route) => route === location.pathname,
         ) ? (
           <SearchBar />
         ) : null}
-      </div>
-
-      <div className={s.right}>
-        {isLoggedIn ? (
-          <AvatarContainer />
-        ) : (
-          <Link to={routes.login} className={s.login}>
-            Login
-          </Link>
-        )}
-        <LikedMenuLink />
       </div>
     </header>
   );
