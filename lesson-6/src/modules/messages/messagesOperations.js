@@ -23,7 +23,7 @@ export function sendMessage(chatId, text) {
         res.data,
         schemas.Message,
       );
-      //   TODO: fetch user
+
       dispatch(
         actions.sendMessage.success({
           oldMessageId: message.id,

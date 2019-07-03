@@ -8,7 +8,7 @@ import { routes } from '../../scenes/router';
 function ProductGrid({ list }) {
   return (
     <div className="ProductGrid">
-      {list.map(({ id, title, price, photos }) => (
+      {list.map(({ id, title, price, photos, saved }) => (
         <Link
           key={id}
           className="ProductGrid__item-link"
@@ -20,6 +20,8 @@ function ProductGrid({ list }) {
             title={title}
             price={price}
             photo={photos[0]}
+            id={id}
+            saved={saved}
           />
         </Link>
       ))}

@@ -12,6 +12,7 @@ const urls = {
   search: '/api/products/search',
   users: '/api/users',
   chats: '/api/chats',
+  saved: '/api/products/saved',
 };
 
 export const Auth = {
@@ -98,6 +99,18 @@ export const Products = {
   },
   addProduct(body) {
     return axios.post(urls.addProduct, body);
+  },
+
+  like(id) {
+    return axios.post(`${urls.products}/${id}/save`);
+  },
+
+  unLike(id) {
+    return axios.post(`${urls.products}/${id}/unsave`);
+  },
+
+  getLiked() {
+    return axios.get(urls.liked);
   },
 };
 

@@ -1,4 +1,4 @@
-import { handleActions } from '@letapp/redux-actions';
+import { handleActions, combineActions } from '@letapp/redux-actions';
 import * as actions from './productsActions';
 
 const INITIAL_STATE = {
@@ -15,6 +15,12 @@ const INITIAL_STATE = {
     error: null,
   },
   product: {
+    isLoading: false,
+    isError: false,
+    error: null,
+  },
+  liked: {
+    items: [],
     isLoading: false,
     isError: false,
     error: null,
@@ -95,6 +101,50 @@ export default handleActions(
         isLoading: false,
         isError: true,
         error: action.payload,
+      },
+    }),
+    [actions.fetchLiked.start]: (state) => ({
+      ...state,
+      liked: {
+        ...state.liked,
+        isLoading: true,
+        error: null,
+      },
+    }),
+    [actions.fetchLiked.success]: (state, action) => ({
+      ...state,
+      liked: {
+        ...state.liked,
+        isLoading: false,
+        items: action.payload.result,
+      },
+    }),
+    [actions.fetchLiked.error]: (state, action) => ({
+      ...state,
+      liked: {
+        ...state.liked,
+        isLoading: false,
+        isError: true,
+        error: action.payload,
+      },
+    }),
+    [actions.addLike.success]: (state, { payload: { result } }) => ({
+      ...state,
+      liked: {
+        ...state.liked,
+        isLoading: false,
+        items: (state.items || []).concat(result),
+      },
+    }),
+    [actions.removeLike.success]: (
+      state,
+      { payload: { result } },
+    ) => ({
+      ...state,
+      liked: {
+        ...state.liked,
+        isLoading: false,
+        items: (state.items || []).filter((item) => item !== result),
       },
     }),
   },

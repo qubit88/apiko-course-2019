@@ -5,9 +5,15 @@ const getUserEntities = (state) => state.entities.users;
 const getLatestIds = (state) => state.products.latest.items;
 const getSearchedIds = (state) =>
   state.products.searchedProducts.items;
+const getLikedIds = (state) => state.products.searchedProducts.items;
 
 export const getLatest = createSelector(
   [getProductEntities, getLatestIds],
+  (entities, ids) => ids.map((i) => entities[i]),
+);
+
+export const getLiked = createSelector(
+  [getProductEntities, getLikedIds],
   (entities, ids) => ids.map((i) => entities[i]),
 );
 
