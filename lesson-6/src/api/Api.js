@@ -12,7 +12,7 @@ const urls = {
   search: '/api/products/search',
   users: '/api/users',
   chats: '/api/chats',
-  saved: '/api/products/saved',
+  liked: '/api/products/saved',
 };
 
 export const Auth = {

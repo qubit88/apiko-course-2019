@@ -10,3 +10,6 @@ export { default as ProductGrid } from './ProductGrid/ProductGrid';
 export { default as Message } from './Message/Message';
 export { default as SearchBar } from './SearchBar/SearchBarContainer';
 export { default as Like } from './Like/LikeContainer';
+export {
+  default as LikedMenuLink,
+} from './LikedMenuLink/LikedMenuLink';

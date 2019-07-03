@@ -29,7 +29,10 @@ export function fetchLiked() {
 
       const res = await Api.Products.getLiked();
 
-      const { result, entities } = normalize(res.data, schemas.Liked);
+      const { result, entities } = normalize(
+        res.data,
+        schemas.ProductList,
+      );
 
       dispatch(actions.fetchLiked.success({ result, entities }));
     } catch (err) {

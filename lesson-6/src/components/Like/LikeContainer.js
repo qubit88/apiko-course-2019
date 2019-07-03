@@ -41,18 +41,18 @@ const enhancer = compose(
 
         try {
           await removeLike(id);
-          setLikedState({ set: false, value: false });
+          // setLikedState({ set: false, value: false });
         } catch (err) {
-          setLikedState({ set: false, value: true });
+          // setLikedState({ set: false, value: true });
           console.log(err);
         }
       } else {
         setLikedState({ set: true, value: true });
         try {
           await addLike(id);
-          setLikedState({ set: false, value: true });
+          // setLikedState({ set: false, value: true });
         } catch (err) {
-          setLikedState({ set: false, value: false });
+          // setLikedState({ set: false, value: false });
           console.log(err);
         }
       }

@@ -1,0 +1,27 @@
+.LikedList {
+    &__container {
+        width: 90%;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 15px;
+        height: 100%;
+    }
+    &__header {
+        font-size: 20px;
+        line-height: 24px;
+        text-align: center;
+        color: #000000;
+        text-transform: uppercase;
+        text-align: left;
+    }
+    &__amount {
+        color: #a1a1a1;
+        text-transform: uppercase;
+    }
+    @media(min-width: 768px) {
+        &__container {
+            width: 60%;
+        }
+    }
+}
+    

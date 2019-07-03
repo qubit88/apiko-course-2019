@@ -11,6 +11,7 @@ import AddProduct from './AddProduct/AddProductView';
 import Product from './Product/ProductContainer';
 import User from './User/UserContainer';
 import Search from './Search/SearchContainer';
+import LikedList from './LikedList/LikedListContainer';
 
 export const routes = {
   home: '/',
@@ -29,6 +30,7 @@ export const routes = {
   product: '/products/:id',
   user: '/users/:id',
   chat: '/inbox/:id',
+  liked: '/api/products/saved',
 };
 
 export const routesWithTheme = [
@@ -43,6 +45,7 @@ export const routesWithSearchBar = [
   routes.product,
   routes.user,
   routes.search,
+  routes.liked,
 ];
 
 export default function Router() {
@@ -86,6 +89,7 @@ class ModalSwitch extends Component {
           <Route path={routes.user} component={User} exact />
           <Route path={routes.inbox} component={Inbox} />
           <Route path={routes.chat} component={Inbox} />
+          <Route path={routes.liked} component={LikedList} />
           <Route exact path={routes.privacy} component={Privacy} />
           <Route exact path={routes.terms} component={Terms} />
           <Route

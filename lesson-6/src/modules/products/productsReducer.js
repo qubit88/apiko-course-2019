@@ -128,23 +128,22 @@ export default handleActions(
         error: action.payload,
       },
     }),
-    [actions.addLike.success]: (state, { payload: { result } }) => ({
+    [actions.addLike.success]: (state, { payload: { id } }) => ({
       ...state,
       liked: {
         ...state.liked,
         isLoading: false,
-        items: (state.items || []).concat(result),
+        items: (state.liked.items || []).concat(id),
       },
     }),
-    [actions.removeLike.success]: (
-      state,
-      { payload: { result } },
-    ) => ({
+    [actions.removeLike.success]: (state, { payload: { id } }) => ({
       ...state,
       liked: {
         ...state.liked,
         isLoading: false,
-        items: (state.items || []).filter((item) => item !== result),
+        items: (state.liked.items || []).filter(
+          (item) => item !== id,
+        ),
       },
     }),
   },

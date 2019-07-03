@@ -12,7 +12,7 @@ import { AvatarContainer } from '../../components';
 import s from './Header.module.scss';
 import './Logofull.svg';
 import './Logofull-light.svg';
-import { Sell, SearchBar } from '../index';
+import { Sell, SearchBar, LikedMenuLink } from '../index';
 
 function Header({ theme, isLoggedIn, location }) {
   return (
@@ -45,6 +45,7 @@ function Header({ theme, isLoggedIn, location }) {
             Login
           </Link>
         )}
+        <LikedMenuLink />
       </div>
     </header>
   );

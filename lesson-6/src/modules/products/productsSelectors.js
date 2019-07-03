@@ -5,7 +5,7 @@ const getUserEntities = (state) => state.entities.users;
 const getLatestIds = (state) => state.products.latest.items;
 const getSearchedIds = (state) =>
   state.products.searchedProducts.items;
-const getLikedIds = (state) => state.products.searchedProducts.items;
+const getLikedIds = (state) => state.products.liked.items;
 
 export const getLatest = createSelector(
   [getProductEntities, getLatestIds],
