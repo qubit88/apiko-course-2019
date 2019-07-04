@@ -8,7 +8,7 @@ import './Inbox.scss';
 
 function Inbox({ items, location }) {
   return (
-    <>
+    <div className="Inbox">
       <Header />
       <div className="Inbox__container">
         <aside className="Inbox__aside">
@@ -42,7 +42,7 @@ function Inbox({ items, location }) {
           />
         </div>
       </div>
-    </>
+    </div>
   );
 }
 

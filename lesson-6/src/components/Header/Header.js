@@ -34,7 +34,7 @@ function Header({ theme, isLoggedIn, location }) {
         </div>
         <div className={s.center}>
           {isLoggedIn ? <InboxMenuLink /> : null}
-          <div className={s.header__sell}>
+          <div className={s.sell}>
             {location.pathname !== routes.addProduct ? (
               <Sell />
             ) : null}

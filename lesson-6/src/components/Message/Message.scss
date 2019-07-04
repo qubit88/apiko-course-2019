@@ -1,21 +1,53 @@
 .Message {
     &__wrapper {
         display: flex;
-        padding: 0 16px;
+        padding:16px;
         margin: 8px;
     }
     &__container {
         padding: 8px;
         background-color: #f3f6fa;
         color: black;
-        border-radius: 20%;
+        border-radius: 4px;
         display: inline-block;
+        position: relative;
+        &:after {
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            content: '';
+            top: 5px;
+        }
     }
     &__participant {
-        background-color: #F3F6FA;
+        background-color: #00AEEF;
+        &:after { 
+            border-top: 10px solid #00AEEF;
+            border-left: 10px solid white;
+            right: 100%;
+        }
+        .Message__timestamp {
+            left: 0;
+        }
     }
     &__own {
         background-color: var(--light-green);
         margin-left: auto;
+        &:after { 
+            border-top: 10px solid var(--light-green);
+            border-right: 10px solid white;
+            left: 100%;
+        }
+        .Message__timestamp {
+            right: 0;
+        }
+    }
+    &__timestamp {
+        color: #97A3B4;
+        text-align: right;
+        font-size: 10px;
+        position: absolute;
+        top: calc(100% + 5px);
+        white-space: nowrap;
     }
 }
