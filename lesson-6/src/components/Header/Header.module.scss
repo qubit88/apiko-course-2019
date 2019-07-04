@@ -24,8 +24,7 @@
 .center {
     width: 100%;
     display: flex;
-    justify-self: end;
-    flex-direction: column;
+    justify-content: flex-end;
 }
 
 .left {
@@ -38,10 +37,9 @@
     display: flex;
 }
 
-.header__sell {
-    width: 100%;
-    display: flex;
-    justify-content: flex-end;
+.sell {
+    
+
 }
 
 .dark {

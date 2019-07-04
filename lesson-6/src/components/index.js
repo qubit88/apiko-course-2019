@@ -13,3 +13,7 @@ export { default as Like } from './Like/LikeContainer';
 export {
   default as LikedMenuLink,
 } from './LikedMenuLink/LikedMenuLink';
+
+export {
+  default as InboxMenuLink,
+} from './InboxMenuLink/InboxMenuLink';

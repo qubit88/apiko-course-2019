@@ -1,10 +1,6 @@
 import { connect } from 'react-redux';
-import {
-  compose,
-  withState,
-  withHandlers,
-  lifecycle,
-} from 'recompose';
+import { compose, withHandlers, lifecycle } from 'recompose';
+import { withRouter } from 'react-router-dom';
 import InboxView from './InboxView';
 import { productsSelectors } from '../../modules/products';
 import { chatsOperations, chatsSelectors } from '../../modules/chats';
@@ -19,6 +15,7 @@ const mapDispatchToProps = {
 };
 
 const enhancer = compose(
+  withRouter,
   connect(
     mapStateToProps,
     mapDispatchToProps,

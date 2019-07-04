@@ -12,7 +12,12 @@ import { AvatarContainer } from '../../components';
 import s from './Header.module.scss';
 import './Logofull.svg';
 import './Logofull-light.svg';
-import { Sell, SearchBar, LikedMenuLink } from '../index';
+import {
+  Sell,
+  SearchBar,
+  LikedMenuLink,
+  InboxMenuLink,
+} from '../index';
 
 function Header({ theme, isLoggedIn, location }) {
   return (
@@ -28,6 +33,7 @@ function Header({ theme, isLoggedIn, location }) {
           </Link>
         </div>
         <div className={s.center}>
+          {isLoggedIn ? <InboxMenuLink /> : null}
           <div className={s.header__sell}>
             {location.pathname !== routes.addProduct ? (
               <Sell />

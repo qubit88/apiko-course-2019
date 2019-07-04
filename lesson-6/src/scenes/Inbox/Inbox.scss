@@ -27,11 +27,19 @@
         justify-content: center;
         text-decoration: none;
     }
-    &__chat-name {
+    &__chat-title {
         font-size: 15px;
         line-height: 22px;
         color: #131314;
 
+    }
+    &__chat-username {
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: 300;
+        font-size: 15px;
+        line-height: 22px;
+        color: #97A3B4;
     }
     &__last-message {
         font-size: 15px;

@@ -1,14 +1,21 @@
 .Message {
+    &__wrapper {
+        display: flex;
+        padding: 0 16px;
+        margin: 8px;
+    }
     &__container {
         padding: 8px;
-        margin: 4px 16px;
-        align-self: flex-end;
         background-color: #f3f6fa;
         color: black;
         border-radius: 20%;
+        display: inline-block;
     }
-    &__participantMessage {
-        color: white;
-        background-color: #00aeef;
+    &__participant {
+        background-color: #F3F6FA;
+    }
+    &__own {
+        background-color: var(--light-green);
+        margin-left: auto;
     }
 }

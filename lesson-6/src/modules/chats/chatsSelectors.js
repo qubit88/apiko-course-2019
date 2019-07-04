@@ -18,6 +18,11 @@ export const getChatsWithLastMessage = createSelector(
     })),
 );
 
+export const getChat = createSelector(
+  [getChatsEntities, getIds],
+  (entities, ids) => ids.map((i) => entities[i]),
+);
+
 // export const getProduct = createSelector(
 //   (state, id) => getProductEntities(state)[id],
 //   (item) => item,

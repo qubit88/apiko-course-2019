@@ -6,12 +6,12 @@ import { Message } from '../../components/';
 import './Chat.scss';
 import { importDeclaration } from '@babel/types';
 
-function Chat({ items, sendMessage, text, setText }) {
+function Chat({ items, sendMessage, text, setText, user }) {
   return (
     <div className="Chat__container">
       <div className="Chat__messages">
         {items.map((i) => (
-          <Message key={i.id} item={i} />
+          <Message key={i.id} item={i} user={user} />
         ))}
       </div>
 
