@@ -8,10 +8,15 @@ class SocketApi {
       },
       transports: ['websocket'],
     });
+
+    this.socket.on('connect', () => {
+      console.log('socket: ', socket.id);
+    });
   }
 
   handleMessages(handler) {
     this.socket.on('message', (message) => {
+      console.log(message);
       handler(JSON.parse(message));
     });
   }

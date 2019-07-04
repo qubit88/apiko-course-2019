@@ -33,7 +33,7 @@ export const Auth = {
 
       this._setTokenToAxios(this._token);
 
-      SocketApi.init(token);
+      SocketApi.init(this._token); //CHECK IF IMPORTANT 1.01.02 TIME IN VIDEO 13
     } catch (err) {
       console.error(err);
     }

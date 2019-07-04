@@ -38,10 +38,9 @@ function PrivateRoute({
   );
 }
 
-function mapStateToProps(state) {
-  console.log('state.auth.isLoggedIn', state.auth.isLoggedIn);
-  return { isLoggedIn: state.auth.isLoggedIn };
-}
+const mapStateToProps = (state) => ({
+  isLoggedIn: state.auth.isLoggedIn,
+});
 
 const enhancer = connect(mapStateToProps);
 

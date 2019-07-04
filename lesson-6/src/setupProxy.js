@@ -8,15 +8,17 @@ const proxy = createProxy({
   changeOrigin: true,
 });
 
-const wsProxy = createProxy({
+const wsProxy = createProxy('/socket.io', {
   target: 'https://apiko-marketplace-api-2019.herokuapp.com/',
-  '^/api': '',
+  pathRewrite: {
+    '^/api': '',
+  },
   changeOrigin: true,
   ws: true,
 });
 
 module.exports = (app) => {
   app.use('/api', proxy);
-  app.use('/socket.io', wsProxy);
-  // app.use('/sockjs-node', wsProxy);
+  app.use(wsProxy);
+  app.use('/sockjs-node', wsProxy);
 };

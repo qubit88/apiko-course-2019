@@ -87,9 +87,13 @@ class ModalSwitch extends Component {
           <Route path={routes.search} component={Search} />
           <Route path={routes.product} component={Product} exact />
           <Route path={routes.user} component={User} exact />
-          <Route path={routes.inbox} component={Inbox} />
-          <Route path={routes.chat} component={Inbox} />
-          <Route path={routes.liked} component={LikedList} />
+          <PrivateRoute path={routes.inbox} component={Inbox} />
+          <PrivateRoute path={routes.chat} component={Inbox} />
+          <PrivateRoute
+            path={routes.liked}
+            component={LikedList}
+            exact
+          />
           <Route exact path={routes.privacy} component={Privacy} />
           <Route exact path={routes.terms} component={Terms} />
           <Route
@@ -101,7 +105,7 @@ class ModalSwitch extends Component {
           <Route component={NotFound} />
         </Switch>
         {isModal ? (
-          <Route
+          <PrivateRoute
             path={routes.addProduct}
             render={(props) => <AddProduct isModal {...props} />}
           />
