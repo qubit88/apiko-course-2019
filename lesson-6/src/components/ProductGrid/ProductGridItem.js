@@ -2,10 +2,11 @@ import React from 'react';
 import T from 'prop-types';
 import { Like } from '../../components';
 import './ProductGridItem.scss';
+import img from './default.png';
 
 function ProductGridItem({ title, price, photo, id, saved }) {
   const imageStyle = {
-    backgroundImage: photo ? `url(${photo})` : 'none',
+    backgroundImage: photo ? `url(${photo})` : `url(${img})`,
   };
 
   return (

@@ -1,0 +1,85 @@
+.ContactSellerModal {
+    font-family: Verdana;
+    &__header {
+        font-size: 22px;
+        line-height: 25px;
+        color: #282828;
+        text-align: center;
+    }
+
+    &__info {
+        display: flex;
+        align-items: center;
+        min-height: 72px;
+        margin-bottom: 1em;
+    }
+
+    &__title {
+        font-size: 24px;
+        line-height: 28px;
+        color: #373738;
+        margin-top: 1em;
+        margin-bottom: 0.66em;
+    }
+    &__name {
+        font-size: 24px;
+        line-height: 28px;
+        color: #2B2B2B;
+        padding-left: 16px;
+    }
+
+    &__location {
+        padding-left: 16px;
+    }
+
+    &__avatarWrapper {
+        height: 100%;
+        height: 72px;
+        width: 72px;
+    }
+
+    &__textarea {
+        background: #F9FAFB;
+        border: 1px solid #DEDEE0;
+        box-sizing: border-box;
+        border-radius: 5px;
+        height: 24.5%;
+        width: 100%;
+        padding: 3.3% 3.5%;
+        &::placeholder {
+            font-size: 16px;
+            line-height: 18px;
+            letter-spacing: 0.4px;
+            color: rgba(102, 102, 102, 0.466455);
+            font-family: Verdana;
+        }
+    }
+
+    &__message {
+        font-size: 12px;
+        line-height: 14px;
+        letter-spacing: 0.3px;
+        text-transform: uppercase;
+        color: #303030;
+        margin-bottom: 0.666em;
+    }
+
+    &__button {
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        border: none;
+        outline: none;
+        margin-top: 32px;
+        width: 33%;
+        height: 58px;
+        background: #349A89;
+        border-radius: 5px; 
+        font-size: 16px;
+        line-height: 18px;
+        text-align: center;
+        letter-spacing: 0.4px;
+        color: #FFFFFF;
+    }
+
+}

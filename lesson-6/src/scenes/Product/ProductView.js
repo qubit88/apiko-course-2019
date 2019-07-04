@@ -34,6 +34,22 @@ function ProductView({
       owner && owner.avatar ? `url(${owner.avatar})` : 'none',
   };
 
+  const customModalStyles = {
+    content: {
+      top: '50%',
+      left: '50%',
+      right: 'auto',
+      bottom: 'auto',
+      marginRight: '-50%',
+      transform: 'translate(-50%, -50%)',
+      width: '95.6%',
+      maxWidth: '820px',
+      boxShadow: '0px 2px 42px rgba(0, 0, 0, 0.111233)',
+      borderRadius: '7px',
+      padding: '2% 9.5% 4% 9.5%',
+    },
+  };
+
   const ownerInfo = (id) => (
     <>
       <Link
@@ -58,7 +74,11 @@ function ProductView({
       >
         Chat with seller
       </div>
-      <Modal onRequestClose={toggleModal} isOpen={isModalOpen}>
+      <Modal
+        style={customModalStyles}
+        onRequestClose={toggleModal}
+        isOpen={isModalOpen}
+      >
         <ContactSellerModal
           productId={product.id}
           close={toggleModal}

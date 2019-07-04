@@ -28,7 +28,7 @@ function Header({ theme, isLoggedIn, location }) {
     >
       <div className={s.firstRow}>
         <div className={s.left}>
-          <Link to={routes.home}>
+          <Link className={s.logoWrapper} to={routes.home}>
             <div className={s.logo} />
           </Link>
         </div>

@@ -19,7 +19,7 @@ function AvatarContainer({
       {user && user.fullName ? (
         <>
           <div className="AvatarContainer__avatar-image">
-            <Avatar fullName={user.fullName} />
+            <Avatar fullName={user.fullName} avatar={user.avatar} />
           </div>
 
           <UserInfo className={className} />
