@@ -19,8 +19,8 @@ export const getChatsWithLastMessage = createSelector(
 );
 
 export const getChat = createSelector(
-  [getChatsEntities, getIds],
-  (entities, ids) => ids.map((i) => entities[i]),
+  (state, id) => getChatsEntities(state)[id],
+  (item) => item,
 );
 
 // export const getProduct = createSelector(

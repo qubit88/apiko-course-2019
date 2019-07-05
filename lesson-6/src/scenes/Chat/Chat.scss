@@ -27,4 +27,27 @@
         height: 100%;
         background-color: none;
     }
+
+    &__participant {
+        padding: 8px 16px;
+        height: 12%;
+        display: flex;
+        align-items: center;
+    }
+
+    &__participant-name {
+        font-family: Montserrat;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 15px;
+        line-height: 22px;
+        color: #131314;
+        padding-left: 1em;
+    }
+
+    &__avatar-wrapper {
+        width: 45px;
+        height: 45px;
+        border: 1px solid var(--blue) 50%;
+    }
 }

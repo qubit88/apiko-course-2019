@@ -20,9 +20,9 @@
         }
     }
     &__participant {
-        background-color: #00AEEF;
+        background-color: var(--blue);
         &:after { 
-            border-top: 10px solid #00AEEF;
+            border-top: 10px solid var(--blue);
             border-left: 10px solid white;
             right: 100%;
         }

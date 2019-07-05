@@ -1,5 +1,6 @@
 import React from 'react';
 import s from './Avatar.module.scss';
+import { AvatarColor } from '../../services';
 
 function Avatar({ fullName, avatar }) {
   function setInitials() {
@@ -11,6 +12,7 @@ function Avatar({ fullName, avatar }) {
 
   const backgroundStyle = {
     backgroundImage: avatar ? `url(${avatar})` : 'none',
+    backgroundColor: avatar ? 'transparent' : `${AvatarColor.color}`,
   };
 
   const initials = setInitials();

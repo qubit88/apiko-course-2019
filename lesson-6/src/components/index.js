@@ -5,7 +5,7 @@ export { default as Input } from './Form/Input/Input';
 export { default as Logout } from './Logout/Logout';
 export { default as UserInfo } from './UserInfo/UserInfo';
 export { default as Avatar } from './Avatar/Avatar';
-export { default as AvatarContainer } from './Avatar/AvatarContainer';
+export { default as HeaderAvatar } from './HeaderAvatar/HeaderAvatar';
 export { default as ProductGrid } from './ProductGrid/ProductGrid';
 export { default as Message } from './Message/Message';
 export { default as SearchBar } from './SearchBar/SearchBarContainer';

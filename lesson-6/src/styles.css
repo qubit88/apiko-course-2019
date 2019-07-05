@@ -17,10 +17,12 @@ html,body, *, *::before, *::after {
   height: 100%;
   margin-left: auto;
   margin-right: auto;
-  --green: #349A89;
-  --light-green: rgba(52, 154, 137, 0.2);
-  background-color: f2f2f2;
+  background-color: #f2f2f2;
   display: flex;
   flex-direction: column;
+  --green: #349A89;
+  --light-green: rgba(52, 154, 137, 0.2);
+  --blue: #00AEEF;
+  
 }
 

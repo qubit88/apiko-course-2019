@@ -1,24 +1,24 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { compose, withHandlers, withStateHandlers } from 'recompose';
-import { Avatar, UserInfo } from '../../components';
-import './AvatarContainer.scss';
+import { Avatar, UserInfo } from '..';
+import './HeaderAvatar.scss';
 
-function AvatarContainer({
+function HeaderAvatar({
   user,
   handleMouseEnter,
   handleMouseClick,
   className,
 }) {
   return (
-    <div className="AvatarContainer">
+    <div className="HeaderAvatar">
       <div
-        className="AvatarContainer__header"
+        className="HeaderAvatar__header"
         onMouseEnter={() => handleMouseEnter()}
         onClick={() => handleMouseClick()}
       >
         {user && user.fullName ? (
-          <div className="AvatarContainer__avatar-image">
+          <div className="HeaderAvatar__avatar-image">
             <Avatar fullName={user.fullName} avatar={user.avatar} />
           </div>
         ) : (
@@ -67,4 +67,4 @@ const enhancer = compose(
   }),
 );
 
-export default enhancer(AvatarContainer);
+export default enhancer(HeaderAvatar);

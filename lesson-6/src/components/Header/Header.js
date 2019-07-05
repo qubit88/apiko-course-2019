@@ -8,7 +8,7 @@ import {
   routesWithTheme,
   routesWithSearchBar,
 } from '../../scenes/router';
-import { AvatarContainer } from '../../components';
+import { HeaderAvatar } from '../../components';
 import s from './Header.module.scss';
 import './Logofull.svg';
 import './Logofull-light.svg';
@@ -43,7 +43,7 @@ function Header({ theme, isLoggedIn, location }) {
 
         <div className={s.right}>
           {isLoggedIn ? (
-            <AvatarContainer />
+            <HeaderAvatar />
           ) : (
             <Link to={routes.login} className={s.login}>
               Login
