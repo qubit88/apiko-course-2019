@@ -8,11 +8,12 @@ function PrivateRoute({
   component: Component,
   render,
   isLoggedIn,
+  isLoading,
   ...rest
 }) {
-  console.log('rest', rest, 'loddegin', isLoggedIn);
-
-  // isLoggedIn = true;
+  if (isLoading) {
+    return <div>..isLoading</div>;
+  }
 
   if (render) {
     return (
@@ -40,6 +41,7 @@ function PrivateRoute({
 
 const mapStateToProps = (state) => ({
   isLoggedIn: state.auth.isLoggedIn,
+  isLoading: state.app.isLoading,
 });
 
 const enhancer = connect(mapStateToProps);

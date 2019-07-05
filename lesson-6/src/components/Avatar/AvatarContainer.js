@@ -11,19 +11,22 @@ function AvatarContainer({
   className,
 }) {
   return (
-    <div
-      onMouseEnter={() => handleMouseEnter()}
-      onClick={() => handleMouseClick()}
-      className="AvatarContainer"
-    >
-      {user && user.fullName ? (
-        <>
+    <div className="AvatarContainer">
+      <div
+        className="AvatarContainer__header"
+        onMouseEnter={() => handleMouseEnter()}
+        onClick={() => handleMouseClick()}
+      >
+        {user && user.fullName ? (
           <div className="AvatarContainer__avatar-image">
             <Avatar fullName={user.fullName} avatar={user.avatar} />
           </div>
-
-          <UserInfo className={className} />
-        </>
+        ) : (
+          ''
+        )}
+      </div>
+      {user && user.fullName ? (
+        <UserInfo className={className} />
       ) : (
         ''
       )}
@@ -57,7 +60,9 @@ const enhancer = compose(
       props.handleShowInfo();
     },
     handleMouseClick: (props) => () => {
-      props.handleHideInfo();
+      props.className
+        ? props.handleHideInfo()
+        : props.handleShowInfo();
     },
   }),
 );

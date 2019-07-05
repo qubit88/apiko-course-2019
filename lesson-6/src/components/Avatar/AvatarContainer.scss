@@ -1,8 +1,14 @@
 .AvatarContainer {
-    display: block;
     position: relative;
-    width: 40px;
-    height: 40px
+    
+    &__header {
+        display: block;
+        position: relative;
+        width: 40px;
+        height: 40px;
+        cursor: pointer;
+    }
+    
 
     &__avatar-image {
         cursor: pointer;
@@ -11,7 +17,7 @@
     }
 }
 
-.AvatarContainer--info-visible .UserInfo  {
-    display: block; 
-}
+// .AvatarContainer--info-visible .UserInfo  {
+//     display: block; 
+// }
 
