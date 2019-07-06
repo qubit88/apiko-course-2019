@@ -22,12 +22,27 @@ function AddProductView({ history, isModal }) {
     location: '',
   };
 
+  const validation = {
+    title: { required },
+    location: { required },
+    description: { required },
+  };
+
   function required(value) {
     if (value.trim().length === 0) {
       return 'Is required';
     }
 
     return null;
+  }
+
+  function validate(name, value) {
+    let errors = [];
+    let field = validation[name];
+    for (let check in field) {
+      errors.push(field[check](value));
+    }
+    return errors;
   }
 
   function back(target) {
@@ -40,10 +55,13 @@ function AddProductView({ history, isModal }) {
     try {
       let formData = new FormData();
       let imagefile = document.querySelector('#photos');
-      formData.append('image', imagefile.files[0]);
-      let image = await Api.Image.uploadImages(formData);
 
-      body.photos = [image.data];
+      if (imagefile.files.length > 0) {
+        formData.append('image', imagefile.files[0]);
+        const image = await Api.Image.uploadImages(formData);
+        body.photos = [image.data];
+      }
+
       let res = await Api.Products.addProduct(body);
 
       history.push(routes.home);
@@ -56,32 +74,29 @@ function AddProductView({ history, isModal }) {
     <div className="AddProductView__form">
       <div className="AddProductView__form-content">
         <h2 className="AddProduct__header">Add product</h2>
-        <FormContainer initialValue={initialValue}>
+        <FormContainer
+          initialValue={initialValue}
+          validate={validate}
+        >
           <TextInput
             name="title"
             label="TITLE"
             placeholder="Oranges"
-            validate={required}
+            type="text"
           />
           <TextInput
             name="location"
             label="LOCATION"
-            validate={required}
             placeholder="city"
+            type="text"
           />
           <TextArea
             name="description"
             label="DESCRIPTION"
-            validate={required}
             placeholder="product description"
           />
           <FileInput name="photos" label="photos" id="photos" />
-          <TextInput
-            name="price"
-            label="price"
-            validate={required}
-            placeholder="0"
-          />
+          <TextInput name="price" label="price" placeholder="0" />
           <FormSubmitButton onSubmit={onSubmit}>
             Submit
           </FormSubmitButton>

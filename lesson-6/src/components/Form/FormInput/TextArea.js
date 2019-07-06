@@ -7,9 +7,18 @@ import './TextArea.scss';
 function TextArea({ name, label, ...props }) {
   return (
     <FormInput name={name} {...props}>
-      {({ handleChange, value, error }) => (
+      {({ handleChange, value, errors }) => (
         <label className={s.FormInput__label} htmlFor={name}>
-          {label} {error && <div className={s.error}>{error}</div>}
+          <div>
+            {label}
+            {errors &&
+              errors.length > 0 &&
+              errors.map((error, index) => (
+                <span key={index + error} className={s.error}>
+                  {error}
+                </span>
+              ))}
+          </div>
           <textarea
             className={`${s.FormInput__field} TextArea__field`}
             id={name}

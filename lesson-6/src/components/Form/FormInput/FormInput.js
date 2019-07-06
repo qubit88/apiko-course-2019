@@ -3,19 +3,19 @@ import T from 'prop-types';
 import { FormContext } from '../FormContainer/FormContainer';
 import s from './FormInput.module.scss';
 
-function FormInput({ name, validate, ContainerClassName, ...props }) {
+function FormInput({ name, ContainerClassName, ...props }) {
   return (
     <FormContext.Consumer>
-      {({ formState, onChange, setError, getError }) => {
+      {({ formState, onChange, setError, getError, validate }) => {
         function handleChange(value) {
           if (validate) {
-            setError(name, validate(value));
+            setError(name, validate(name, value));
           }
 
           onChange(name, value);
         }
 
-        const error = getError(name);
+        const errors = getError(name);
 
         return (
           <div
@@ -27,7 +27,7 @@ function FormInput({ name, validate, ContainerClassName, ...props }) {
           >
             {props.children({
               ...props,
-              error,
+              errors,
               handleChange,
               value: formState[name],
             })}

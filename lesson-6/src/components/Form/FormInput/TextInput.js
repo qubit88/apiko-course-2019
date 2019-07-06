@@ -9,6 +9,7 @@ function Input({
   label,
   FieldClassName,
   ContainerClassName,
+  type,
   ...props
 }) {
   return (
@@ -17,11 +18,17 @@ function Input({
       ContainerClassName={ContainerClassName}
       {...props}
     >
-      {({ handleChange, value, error }) => (
+      {({ handleChange, value, errors }) => (
         <label className={s.FormInput__label} htmlFor={name}>
           <div>
-            {label}{' '}
-            {error && <span className={s.error}>{error}</span>}
+            {label}
+            {errors &&
+              errors.length > 0 &&
+              errors.map((error, index) => (
+                <span key={index + error} className={s.error}>
+                  {error}
+                </span>
+              ))}
           </div>
           <input
             className={
@@ -32,6 +39,7 @@ function Input({
             id={name}
             value={value}
             onChange={(evt) => handleChange(evt.target.value)}
+            type="type"
           />
         </label>
       )}
