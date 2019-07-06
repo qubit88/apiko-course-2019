@@ -26,7 +26,7 @@ export const routes = {
   users: 'users/:id',
   listings: '/listings/:id',
   search: '/search',
-  addProduct: '/products/add',
+  addProduct: '/products',
   product: '/products/:id',
   user: '/users/:id',
   chat: '/inbox/:id',

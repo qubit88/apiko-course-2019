@@ -9,7 +9,7 @@ import {
   TextArea,
   FormSubmitButton,
 } from '../../components/Form';
-import { Header } from '../../components/';
+import { Header, Footer } from '../../components/';
 import Api from '../../api';
 import { routes } from '../router';
 
@@ -109,6 +109,7 @@ function AddProductView({ history, isModal }) {
     <>
       <Header />
       <div className="AddProductView">{form}</div>
+      <Footer />
     </>
   );
 
