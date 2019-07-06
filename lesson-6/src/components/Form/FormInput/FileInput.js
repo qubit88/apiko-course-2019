@@ -2,18 +2,24 @@ import React from 'react';
 import T from 'prop-types';
 import s from './FormInput.module.scss';
 import './FileInput.scss';
-import FormInput from './FormInput';
 
 function FileInput({ name, label, id, validate, ...props }) {
   return (
-    <label className={s.FormInput__label} htmlFor={name}>
-      {label}
-      <input
-        type="file"
-        className={`${s.FormInput__field} FileInput__field`}
-        id={name}
-      />
-    </label>
+    <div className={s.FormInput__container}>
+      <div className={s.FormInput__label}>
+        {label}
+
+        <div className="FileInput__wrapper">
+          <label htmlFor={name} className="FileInput__label">
+            <input
+              type="file"
+              className="FileInput__field"
+              id={name}
+            />
+          </label>
+        </div>
+      </div>
+    </div>
   );
 }
 
