@@ -1,7 +1,7 @@
 import React from 'react';
 import T from 'prop-types';
-import s from './FormInput.module.scss';
-import FormInput from './FormInput';
+import s from '../FormInputWrapper/FormInput.module.scss';
+import FormInput from '../FormInputWrapper/FormInput';
 import './TextArea.scss';
 
 function TextArea({ name, label, ...props }) {

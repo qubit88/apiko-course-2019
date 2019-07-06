@@ -1,8 +1,8 @@
 import React from 'react';
 import T from 'prop-types';
-import s from './FormInput.module.scss';
+import s from '../FormInputWrapper/FormInput.module.scss';
 import './TextInput.scss';
-import FormInput from './FormInput';
+import FormInput from '../FormInputWrapper/FormInput';
 
 function Input({
   name,
