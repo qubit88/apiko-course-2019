@@ -1,7 +1,7 @@
 import React from 'react';
 import T from 'prop-types';
 import s from '../FormInputWrapper/FormInput.module.scss';
-import './TextInput.scss';
+import './Input.scss';
 import FormInput from '../FormInputWrapper/FormInput';
 
 function Input({
@@ -39,7 +39,7 @@ function Input({
             id={name}
             value={value}
             onChange={(evt) => handleChange(evt.target.value)}
-            type="type"
+            type={type}
           />
         </label>
       )}

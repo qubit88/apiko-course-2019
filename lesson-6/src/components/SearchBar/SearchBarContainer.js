@@ -25,7 +25,7 @@ const enhancer = compose(
       };
     }
 
-    return null;
+    return { fieldValues: { keywords: '', location: '' } };
   }),
 );
 

@@ -1,7 +1,7 @@
 import React from 'react';
 import T from 'prop-types';
 import { withRouter } from 'react-router-dom';
-import { FormContainer, TextInput, FormSubmitButton } from '../Form';
+import { FormContainer, Input, FormSubmitButton } from '../Form';
 import { routes } from '../../scenes/router';
 import './SearchBar.scss';
 
@@ -36,13 +36,13 @@ function SearchBar({ fieldValues, history, fetchQuery }) {
   return (
     <div className="SearchBar__form">
       <FormContainer initialValue={initialValue}>
-        <TextInput
+        <Input
           name="keywords"
           placeholder="Search products by name"
           FieldClassName="SearchBar__field SearchBar__field--keywords"
           ContainerClassName="SearchBar__container--keywords"
         />
-        <TextInput
+        <Input
           name="location"
           placeholder="location"
           FieldClassName="SearchBar__field SearchBar__field--location"

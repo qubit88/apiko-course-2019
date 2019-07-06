@@ -9,9 +9,21 @@ class FormContainer extends Component {
 
     this.state = {
       values: props.initialValue,
-      validate: props.validate,
+      validation: props.validation || {},
       errors: {},
     };
+  }
+
+  validate(name, value) {
+    let errors = [];
+    let field = this.state.validation[name];
+    for (let check in field) {
+      const errorMessage = field[check](value);
+      if (errorMessage) {
+        errors.push(errorMessage);
+      }
+    }
+    return errors;
   }
 
   componentDidUpdate() {
@@ -43,9 +55,9 @@ class FormContainer extends Component {
   hasErrors() {
     const fields = Object.entries(this.state.values);
     let errors = false;
-    console.log(fields);
+    console.log('in has errors', fields);
     fields.forEach(([name, value]) => {
-      let error = this.state.validate(name, value);
+      let error = this.validate(name, value);
       if (error.length > 0) {
         errors = true;
       }
@@ -60,7 +72,7 @@ class FormContainer extends Component {
   render() {
     const value = {
       formState: this.state.values,
-      validate: this.state.validate,
+      validate: (name, value) => this.validate(name, value),
       onChange: (name, value) => this.onChange(name, value),
       setError: (name, value) => this.setError(name, value),
       getError: (name) => this.getError(name),

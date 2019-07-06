@@ -4,7 +4,7 @@ import './AddProductView.scss';
 
 import {
   FormContainer,
-  TextInput,
+  Input,
   FileInput,
   TextArea,
   FormSubmitButton,
@@ -12,6 +12,7 @@ import {
 import { Header, Footer } from '../../components/';
 import Api from '../../api';
 import { routes } from '../router';
+import { required } from '../../services/formValidation';
 
 function AddProductView({ history, isModal }) {
   const initialValue = {
@@ -27,23 +28,6 @@ function AddProductView({ history, isModal }) {
     location: { required },
     description: { required },
   };
-
-  function required(value) {
-    if (value.trim().length === 0) {
-      return 'Is required';
-    }
-
-    return null;
-  }
-
-  function validate(name, value) {
-    let errors = [];
-    let field = validation[name];
-    for (let check in field) {
-      errors.push(field[check](value));
-    }
-    return errors;
-  }
 
   function back(target) {
     if (target.classList.contains('AddProductView__modal-wrapper')) {
@@ -76,15 +60,15 @@ function AddProductView({ history, isModal }) {
         <h2 className="AddProduct__header">Add product</h2>
         <FormContainer
           initialValue={initialValue}
-          validate={validate}
+          validation={validation}
         >
-          <TextInput
+          <Input
             name="title"
             label="TITLE"
             placeholder="Oranges"
             type="text"
           />
-          <TextInput
+          <Input
             name="location"
             label="LOCATION"
             placeholder="city"
@@ -96,7 +80,7 @@ function AddProductView({ history, isModal }) {
             placeholder="product description"
           />
           <FileInput name="photos" label="photos" id="photos" />
-          <TextInput name="price" label="price" placeholder="0" />
+          <Input name="price" label="price" placeholder="0" />
           <FormSubmitButton onSubmit={onSubmit}>
             Submit
           </FormSubmitButton>

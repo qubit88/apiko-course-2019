@@ -1,4 +1,4 @@
-import { compose, withHandlers, withStateHandlers } from 'recompose';
+import { compose, withHandlers, withProps } from 'recompose';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { routes } from '../router';
@@ -21,26 +21,16 @@ const enhancer = compose(
     mapStateToProps,
     mapDispatchToProps,
   ),
-  withStateHandlers(
-    {
-      fields: {
-        email: '',
-        password: '',
-      },
+  withProps((props) => ({
+    initialValue: {
+      email: '',
+      password: '',
     },
-    {
-      handleFieldChange: (state) => (fieldname, value) => ({
-        ...state,
-        fields: {
-          ...state.fields,
-          [fieldname]: value,
-        },
-      }),
-    },
-  ),
+  })),
   withHandlers({
-    handleLogin: (props) => async () => {
-      await props.login(props.fields);
+    handleLogin: (props) => async (fields) => {
+      console.log('login');
+      await props.login(fields);
       props.history.push(routes.home);
     },
   }),

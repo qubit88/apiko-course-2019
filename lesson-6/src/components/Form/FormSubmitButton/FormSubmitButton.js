@@ -9,12 +9,12 @@ function FormSubmitButton({ onSubmit, FieldClassName, ...props }) {
       {({ formState, hasErrors }) => {
         function onClick(evt) {
           evt.preventDefault();
+          console.log('submitting', hasErrors());
 
           if (hasErrors()) {
             return;
           }
 
-          console.log('submitting', hasErrors());
           onSubmit(formState);
         }
 
