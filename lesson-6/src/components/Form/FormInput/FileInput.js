@@ -4,7 +4,7 @@ import s from './FormInput.module.scss';
 import './FileInput.scss';
 import FormInput from './FormInput';
 
-function FileInput({ name, label, id, ...props }) {
+function FileInput({ name, label, id, validate, ...props }) {
   return (
     <label className={s.FormInput__label} htmlFor={name}>
       {label}

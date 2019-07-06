@@ -19,7 +19,10 @@ function Input({
     >
       {({ handleChange, value, error }) => (
         <label className={s.FormInput__label} htmlFor={name}>
-          {label}
+          <div>
+            {label}{' '}
+            {error && <span className={s.error}>{error}</span>}
+          </div>
           <input
             className={
               FieldClassName

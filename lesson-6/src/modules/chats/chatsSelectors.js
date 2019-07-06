@@ -1,5 +1,6 @@
 import { createSelector } from 'reselect';
 
+const getUserEntities = (state) => state.entities.users;
 const getChatsEntities = (state) => state.entities.chats;
 const getMessagesEntities = (state) => state.entities.messages;
 const getIds = (state) => state.chats.items;
@@ -19,7 +20,7 @@ export const getChatsWithLastMessage = createSelector(
 );
 
 export const getChat = createSelector(
-  (state, id) => getChatsEntities(state)[id],
+  (state, chatId) => getChatsEntities(state)[chatId],
   (item) => item,
 );
 

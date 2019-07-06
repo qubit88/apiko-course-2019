@@ -61,6 +61,7 @@ function AddProductView({ history, isModal }) {
             name="title"
             label="TITLE"
             placeholder="Oranges"
+            validate={required}
           />
           <TextInput
             name="location"

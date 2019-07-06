@@ -9,7 +9,7 @@ function TextArea({ name, label, ...props }) {
     <FormInput name={name} {...props}>
       {({ handleChange, value, error }) => (
         <label className={s.FormInput__label} htmlFor={name}>
-          {label}
+          {label} {error && <div className={s.error}>{error}</div>}
           <textarea
             className={`${s.FormInput__field} TextArea__field`}
             id={name}

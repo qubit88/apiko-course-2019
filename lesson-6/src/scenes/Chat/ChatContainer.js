@@ -11,12 +11,15 @@ import {
   messagesOperations,
   messagesSelectors,
 } from '../../modules/messages';
+import { chatsSelectors } from '../../modules/chats';
 import { viewerSelectors } from '../../modules/viewer';
 
 const mapStateToProps = (state, props) => ({
   isLoading: state.messages.fetchMessages.isLoading,
   items: messagesSelectors.getMessages(state, props.match.params.id),
   user: viewerSelectors.getUser(state),
+  chat: chatsSelectors.getChat(state, props.match.params.id),
+  chatIsLoading: state.chats.fetchChats.isLoading,
 });
 
 const mapDispatchToProps = {
@@ -39,6 +42,7 @@ const enhancer = compose(
   }),
   lifecycle({
     componentDidMount() {
+      console.log('I remounted');
       // try {
       if (this.props.items.length === 0) {
         this.props.fetchMessages(this.props.match.params.id);

@@ -25,8 +25,6 @@ function FormInput({ name, validate, ContainerClassName, ...props }) {
                 : `${s.FormInput__container}`
             }
           >
-            {error && <div>{error}</div>}
-
             {props.children({
               ...props,
               error,

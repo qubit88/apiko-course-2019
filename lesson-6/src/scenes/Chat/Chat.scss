@@ -28,9 +28,14 @@
         background-color: none;
     }
 
-    &__participant {
+    &__participants {
         padding: 8px 16px;
         height: 12%;
+        display: flex;
+        align-items: center;
+        margin-bottom: auto;
+    }
+    &__participant {
         display: flex;
         align-items: center;
     }
