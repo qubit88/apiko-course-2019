@@ -1,0 +1,13 @@
+.Sell {
+    &__button {
+        font-size: 14px;
+        line-height: 31px;
+        max-height: 31px;
+        min-width: 80px;
+        text-transform: uppercase;
+        color: #FFFFFF;
+        border: none;
+        background: var(--green);
+        border-radius: 4px;
+    }
+} 

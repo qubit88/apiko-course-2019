@@ -12,6 +12,7 @@ import Product from './Product/ProductContainer';
 import User from './User/UserContainer';
 import Search from './Search/SearchContainer';
 import LikedList from './LikedList/LikedListContainer';
+import { Header, Footer } from '../components';
 
 export const routes = {
   home: '/',
@@ -23,14 +24,13 @@ export const routes = {
   privacy: '/privacy',
   bookmarks: '/bookmarks',
   profile: '/profile',
-  users: 'users/:id',
   listings: '/listings/:id',
   search: '/search',
   addProduct: '/products',
   product: '/products/:id',
   user: '/users/:id',
   chat: '/inbox/:id',
-  liked: '/api/products/saved',
+  liked: '/saved',
 };
 
 export const routesWithTheme = [
@@ -82,6 +82,7 @@ class ModalSwitch extends Component {
 
     return (
       <>
+        <Header />
         <Switch location={isModal ? this.previousLocation : location}>
           <Route path={routes.home} component={Home} exact />
           <Route path={routes.search} component={Search} />

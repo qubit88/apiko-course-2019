@@ -1,8 +1,11 @@
 .ProductGrid{
-    display: flex;
+    // display: flex;
+    display: grid;
+    grid-template-columns: 48% 48%;
+    grid-gap: 13px 4%;
     width: 100%;
-    flex-wrap: wrap;
-    justify-content: flex-start;
+    // flex-wrap: wrap;
+    // justify-content: flex-start;
 
     &__item-link {
         background: #FFFFFF;
@@ -10,15 +13,18 @@
         box-sizing: border-box;
         box-shadow: 0px 4px 14px rgba(121, 121, 121, 0.0527344);
         border-radius: 4px;
-        width: 48%;
+        width: 100%;
+        // width: 48%;
         position: relative;
-        margin-bottom: 13px;
+        // margin-bottom: 13px;
         display: block;
         text-decoration: none;
     }
     @media(min-width: 769px) {
+        grid-template-columns: 24.44% 24.44% 24.44% 24.44%;
+        grid-gap: 13px 0.56%;
         &__item-link {
-            width: 24.44%;
+            // width: 24.44%;
         }
     }
 }

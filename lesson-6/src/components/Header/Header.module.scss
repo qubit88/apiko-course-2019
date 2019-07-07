@@ -9,11 +9,11 @@
 }
 
 .firstRow {
-    display: grid;
+    display: flex;
+    width: 90%;
+    margin-left: auto;
+    margin-right: auto;
     align-items: center;
-    width: 100%;
-    grid-template-columns: 30% 30% 30%;
-    justify-content: center;
 }
 
 .secondRow {
@@ -23,14 +23,13 @@
 }
 
 .center {
-    width: 100%;
     display: flex;
     justify-content: flex-end;
+    margin-left: auto;
 }
 
 .left {
     justify-self: end;
-    padding-right: 15.75%;
     height: 100%;
 }
 
@@ -39,9 +38,8 @@
     display: flex;
 }
 
-.sell {
-    
-
+.sell {    
+    min-width: 80px;
 }
 
 .dark {
@@ -64,6 +62,7 @@
 
 .logo {
     height: 100%;
+    min-height: 55px;
     background-repeat: no-repeat;
     background-size: 100%;
     background-position: 50%;
@@ -100,8 +99,16 @@
 @media(min-width: 768px) {
     .firstRow {
         grid-template-columns: 20% 60% 20%;
+        justify-content: center;
+        display: grid;
+        align-items: center;
+        width: 100%;
     }
     .secondRow {
         width: 60%;
+    }
+
+    .left {
+        margin-right: 15.75%;
     }
 }

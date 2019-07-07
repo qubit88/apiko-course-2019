@@ -1,10 +1,13 @@
 .LikedMenuLink {
-    padding-left: 13%;
+    margin-left: 13%;
     position: relative;
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
 
-    svg {
+    &__active-heart {
         position: absolute;
-        top: 50%;
         transform: translateY(-50%);
+        top: 50%;
     }
 }
