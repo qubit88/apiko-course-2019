@@ -7,6 +7,7 @@ import { LoginRegisterLink } from '../../components';
 import {
   FormContainer,
   Input,
+  PasswordInput,
   FormSubmitButton,
 } from '../../components/Form';
 
@@ -33,9 +34,13 @@ function Register({ initialValue, handleRegister, isLoading }) {
             label="EMAIL"
           />
 
-          <Input name="password" type="password" label="PASSWORD" />
+          <PasswordInput
+            name="password"
+            type="password"
+            label="PASSWORD"
+          />
 
-          <Input
+          <PasswordInput
             name="confirm"
             type="password"
             label="CONFIRM PASSWORD"

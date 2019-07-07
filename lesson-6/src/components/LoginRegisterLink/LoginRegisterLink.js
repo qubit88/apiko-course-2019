@@ -6,7 +6,10 @@ import './LoginRegisterLink.scss';
 function LoginRegisterLink(props) {
   return (
     <div className="LoginRegisterLink">
-      {props.text}, <Link to={props.to}>{props.children}</Link>
+      {props.text},{' '}
+      <Link className="LoginRegisterLink__link" to={props.to}>
+        {props.children}
+      </Link>
     </div>
   );
 }

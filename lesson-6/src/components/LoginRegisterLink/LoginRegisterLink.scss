@@ -13,7 +13,14 @@
     align-items: center;
     justify-content: center;
     max-width: 425px;
-    width: 100%;
+    width: 90%;
     margin-top: 24px;
-    text-transform: uppercase;
+    
+
+    &__link {
+        text-transform: uppercase;
+        padding-left: 0.5em;
+        color: var(--green);
+        text-decoration: none;
+    }
 }

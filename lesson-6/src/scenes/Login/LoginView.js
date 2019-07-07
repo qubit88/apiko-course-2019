@@ -9,6 +9,7 @@ import {
   PasswordInput,
   FormSubmitButton,
 } from '../../components/Form';
+import { LoginRegisterLink } from '../../components';
 import { required } from '../../services/formValidation';
 
 function Login({ initialValue, handleLogin, isLoading }) {
@@ -44,9 +45,13 @@ function Login({ initialValue, handleLogin, isLoading }) {
             {isLoading ? 'Loading' : 'Login'}
           </FormSubmitButton>
         </FormContainer>
-
-        <Link to={routes.register}>Register</Link>
       </div>
+      <LoginRegisterLink
+        to={routes.register}
+        text="I have no account"
+      >
+        Register now
+      </LoginRegisterLink>
     </div>
   );
 }
