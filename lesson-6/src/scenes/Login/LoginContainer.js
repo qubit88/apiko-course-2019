@@ -28,9 +28,9 @@ const enhancer = compose(
     },
   })),
   withHandlers({
-    handleLogin: (props) => async (fields) => {
-      await props.login(fields);
-      props.history.push(routes.home);
+    handleLogin: ({ history, login }) => async (fields) => {
+      await login(fields);
+      history.push(routes.home);
     },
   }),
 );

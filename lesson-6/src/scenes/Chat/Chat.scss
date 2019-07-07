@@ -21,7 +21,15 @@
 
     &__input {
         height: 100%;
+        display: flex;
+        align-items: center;
         flex: 1;
+        padding: 0 72px 0 20px;
+        &::placeholder {
+            font-size: 13px;
+        line-height: 22px;
+        color: #97A3B4;
+        }
     }
     &__send {
         height: 100%;

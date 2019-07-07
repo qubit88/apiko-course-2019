@@ -43,8 +43,14 @@ function Chat({
       <div className="Chat__input-wrapper">
         <input
           className="Chat__input"
+          placeholder="Type your message here..."
           value={text}
           onChange={(evt) => setText(evt.target.value)}
+          onKeyDown={(evt) => {
+            if (evt.key === 'Enter') {
+              sendMessage();
+            }
+          }}
         />
         <button
           className="Chat__send"
