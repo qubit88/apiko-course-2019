@@ -9,7 +9,6 @@ import {
   TextArea,
   FormSubmitButton,
 } from '../../components/Form';
-import { Header, Footer } from '../../components/';
 import Api from '../../api';
 import { routes } from '../router';
 import { required } from '../../services/formValidation';
@@ -91,9 +90,7 @@ function AddProductView({ history, isModal }) {
 
   const page = (
     <>
-      <Header />
       <div className="AddProductView">{form}</div>
-      <Footer />
     </>
   );
 

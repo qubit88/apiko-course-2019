@@ -11,13 +11,14 @@ import {
   FormSubmitButton,
 } from '../../components/Form';
 
-import { required } from '../../services/formValidation';
+import { required, sameAs } from '../../services/formValidation';
 
 function Register({ initialValue, handleRegister, isLoading }) {
+  const sameCheck = sameAs('password', 'confirm');
   const validation = {
     email: { required },
-    password: { required },
-    confirm: { required },
+    password: { required, sameAs: sameCheck },
+    confirm: { required, sameAs: sameCheck },
   };
 
   return (

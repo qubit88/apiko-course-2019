@@ -10,9 +10,7 @@ import LatestList from '../LatestList/LatestListContainer';
 function Home() {
   return (
     <div className={s.container}>
-      <Header />
       <Route path={routes.home} component={LatestList} exact />
-      <Footer />
     </div>
   );
 }

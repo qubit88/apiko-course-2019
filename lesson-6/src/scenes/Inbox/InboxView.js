@@ -3,13 +3,11 @@ import T from 'prop-types';
 import { NavLink, generatePath, Route } from 'react-router-dom';
 import { routes } from '../router';
 import Chat from '../Chat/ChatContainer';
-import { Header } from '../../components/';
 import './Inbox.scss';
 
 function Inbox({ items, location }) {
   return (
     <div className="Inbox">
-      <Header />
       <div className="Inbox__container">
         <aside className="Inbox__aside">
           {items.map((i) => (

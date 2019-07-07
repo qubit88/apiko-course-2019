@@ -1,12 +1,11 @@
 import React from 'react';
 import T from 'prop-types';
 import './LikedListView.scss';
-import { ProductGrid, Header, Footer } from '../../components';
+import { ProductGrid } from '../../components';
 
 function LikedListView({ list, isLoading }) {
   return (
     <>
-      <Header />
       <div className="LikedList__container">
         <h2 className="LikedList__header">
           saved items
@@ -20,7 +19,6 @@ function LikedListView({ list, isLoading }) {
           <ProductGrid list={list} />
         )}
       </div>
-      <Footer />
     </>
   );
 }

@@ -42,6 +42,19 @@ const reducer = handleActions(
         },
       },
     }),
+    [messagesActions.fetchMessages.success]: (
+      state,
+      { payload: { chatId, result } },
+    ) => ({
+      ...state,
+      chats: {
+        ...state.chats,
+        [chatId]: {
+          ...state.chats[chatId],
+          lastMessage: result[0],
+        },
+      },
+    }),
   },
   INITIAL_STATE,
 );

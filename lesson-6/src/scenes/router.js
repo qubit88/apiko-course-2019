@@ -111,6 +111,7 @@ class ModalSwitch extends Component {
             render={(props) => <AddProduct isModal {...props} />}
           />
         ) : null}
+        <Footer />
       </>
     );
   }

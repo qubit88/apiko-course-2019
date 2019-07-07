@@ -10,7 +10,6 @@ function UserView({ user, products, isLoading }) {
   }
   return (
     <>
-      <Header />
       <div className="User">
         <div className="User__info">
           <div
@@ -33,7 +32,6 @@ function UserView({ user, products, isLoading }) {
           'Products loads...'
         )}
       </div>
-      <Footer />
     </>
   );
 }

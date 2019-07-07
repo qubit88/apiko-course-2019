@@ -18,7 +18,7 @@ class FormContainer extends Component {
     let errors = [];
     let field = this.state.validation[name];
     for (let check in field) {
-      const errorMessage = field[check](value);
+      const errorMessage = field[check](name, value);
       if (errorMessage) {
         errors.push(errorMessage);
       }
