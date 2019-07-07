@@ -6,7 +6,6 @@ import { routes } from '../router';
 import ContactSellerModal from '../ContactSellerModal/ContactSellerModalContainer';
 import './Product.scss';
 import heart from './heart.svg';
-import { Header, Footer } from '../../components';
 
 Modal.setAppElement('#root');
 
@@ -94,40 +93,34 @@ function ProductView({
   );
 
   return (
-    <>
-      <Header />
-      <div className="Product">
-        <div className="Product__content">
-          <div className="Product__img" style={imageStyle} />
-          <div className="Product__info">
-            <div className="Product__price-wrapper">
-              <div className="Product__price">
-                &#36;{product.price}
-              </div>
+    <div className="Product">
+      <div className="Product__content">
+        <div className="Product__img" style={imageStyle} />
+        <div className="Product__info">
+          <div className="Product__price-wrapper">
+            <div className="Product__price">&#36;{product.price}</div>
+          </div>
+          <div className="Product__info-top">
+            <div className="Product__header">
+              <h2 className="Product__title">{product.title}</h2>
+              <span className="Product__time" />
             </div>
-            <div className="Product__info-top">
-              <div className="Product__header">
-                <h2 className="Product__title">{product.title}</h2>
-                <span className="Product__time" />
-              </div>
-              <div className="Product__location">
-                {product.location}
-              </div>
+            <div className="Product__location">
+              {product.location}
             </div>
-            <div className="Product__info-bottom">
-              <div className="Product__description">
-                {product.description}
-              </div>
+          </div>
+          <div className="Product__info-bottom">
+            <div className="Product__description">
+              {product.description}
             </div>
           </div>
         </div>
-
-        <div className="Product__owner">
-          {shouldShowLoading ? 'Loading...' : ownerInfo(owner.id)}
-        </div>
       </div>
-      <Footer />
-    </>
+
+      <div className="Product__owner">
+        {shouldShowLoading ? 'Loading...' : ownerInfo(owner.id)}
+      </div>
+    </div>
   );
 }
 

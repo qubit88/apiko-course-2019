@@ -6,6 +6,7 @@
         border-radius: 5px;
         margin-top: 4px;
         padding: 1em;
+        display: flex;
     }
 
     &__field {
@@ -14,14 +15,34 @@
         position: absolute;
     }
 
-    &__label {
+    &__preview {
         width: 92px;
-        height: 93px;
-        position: relative;
-        background: #E4E4E4;
+        height: 92px;
         border-radius: 4px;
         display: block;
         cursor: pointer;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        display: none;
+
+        &\--visible {
+            display: block;
+            margin-right: 10px;
+        }
+    }
+
+    &__label {
+        width: 92px;
+        height: 92px;
+        position: relative;
+        background-color: #E4E4E4;
+        border-radius: 4px;
+        display: block;
+        cursor: pointer;
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
         &:before {
             content: '';
             position: absolute;

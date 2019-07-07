@@ -1,4 +1,11 @@
-export function required(name, value) {
+export function required(name, value, node) {
+  if (node && node.type === 'file') {
+    if (node.files.length > 0) {
+      return null;
+    }
+    return 'image is required';
+  }
+
   if (value.trim().length === 0) {
     return 'Is required';
   }
@@ -10,7 +17,7 @@ export function sameAs(firstName, secondName) {
   let firstValue;
   let secondValue;
 
-  return function check(name, value) {
+  return function check(name, value, type) {
     if (name === firstName) {
       firstValue = value;
     }

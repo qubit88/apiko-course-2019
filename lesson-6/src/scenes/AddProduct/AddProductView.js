@@ -26,6 +26,7 @@ function AddProductView({ history, isModal }) {
     title: { required },
     location: { required },
     description: { required },
+    photos: { required },
   };
 
   function back(target) {
