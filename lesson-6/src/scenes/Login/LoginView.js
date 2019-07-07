@@ -1,11 +1,12 @@
 import React from 'react';
 import T from 'prop-types';
 import { Link } from 'react-router-dom';
-import s from './Login.module.scss';
+import './Login.scss';
 import { routes } from '../router';
 import {
   FormContainer,
   Input,
+  PasswordInput,
   FormSubmitButton,
 } from '../../components/Form';
 import { required } from '../../services/formValidation';
@@ -17,9 +18,9 @@ function Login({ initialValue, handleLogin, isLoading }) {
   };
 
   return (
-    <div className={s.Login}>
-      <div className={s.Login__form}>
-        <h3 className={s.Login__header}>Login</h3>
+    <div className="Login">
+      <div className="Login__form">
+        <h3 className="Login__header">Login</h3>
         <FormContainer
           initialValue={initialValue}
           validation={validation}
@@ -30,10 +31,14 @@ function Login({ initialValue, handleLogin, isLoading }) {
             label="EMAIL"
           />
 
-          <Input name="password" type="password" label="PASSWORD" />
+          <PasswordInput
+            name="password"
+            type="password"
+            label="PASSWORD"
+          />
 
           <FormSubmitButton
-            className={s.Login__button}
+            FieldClassName="Login__button"
             onSubmit={handleLogin}
           >
             {isLoading ? 'Loading' : 'Login'}

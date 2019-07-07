@@ -17,3 +17,6 @@ export {
 export {
   default as InboxMenuLink,
 } from './InboxMenuLink/InboxMenuLink';
+export {
+  default as LoginRegisterLink,
+} from './LoginRegisterLink/LoginRegisterLink';

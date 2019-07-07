@@ -21,7 +21,7 @@ const enhancer = compose(
     mapStateToProps,
     mapDispatchToProps,
   ),
-  withProps((props) => ({
+  withProps(() => ({
     initialValue: {
       email: '',
       password: '',
@@ -29,7 +29,6 @@ const enhancer = compose(
   })),
   withHandlers({
     handleLogin: (props) => async (fields) => {
-      console.log('login');
       await props.login(fields);
       props.history.push(routes.home);
     },

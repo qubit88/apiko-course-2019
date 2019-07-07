@@ -1,52 +1,60 @@
 import React from 'react';
 import T from 'prop-types';
 import { Link } from 'react-router-dom';
-import s from './Register.module.scss';
+import './Register.scss';
 import { routes } from '../router';
-import { Input } from '../../components';
+import { LoginRegisterLink } from '../../components';
+import {
+  FormContainer,
+  Input,
+  FormSubmitButton,
+} from '../../components/Form';
 
-function Register({
-  fields,
-  handleRegister,
-  handleFieldChange,
-  isLoading,
-}) {
+import { required } from '../../services/formValidation';
+
+function Register({ initialValue, handleRegister, isLoading }) {
+  const validation = {
+    email: { required },
+    password: { required },
+    confirm: { required },
+  };
+
   return (
-    <div className={s.Register}>
-      <h3 className={s.Register__header}>Login</h3>
-      <div className={s.Register__form}>
-        <Input
-          fields={fields}
-          name="fullName"
-          placeholder="Full Name"
-          label="FULLNAME"
-          onChange={handleFieldChange}
-        />
-        <Input
-          fields={fields}
-          name="email"
-          placeholder="example@gmail.com"
-          label="EMAIL"
-          onChange={handleFieldChange}
-        />
-
-        <Input
-          fields={fields}
-          name="password"
-          type="password"
-          label="PASSWORD"
-          onChange={handleFieldChange}
-        />
-
-        <button
-          type="button"
-          className={s.Register__button}
-          onClick={handleRegister}
+    <div className="Register">
+      <div className="Register__form">
+        <h3 className="Register__header">Register</h3>
+        <FormContainer
+          initialValue={initialValue}
+          validation={validation}
         >
-          {isLoading ? 'Loading' : 'Register'}
-        </button>
-        <Link to={routes.login}>Log in</Link>
+          <Input
+            name="email"
+            placeholder="example@gmail.com"
+            label="EMAIL"
+          />
+
+          <Input name="password" type="password" label="PASSWORD" />
+
+          <Input
+            name="confirm"
+            type="password"
+            label="CONFIRM PASSWORD"
+          />
+
+          <FormSubmitButton
+            FieldClassName="Login__button"
+            onSubmit={handleRegister}
+          >
+            {isLoading ? 'Loading' : 'Register'}
+          </FormSubmitButton>
+        </FormContainer>
       </div>
+      <LoginRegisterLink
+        to={routes.login}
+        text="I already have an account"
+      >
+        Log in
+      </LoginRegisterLink>
     </div>
   );
 }
