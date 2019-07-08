@@ -11,7 +11,6 @@ class App extends React.Component {
     super(props);
 
     props.dispatch(appOperations.init());
-    console.log('in constructor');
   }
 
   render() {
@@ -20,7 +19,7 @@ class App extends React.Component {
     }
 
     return (
-      <div className="root">
+      <div className="main">
         <Router />
       </div>
     );

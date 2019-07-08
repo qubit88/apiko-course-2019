@@ -13,8 +13,8 @@ html,body, *, *::before, *::after {
     background-color: #f2f2f2;
     min-height: 100%;
 }
-.root {
-  max-width: 1440px;
+.main {
+  /* max-width: 1440px; */
   min-height: 100vh;
   margin-left: auto;
   margin-right: auto;
@@ -25,6 +25,16 @@ html,body, *, *::before, *::after {
   --light-green: rgba(52, 154, 137, 0.2);
   --blue: #00AEEF;
   
+}
+
+
+
+@media(min-width: 768px) {
+  .main-content {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 

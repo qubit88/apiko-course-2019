@@ -93,7 +93,7 @@ function ProductView({
   );
 
   return (
-    <div className="Product">
+    <div className="Product main-content">
       <div className="Product__content">
         <div className="Product__img" style={imageStyle} />
         <div className="Product__info">
