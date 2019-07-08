@@ -34,7 +34,13 @@ function Chat({
         </div>
         {chat && chat.participants
           ? chat.participants.map((participant) => (
-              <div key={participant.id} className="Chat__participant">
+              <Link
+                to={generatePath(routes.user, {
+                  id: participant.id,
+                })}
+                key={participant.id}
+                className="Chat__participant"
+              >
                 <div className="Chat__avatar-container">
                   <Avatar
                     fullName={participant.fullName}
@@ -44,7 +50,7 @@ function Chat({
                 <p className="Chat__participant-name">
                   {participant.fullName}
                 </p>
-              </div>
+              </Link>
             ))
           : null}
       </div>
