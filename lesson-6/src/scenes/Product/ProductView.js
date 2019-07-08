@@ -4,6 +4,7 @@ import { Link, generatePath } from 'react-router-dom';
 import Modal from 'react-modal';
 import { routes } from '../router';
 import ContactSellerModal from '../ContactSellerModal/ContactSellerModalContainer';
+import { Avatar } from '../../components';
 import './Product.scss';
 import heart from './heart.svg';
 
@@ -26,11 +27,6 @@ function ProductView({
     backgroundImage: product.photos[0]
       ? `url(${product.photos[0]})`
       : 'none',
-  };
-
-  const avatarStyle = {
-    backgroundImage:
-      owner && owner.avatar ? `url(${owner.avatar})` : 'none',
   };
 
   const customModalStyles = {
@@ -59,10 +55,9 @@ function ProductView({
       >
         <div className="Product__owner-decor" />
         <div className="Product__owner-info">
-          <div
-            className="Product__owner-avatar"
-            style={avatarStyle}
-          />
+          <div className="Product__owner-avatar">
+            <Avatar fullName={owner.fullName} avatar={owner.avatar} />
+          </div>
           <h3 className="Product__owner-name">{owner.fullName}</h3>
           <p className="Product__owner-location">{owner.location}</p>
         </div>

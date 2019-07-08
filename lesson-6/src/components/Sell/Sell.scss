@@ -1,4 +1,7 @@
 .Sell {
+    &__link {
+        width: 100%;
+    }
     &__button {
         font-size: 14px;
         line-height: 31px;
@@ -9,5 +12,6 @@
         border: none;
         background: var(--green);
         border-radius: 4px;
+        width: 100%;
     }
 } 

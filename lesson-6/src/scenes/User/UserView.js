@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { ProductGrid } from '../../components';
 import './UserView.scss';
-import { Header, Footer } from '../../components';
+import { Avatar } from '../../components';
 
 function UserView({ user, products, isLoading }) {
   if (!user) {
@@ -12,14 +12,9 @@ function UserView({ user, products, isLoading }) {
     <>
       <div className="User">
         <div className="User__info">
-          <div
-            style={{
-              backgroundImage: user.avatar
-                ? `url(${user.avatar})`
-                : 'none',
-            }}
-            className="User__avatar"
-          />
+          <div className="User__avatar">
+            <Avatar fullName={user.fullName} avatar={user.avatar} />
+          </div>
           <h3 className="User__name">{user.fullName}</h3>
         </div>
 
