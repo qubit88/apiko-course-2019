@@ -11,7 +11,7 @@ import {
   messagesOperations,
   messagesSelectors,
 } from '../../modules/messages';
-import { chatsSelectors } from '../../modules/chats';
+import { chatsSelectors, chatsActions } from '../../modules/chats';
 import { viewerSelectors } from '../../modules/viewer';
 
 const mapStateToProps = (state, props) => ({
@@ -25,6 +25,7 @@ const mapStateToProps = (state, props) => ({
 const mapDispatchToProps = {
   fetchMessages: messagesOperations.fetchMessages,
   sendMessage: messagesOperations.sendMessage,
+  toggleChatVisibility: chatsActions.toggleChatVisibility,
 };
 
 const enhancer = compose(
@@ -39,14 +40,17 @@ const enhancer = compose(
       props.sendMessage(props.match.params.id, props.text);
       props.setText('');
     },
+    handleMobileView: (props) => () => {
+      props.toggleChatVisibility();
+    },
   }),
   lifecycle({
     componentDidMount() {
       console.log('I remounted');
       // try {
-      if (this.props.items.length === 0) {
-        this.props.fetchMessages(this.props.match.params.id);
-      }
+      // if (this.props.items.length === 0) {
+      this.props.fetchMessages(this.props.match.params.id);
+      // }
       // } catch (err) {}
     },
   }),

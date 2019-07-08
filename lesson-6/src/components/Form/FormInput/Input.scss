@@ -1,10 +1,16 @@
 .TextInput__field {
-    height: 58px;
-    padding: 19px 45px 21px 13px;
+    height: 4vh;
+    min-height: 28px;
+    padding: 9px 45px 10px 6px;
     &::placeholder {
         font-size: 16px;
         line-height: 58px;
         letter-spacing: 0.4px;
         color: rgba(102, 102, 102, 0.466455);
+    }
+
+    @media(min-width: 768px) {
+        height: 58px;
+        padding: 19px 45px 21px 13px;
     }
 }

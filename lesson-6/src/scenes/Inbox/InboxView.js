@@ -5,13 +5,23 @@ import { routes } from '../router';
 import Chat from '../Chat/ChatContainer';
 import './Inbox.scss';
 
-function Inbox({ items, location }) {
+function Inbox({
+  items,
+  location,
+  handleMobileView,
+  visibleOnMobile,
+}) {
   return (
-    <div className="Inbox">
+    <div
+      className={`Inbox ${
+        visibleOnMobile ? 'Inbox--visible-chat' : ''
+      }`}
+    >
       <div className="Inbox__container">
         <aside className="Inbox__aside">
           {items.map((i) => (
             <NavLink
+              onClick={(evt) => handleMobileView(evt)}
               className="Inbox__chat-link"
               key={i.id}
               to={generatePath(routes.chat, { id: i.id })}

@@ -15,7 +15,7 @@ export const getChatsWithLastMessage = createSelector(
   (items, messages) =>
     items.map((item) => ({
       ...item,
-      lastMessage: messages[item.lastMessage],
+      // lastMessage: messages[item.lastMessage],
     })),
 );
 

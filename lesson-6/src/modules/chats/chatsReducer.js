@@ -3,6 +3,7 @@ import * as actions from './chatsActions';
 
 const INITIAL_STATE = {
   items: [],
+  visibleOnMobile: false,
   createChat: {
     isLoading: false,
     isError: false,
@@ -17,6 +18,12 @@ const INITIAL_STATE = {
 
 export default handleActions(
   {
+    [actions.toggleChatVisibility]: (state, action) => ({
+      ...state,
+      visibleOnMobile: action.payload
+        ? action.payload.visibility
+        : !state.visibleOnMobile,
+    }),
     [actions.createChat.start]: (state) => ({
       ...state,
       createChat: {

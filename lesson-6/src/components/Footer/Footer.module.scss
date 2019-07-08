@@ -1,5 +1,5 @@
 .footer {
-    height: 7.76vh;
+    // height: 7.76vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -10,6 +10,14 @@
         color: #C0C4CE;
         text-decoration: none;
         display: inline-block;
-        padding: 5.3em 0.5em;
+        padding: 2vh 0 2.8vh 0;
     }
+
+    @media(min-width: 768px) {
+        &__item { 
+            padding: 1.5em 0 2.28em 0;
+        }
+        
+    }
+
 }

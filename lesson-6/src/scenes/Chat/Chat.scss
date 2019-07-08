@@ -6,6 +6,7 @@
         justify-content: flex-end;
         // max-height: 100%;
         padding-bottom: 7.5%;
+        background-color: white;
     }
 
     &__messages {
@@ -37,11 +38,13 @@
     }
 
     &__participants {
-        padding: 8px 16px;
+        padding: 8px;
         height: 12%;
         display: flex;
         align-items: center;
         margin-bottom: auto;
+        flex-shrink: 0;
+        background-color: #f2f2f2;
     }
     &__participant {
         display: flex;
@@ -62,5 +65,20 @@
         width: 45px;
         height: 45px;
         border: 1px solid var(--blue) 50%;
+    }
+    &__hide-on-mobile {
+        height: 100%;
+        width: 50px;
+        margin-right: 1em;
+    }
+
+    @media(min-width: 769px) {
+        &__hide-on-mobile {
+            display: none;
+        }
+
+        &__participants {
+            padding: 8px 16px;
+        }
     }
 }

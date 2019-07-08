@@ -1,5 +1,12 @@
 .TextArea {
     &__field {
-        height: 184px;
+        height: 10vh;
+        min-height: 38px;
     }
+    @media(min-width: 768px) {
+        &__field {
+            height: 184px;
+        }
+    }
+    
 }
