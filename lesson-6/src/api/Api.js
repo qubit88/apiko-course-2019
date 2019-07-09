@@ -139,6 +139,9 @@ export const Messages = {
   fetchMessages(chatId) {
     return axios.get(`${urls.chats}/${chatId}/messages`);
   },
+  fetchNextMessages(chatId, from) {
+    return axios.get(`${urls.chats}/${chatId}/messages?from=${from}`);
+  },
 };
 
 export function init() {

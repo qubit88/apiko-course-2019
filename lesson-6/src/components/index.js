@@ -7,7 +7,7 @@ export { default as UserInfo } from './UserInfo/UserInfo';
 export { default as Avatar } from './Avatar/Avatar';
 export { default as HeaderAvatar } from './HeaderAvatar/HeaderAvatar';
 export { default as ProductGrid } from './ProductGrid/ProductGrid';
-export { default as Message } from './Message/Message';
+export { default as Message } from './Message/MessageContainer';
 export { default as SearchBar } from './SearchBar/SearchBarContainer';
 export { default as Like } from './Like/LikeContainer';
 export {

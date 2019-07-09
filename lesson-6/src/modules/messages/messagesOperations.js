@@ -2,6 +2,7 @@ import * as actions from './messagesActions';
 import { normalize } from 'normalizr';
 import Api, { schemas } from '../../api';
 import { viewerSelectors } from '../viewer';
+import { messagesSelectors } from '../messages';
 import { createMessage } from './messagesCreators';
 
 export function sendMessage(chatId, text) {
@@ -49,12 +50,41 @@ export function fetchMessages(chatId) {
         res.data,
         schemas.MessageCollection,
       );
-      //   TODO: fetch user
       dispatch(
         actions.fetchMessages.success({ result, entities, chatId }),
       );
     } catch (err) {
       dispatch(actions.fetchMessages.error({ message: err.message }));
+    }
+  };
+}
+
+export function fetchNextMessages(chatId) {
+  return async function fetchNextThunk(dispatch, getState) {
+    const from = messagesSelectors.getLastMessageId(
+      getState(),
+      chatId,
+    );
+    try {
+      dispatch(actions.fetchNextMessages.start());
+
+      const res = await Api.Messages.fetchNextMessages(chatId, from);
+
+      const { result, entities } = normalize(
+        res.data,
+        schemas.MessageCollection,
+      );
+      dispatch(
+        actions.fetchNextMessages.success({
+          result,
+          entities,
+          chatId,
+        }),
+      );
+    } catch (err) {
+      dispatch(
+        actions.fetchNextMessages.error({ message: err.message }),
+      );
     }
   };
 }

@@ -57,7 +57,7 @@ const enhancer = compose(
   ),
   withHandlers({
     handleMouseEnter: (props) => () => {
-      props.handleShowInfo();
+      // props.handleShowInfo();
     },
     handleMouseClick: (props) => () => {
       props.className

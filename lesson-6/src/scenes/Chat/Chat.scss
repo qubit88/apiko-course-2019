@@ -10,8 +10,9 @@
     }
 
     &__messages {
-        overflow: auto;
+        // overflow: auto;
         padding-bottom: 24px;
+        flex-grow: 1;
     }
 
     &__input-wrapper {

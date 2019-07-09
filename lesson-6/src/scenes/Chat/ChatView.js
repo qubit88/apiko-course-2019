@@ -1,21 +1,47 @@
 import React from 'react';
 import T from 'prop-types';
 import { Link, generatePath, Route } from 'react-router-dom';
+import { List, AutoSizer } from 'react-virtualized';
 import { routes } from '../router';
 import { Message, Avatar } from '../../components/';
+import InfiniteChat from './InfiniteChat';
 import './Chat.scss';
+import { init } from '../../api/Api';
 
 function Chat({
-  items,
   sendMessage,
   text,
   setText,
-  user,
   chat,
   handleMobileView,
   isLoading,
   chatIsLoading,
 }) {
+  // List data as an array of strings
+  // const list = items;
+
+  // function rowRenderer({
+  //   key, // Unique key within array of rows
+  //   index, // Index of row within collection
+  //   isScrolling, // The List is currently being scrolled
+  //   isVisible, // This row is visible within the List (eg it is not an overscanned row)
+  //   style, // Style object to be applied to row (to position it)
+  // }) {
+  //   const message = list[index];
+
+  //   // If row content is complex, consider rendering a light-weight placeholder while scrolling.
+  //   const content = isScrolling ? (
+  //     '...'
+  //   ) : (
+  //     <Message key={message.id} item={message} user={user} />
+  //   );
+  //   return (
+  //     <div key={key} style={style}>
+  //       {content}
+  //     </div>
+  //   );
+  // }
+
   return (
     <div className="Chat__container">
       <div className="Chat__participants">
@@ -44,7 +70,7 @@ function Chat({
                 <div className="Chat__avatar-container">
                   <Avatar
                     fullName={participant.fullName}
-                    avatar={user.avatar}
+                    avatar={participant.avatar}
                   />
                 </div>
                 <p className="Chat__participant-name">
@@ -55,9 +81,21 @@ function Chat({
           : null}
       </div>
       <div className="Chat__messages">
-        {items.map((i) => (
+        <InfiniteChat />
+        {/* <AutoSizer>
+          {({ height, width }) => (
+            <List
+              width={width}
+              height={height}
+              rowCount={list.length}
+              rowHeight={50}
+              rowRenderer={rowRenderer}
+            />
+          )}
+        </AutoSizer> */}
+        {/* {items.map((i) => (
           <Message key={i.id} item={i} user={user} />
-        ))}
+        ))} */}
       </div>
 
       <div className="Chat__input-wrapper">

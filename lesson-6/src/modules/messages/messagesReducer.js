@@ -15,6 +15,13 @@ const INITIAL_STATE = {
     isError: false,
     error: null,
   },
+
+  fetchNextMessages: {
+    isLoading: false,
+    isError: false,
+    error: null,
+    hasNextPage: true,
+  },
 };
 
 export default handleActions(
@@ -69,7 +76,7 @@ export default handleActions(
     [actions.fetchMessages.start]: (state) => ({
       ...state,
       fetchMessages: {
-        ...state.fetch,
+        ...state.fetchMessages,
         isLoading: true,
         error: null,
         isError: false,
@@ -85,7 +92,7 @@ export default handleActions(
         [chatId]: result.reverse(),
       },
       fetchMessages: {
-        ...state.fetch,
+        ...state.fetchMessages,
         isLoading: false,
         error: null,
         isError: false,
@@ -94,7 +101,48 @@ export default handleActions(
     [actions.fetchMessages.error]: (state, action) => ({
       ...state,
       fetchMessages: {
-        ...state.fetch,
+        ...state.fetchMessages,
+        isLoading: false,
+        isError: true,
+        error: action.payload,
+      },
+    }),
+    [actions.fetchNextMessages.start]: (state) => ({
+      ...state,
+      fetchNextMessages: {
+        ...state.fetchNextMessages,
+        isLoading: true,
+        error: null,
+        isError: false,
+      },
+    }),
+    [actions.fetchNextMessages.success]: (
+      state,
+      { payload: { chatId, result } },
+    ) => {
+      const hasNextPage = !(result.length < 20);
+      const items = result.reverse().concat(state.items[chatId]);
+      console.log('reducer');
+
+      return {
+        ...state,
+        items: {
+          ...state.items,
+          [chatId]: items,
+        },
+        fetchNextMessages: {
+          ...state.fetchNextMessages,
+          isLoading: false,
+          error: null,
+          isError: false,
+          hasNextPage,
+        },
+      };
+    },
+    [actions.fetchNextMessages.error]: (state, action) => ({
+      ...state,
+      fetchNextMessages: {
+        ...state.fetchNextMessages,
         isLoading: false,
         isError: true,
         error: action.payload,

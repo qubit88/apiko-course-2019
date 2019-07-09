@@ -61,7 +61,6 @@
     display: block;
     height: 100%;
     width: 34.8%;
-    margin-left: auto;
 }
 
 .logo {
@@ -115,5 +114,9 @@
 
     .left {
         margin-right: 15.75%;
+    }
+
+    .logoWrapper {
+        margin-left: auto;
     }
 }
