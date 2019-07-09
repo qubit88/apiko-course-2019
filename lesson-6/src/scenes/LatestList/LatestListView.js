@@ -5,7 +5,12 @@ import './LatestListView.scss';
 import { ProductGrid } from '../../components/';
 import { routes } from '../router';
 
-function LatestListView({ list, isLoading }) {
+function LatestListView({
+  list,
+  isLoading,
+  loadMore,
+  isMoreLoading,
+}) {
   if (isLoading) {
     return <div>Loading...</div>;
   }
@@ -13,6 +18,18 @@ function LatestListView({ list, isLoading }) {
   return (
     <div className="LatestListView__container">
       <ProductGrid list={list} />
+
+      {isMoreLoading ? (
+        <div>Loading...</div>
+      ) : (
+        <button
+          type="button"
+          className="LatestListView__load-more"
+          onClick={loadMore}
+        >
+          load more
+        </button>
+      )}
     </div>
   );
 }

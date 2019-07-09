@@ -5,8 +5,10 @@ const INITIAL_STATE = {
   latest: {
     items: [],
     isLoading: false,
+    isMoreLoading: false,
     isError: false,
     error: null,
+    offset: 0,
   },
   searchedProducts: {
     items: [],
@@ -50,6 +52,34 @@ export default handleActions(
       latest: {
         ...state.latest,
         isLoading: false,
+        isError: true,
+        error: action.payload,
+      },
+    }),
+    [actions.fetchMoreLatest.start]: (state) => ({
+      ...state,
+      latest: {
+        ...state.latest,
+        isMoreLoading: true,
+        error: null,
+      },
+    }),
+    [actions.fetchMoreLatest.success]: (state, action) => ({
+      ...state,
+      latest: {
+        ...state.latest,
+        isMoreLoading: false,
+        items: (state.latest.items || []).concat(
+          action.payload.result,
+        ),
+        offset: state.latest.offset + 20,
+      },
+    }),
+    [actions.fetchMoreLatest.error]: (state, action) => ({
+      ...state,
+      latest: {
+        ...state.latest,
+        isMoreLoading: false,
         isError: true,
         error: action.payload,
       },

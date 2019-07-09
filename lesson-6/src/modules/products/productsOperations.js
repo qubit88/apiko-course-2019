@@ -22,6 +22,30 @@ export function fetchLatest() {
   };
 }
 
+export function fetchMoreLatest() {
+  return async function initThunk(dispatch, getState) {
+    const currentOffset = getState().products.latest.offset;
+    try {
+      dispatch(actions.fetchMoreLatest.start());
+
+      const res = await Api.Products.getMoreLatest(
+        currentOffset + 20,
+      );
+
+      const { result, entities } = normalize(
+        res.data,
+        schemas.ProductList,
+      );
+
+      dispatch(actions.fetchMoreLatest.success({ result, entities }));
+    } catch (err) {
+      dispatch(
+        actions.fetchMoreLatest.error({ message: err.message }),
+      );
+    }
+  };
+}
+
 export function fetchLiked() {
   return async function initThunk(dispatch) {
     try {

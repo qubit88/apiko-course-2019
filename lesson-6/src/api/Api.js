@@ -91,6 +91,9 @@ export const Products = {
   getLatest() {
     return axios.get(urls.productsLatest);
   },
+  getMoreLatest(offset) {
+    return axios.get(`${urls.productsLatest}?offset=${offset}`);
+  },
   getQuery(query) {
     return axios.get(`${urls.search}?${query}`);
   },
