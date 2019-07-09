@@ -73,7 +73,7 @@ function InfiniteChat({
       isRowLoaded={isRowLoaded}
       loadMoreRows={loadMoreRows}
       rowCount={rowCount}
-      threshold={1}
+      threshold={2}
     >
       {({ onRowsRendered, registerChild }) => (
         <AutoSizer>
@@ -84,7 +84,7 @@ function InfiniteChat({
               rowRenderer={rowRenderer}
               width={width}
               height={height}
-              rowHeight={60}
+              rowHeight={80}
               rowCount={rowCount}
               //   {...otherProps}
             />
