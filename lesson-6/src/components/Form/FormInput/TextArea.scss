@@ -2,10 +2,12 @@
     &__field {
         height: 10vh;
         min-height: 38px;
+        padding: 9px 45px 10px 6px;
     }
     @media(min-width: 768px) {
         &__field {
             height: 184px;
+            padding: 19px 45px 21px 13px;
         }
     }
     

@@ -1,5 +1,6 @@
 import { handleActions, combineActions } from '@letapp/redux-actions';
 import { messagesActions } from '../messages/';
+import { chatsActions } from '../chats/';
 
 const INITIAL_STATE = {
   products: {
@@ -22,7 +23,7 @@ const INITIAL_STATE = {
 
   messages: {
     // [id]: {
-    //     chat
+    //     message
     // }
   },
 };
@@ -42,6 +43,21 @@ const reducer = handleActions(
         },
       },
     }),
+    [chatsActions.createChat.success]: (
+      state,
+      { payload: { result, productId } },
+    ) => {
+      return {
+        ...state,
+        products: {
+          ...state.products,
+          [productId]: {
+            ...state.products[productId],
+            chatId: result,
+          },
+        },
+      };
+    },
     // [messagesActions.fetchMessages.success]: (
     //   state,
     //   { payload: { chatId, result } },
@@ -66,6 +82,8 @@ export default function entitiesReducer(
   let stateWithEntities = state;
 
   if (action.payload && action.payload.entities) {
+    debugger;
+    console.log('In entity');
     stateWithEntities = Object.keys(action.payload.entities).reduce(
       (accState, key) => {
         const entity = accState[key];

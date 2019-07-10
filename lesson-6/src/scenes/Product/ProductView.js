@@ -75,6 +75,7 @@ function ProductView({
       >
         <ContactSellerModal
           productId={product.id}
+          chatId={product.chatId}
           close={toggleModal}
         />
       </Modal>

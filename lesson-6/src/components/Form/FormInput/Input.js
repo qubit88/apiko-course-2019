@@ -34,7 +34,7 @@ function Input({
           <input
             className={
               FieldClassName
-                ? `${FieldClassName}`
+                ? `${FieldClassName} TextInput__field`
                 : `${s.FormInput__field} TextInput__field`
             }
             id={name}

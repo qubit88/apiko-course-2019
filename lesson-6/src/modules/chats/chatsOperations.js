@@ -11,10 +11,26 @@ export function createChat(productId) {
 
       const { result, entities } = normalize(res.data, schemas.Chat);
       //   TODO: fetch user
-      dispatch(actions.createChat.success({ result, entities }));
+      dispatch(
+        actions.createChat.success({ result, entities, productId }),
+      );
     } catch (err) {
       dispatch(actions.createChat.error({ message: err.message }));
     }
+  };
+}
+
+export function addChat(chat, product) {
+  const newChat = { ...chat, product };
+  return async function createChatThunk(dispatch) {
+    const { result, entities } = normalize(newChat, schemas.Chat);
+    dispatch(
+      actions.createChat.success({
+        result,
+        entities,
+        productId: newChat.productId,
+      }),
+    );
   };
 }
 

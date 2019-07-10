@@ -33,7 +33,7 @@ function Inbox({
                 {i.product.title}
               </div>
               <div className="Inbox__chat-username">
-                {i.participants[0].fullName}
+                {i.participants && i.participants[0].fullName}
               </div>
               {/* <div className="Inbox__last-message">
                 {i.lastMessage && i.lastMessage.text}
