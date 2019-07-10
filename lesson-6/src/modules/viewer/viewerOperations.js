@@ -14,3 +14,17 @@ export function fetchViewer() {
     }
   };
 }
+
+export function editViewer(body) {
+  return async function editViewerThunk(dispatch) {
+    try {
+      dispatch(actions.editViewer.start());
+
+      const res = await Api.Viewer.editProfile(body);
+      dispatch(actions.editViewer.success(res.data));
+    } catch (err) {
+      console.log(err);
+      dispatch(actions.editViewer.error({ message: err.message }));
+    }
+  };
+}

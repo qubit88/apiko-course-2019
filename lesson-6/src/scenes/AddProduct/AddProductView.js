@@ -79,7 +79,7 @@ function AddProductView({ history, isModal }) {
             label="DESCRIPTION"
             placeholder="product description"
           />
-          <FileInput name="photos" label="photos" id="photos" />
+          <FileInput name="photos" label="photos" />
           <Input name="price" label="price" placeholder="0" />
           <FormSubmitButton onSubmit={onSubmit}>
             Submit

@@ -45,6 +45,7 @@
         }
     }
     &__container\--location {
+        display: none;
         width: 23.15%; 
         margin-right: 7px; 
         position: relative;
@@ -64,7 +65,7 @@
         background: #3E3961;
         border-radius: 4px;
         width: 20.5%; 
-        font-size: 14px;
+        font-size: 12px;
         line-height: 31px;
         text-transform: uppercase;
         color: #FFFFFF;
@@ -79,6 +80,14 @@
 
         &__field {
             height: 50px;
+        }
+
+        &__container\--location {
+            display: block;
+        }
+
+        &__search-button {
+            font-size: 14px;
         }
     }
 }

@@ -5,7 +5,15 @@ import { FormContext } from '../FormContainer/FormContainer';
 import s from '../FormInputWrapper/FormInput.module.scss';
 import './FileInput.scss';
 
-function FileInput({ name, label, id, ...props }) {
+function FileInput({
+  name,
+  label,
+  classWrapper,
+  classPreview,
+  classLabel,
+  ContainerClassName,
+  ...props
+}) {
   let previewRef = React.createRef();
   return (
     <FormContext.Consumer>
@@ -42,7 +50,13 @@ function FileInput({ name, label, id, ...props }) {
         const errors = getError(name);
 
         return (
-          <div className={s.FormInput__container}>
+          <div
+            className={
+              ContainerClassName
+                ? `${ContainerClassName}`
+                : `${s.FormInput__container}`
+            }
+          >
             <div className={s.FormInput__label}>
               <div>
                 {label}
@@ -55,12 +69,27 @@ function FileInput({ name, label, id, ...props }) {
                   ))}
               </div>
 
-              <div className="FileInput__wrapper">
+              <div
+                className={
+                  classWrapper
+                    ? `${classWrapper}`
+                    : 'FileInput__wrapper'
+                }
+              >
                 <div
-                  className="FileInput__preview"
+                  className={
+                    classPreview
+                      ? `${classPreview}`
+                      : 'FileInput__preview'
+                  }
                   ref={previewRef}
                 />
-                <label htmlFor={name} className="FileInput__label">
+                <label
+                  htmlFor={name}
+                  className={
+                    classLabel ? `${classLabel}` : 'FileInput__label'
+                  }
+                >
                   <input
                     type="file"
                     className="FileInput__field"

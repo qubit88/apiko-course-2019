@@ -24,6 +24,7 @@ const enhancer = compose(
   withProps(() => ({
     initialValue: {
       email: '',
+      fullName: '',
       password: '',
       confirm: '',
     },

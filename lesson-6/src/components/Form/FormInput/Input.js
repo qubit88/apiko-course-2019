@@ -7,6 +7,7 @@ import FormInput from '../FormInputWrapper/FormInput';
 function Input({
   name,
   label,
+  placeholder,
   FieldClassName,
   ContainerClassName,
   type,
@@ -40,6 +41,7 @@ function Input({
             value={value}
             onChange={(evt) => handleChange(evt.target.value)}
             type={type}
+            placeholder={placeholder}
           />
         </label>
       )}

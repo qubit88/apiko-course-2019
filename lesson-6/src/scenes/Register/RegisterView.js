@@ -11,12 +11,17 @@ import {
   FormSubmitButton,
 } from '../../components/Form';
 
-import { required, sameAs } from '../../services/formValidation';
+import {
+  required,
+  sameAs,
+  emailPattern,
+} from '../../services/formValidation';
 
 function Register({ initialValue, handleRegister, isLoading }) {
   const sameCheck = sameAs('password', 'confirm');
   const validation = {
-    email: { required },
+    email: { required, emailPattern },
+    fullName: { required },
     password: { required, sameAs: sameCheck },
     confirm: { required, sameAs: sameCheck },
   };
@@ -33,6 +38,12 @@ function Register({ initialValue, handleRegister, isLoading }) {
             name="email"
             placeholder="example@gmail.com"
             label="EMAIL"
+          />
+
+          <Input
+            name="fullName"
+            placeholder="Tony Stark"
+            label="FULL NAME"
           />
 
           <PasswordInput

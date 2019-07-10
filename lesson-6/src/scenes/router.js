@@ -12,6 +12,7 @@ import Product from './Product/ProductContainer';
 import User from './User/UserContainer';
 import Search from './Search/SearchContainer';
 import LikedList from './LikedList/LikedListContainer';
+import EditProfile from './EditProfile/EditProfileContainer';
 import { Header, Footer } from '../components';
 
 export const routes = {
@@ -31,6 +32,7 @@ export const routes = {
   user: '/users/:id',
   chat: '/inbox/:id',
   liked: '/saved',
+  editProfile: '/profile/edit',
 };
 
 export const routesWithTheme = [
@@ -90,6 +92,11 @@ class ModalSwitch extends Component {
           <Route path={routes.user} component={User} exact />
           <PrivateRoute path={routes.inbox} component={Inbox} />
           <PrivateRoute path={routes.chat} component={Inbox} />
+          <PrivateRoute
+            path={routes.editProfile}
+            component={EditProfile}
+            exact
+          />
           <PrivateRoute
             path={routes.liked}
             component={LikedList}

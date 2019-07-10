@@ -8,6 +8,11 @@ const INITIAL_STATE = {
     isError: false,
     error: null,
   },
+  editViewer: {
+    isLoading: false,
+    isError: false,
+    error: null,
+  },
   user: null,
 };
 
@@ -41,6 +46,31 @@ export default handleActions(
       ...state,
       fetchViewer: {
         ...state.fetchViewer,
+        isLoading: false,
+        isError: true,
+        error: action.payload,
+      },
+    }),
+    [actions.fetchViewer.start]: (state) => ({
+      ...state,
+      fetchViewer: {
+        ...state.fetchViewer,
+        isLoading: true,
+        error: null,
+      },
+    }),
+    [actions.editViewer.success]: (state, action) => ({
+      ...state,
+      editViewer: {
+        ...state.editViewer,
+        isLoading: false,
+      },
+      user: action.payload,
+    }),
+    [actions.editViewer.error]: (state, action) => ({
+      ...state,
+      editViewer: {
+        ...state.editViewer,
         isLoading: false,
         isError: true,
         error: action.payload,

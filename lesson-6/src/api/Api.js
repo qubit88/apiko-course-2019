@@ -75,6 +75,9 @@ export const Viewer = {
   get() {
     return axios.get(urls.getViewer);
   },
+  editProfile(body) {
+    return axios.put(`${urls.getViewer}`, body);
+  },
 };
 
 export const Image = {
